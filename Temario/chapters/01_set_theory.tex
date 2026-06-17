@@ -1,0 +1,298 @@
+\chapter{Conceptos básicos de la teoría de conjuntos. Estructuras algebraicas.}
+
+\section{Teoría de conjuntos}
+
+El matemático alemán Georg Cantor, creador de la Teoría de Conjuntos, introdujo el concepto de conjunto como \textit{una colección bien definida de entes que reciben el nombre de elementos del conjunto}. 
+
+[\dots]
+
+\textbf{Axioma de extensionalidad}. Dos conjuntos $X$ e $Y$ son iguales si y solamente si tienen los mismos elementos:
+
+\begin{equation}
+  \pr{\forall X}\pr{\forall Y}\pr{\forall z}\pr{\pr{z\in X\iff z\in Y}\implies X=Y}.
+\end{equation}
+
+La implicación contraria es consecuencia directa del axioma de igualdad en lógica de primer orden.
+
+\textbf{Axioma del conjunto vacío.} Existe un conjunto que no tiene elementos:
+
+\begin{equation}
+  \pr{\exists X}\pr{\forall Y}\pr{Y\notin X}.
+\end{equation}
+
+
+\begin{proposition}
+  \rm Existe un único conjunto que no tiene elementos. Este conjunto lo llamaremos conjunto vacío y será denotado por $\varnothing$.
+\end{proposition}
+
+
+\begin{definition}[\textbf{Subconjunto}]
+\rm Sean $X$ y $Y$ dos conjuntos. Diremos que $X$ es un subonjunto de $Y$ o que $X$ está contenido en $Y$, y lo escribiremos como $X\subseteq Y$, si todo elemento de $X$ también es un elemento de $Y$:
+
+\begin{equation}
+  X\subseteq Y\triangleq \forall z\pr{z\in X\implies z\in Y}
+\end{equation}
+\end{definition}
+
+\begin{proposition}
+\rm Sean $X$ e $Y$ conjuntos. Se cumplen las siguientes propiedades:
+\begin{itemize}
+  \item[1.] $X=Y$ si y solamente si $X\subseteq Y$ e $Y\subseteq X$.
+  \item[2.] $\varnothing\subseteq X$ y $X\subseteq X$. 
+\end{itemize}
+\end{proposition}
+
+\textbf{Axioma de pares.} Dados dos conjuntos $X$ e $Y$, existe un conjunto $Z$ cuyos únicos elementos son $X$ e $Y$:
+
+\begin{equation}
+  \pr{\forall X}\pr{\forall Y}\pr{\exists Z}\pr{\forall z}\pr{z\in Z\iff z=X\lor z=Y}.
+\end{equation}
+
+\begin{proposition}
+  \rm Dados dos conjuntos $X$ e $Y$, existe un único conjunto $Z$ cuyos elementos son $X$ e $Y$ que denotaremos por $\set{X,Y}$. Además, $\set{X,Y}=\set{Y,X}$.
+\end{proposition}
+
+
+Dado un conjunto $X$, denotaremos por $\set{X}:=\set{X,X}$.
+
+\begin{definition}[\textbf{Pares ordenados}]
+  \rm Dados dos conjuntos $X$ e $Y$, definimos el par ordenado $\pr{X,Y}$ como el siguiente conjunto:
+
+  \begin{equation}
+    \pr{X,Y}:=\set{X,\set{X,Y}}.
+  \end{equation}
+
+  Inductivamente, si $X_1,\dots,X_n, X_{n+1}$ son $n+1$ conjuntos, definimos el $\pr{n+1}$-upla $\pr{X_1,\dots,X_n,X_{n+1}}$ como el siguiente conjunto:
+
+  \begin{equation}
+    \pr{X_1,\dots,X_n,X_{n+1}}:=\pr{\pr{X_1,\dots,X_n},X_{n+1}}.
+  \end{equation}
+\end{definition}
+
+
+\begin{proposition}
+  \rm Sean $A$, $B$, $C$ y $D$ cuatro conjuntos. Entonces $\pr{A,B}=\pr{C,D}$ si y solamente si $A=C$ y $B=D$. Inductivamente, si $X_1,\dots,X_n,Y_1,\dots,Y_n$ son $2\cdot n$ conjuntos, se tiene que $\pr{X_1,\dots,X_n}=\pr{Y_1,\dots,Y_n}$ si y solamente si $X_k=Y_k$ para todo $k\in\set{1,\dots,n}$.
+\end{proposition}
+
+De la proposición anterior se deduce que si $A$, $B$ son dos conjuntos, entonces $\pr{A,B}\neq\pr{B,A}$ generalmente.
+
+\textbf{Axioma de la unión.} Para todo conjunto $X$, existe un conjunto $Y$ cuyos elementos son los elementos de los elementos de $X$:
+
+\begin{equation}
+  \pr{\forall X}\pr{\exists Y}\pr{\forall z}\pr{z\in Y\iff \pr{\exists Z}\pr{Z\in X\land z\in Z}}.
+\end{equation}
+
+\begin{proposition}
+  \rm Dado un conjunto $\mathcal{X}$, existe un único conjunto cuyos elementos son los elementos de $X$. Este conjunto lo llamaremos conjunto unión y será denotado por $\displaystyle\bigcup{\mathcal{X}}:=\set{z\middle|\pr{\exists X}\pr{X\in\mathcal{X}\land z\in X}}$. Otra notación empleada es $\displaystyle\bigcup_{X\in\mathcal{X}}{X}$.
+\end{proposition}
+
+Inductivamente, si $X_1,\dots,X_n,X_{n+1}$ son $n+1$ conjuntos, definimos el conjunto cuyos únicos elementos son $X_1,\dots,X_n,X_{n+1}$ como sigue:
+
+\begin{equation}
+  \set{X_1,\dots,X_n,X_{n+1}}:=\bigcup{\set{\set{X_1,\dots,X_n},\set{X_{n+1}}}}.
+\end{equation}
+
+Por otro lado, si $X_1,\dots,X_n$ son $n$ conjuntos, definimos su unión como el siguiente conjunto:
+
+\begin{equation}
+  \bigcup_{k=1}^{n}{X_k}:=\bigcup{\set{X_1,\dots,X_n}}.
+\end{equation}
+
+Otra notación empleada es $X_1\cup\dots\cup X_n$.
+
+\begin{proposition}
+  \rm Sean $X$, $Y$ y $Z$ tres conjuntos. Se cumple:
+
+  \begin{itemize}
+    \item[1.] Dado un conjunto $z$, se tiene que $z\in X\cup Y$ si y solamente si $z\in X$ o $z\in Y$:
+    
+    \begin{equation}
+      X\cup Y:=\set{z\middle|z\in X\lor z\in Y}.
+    \end{equation}
+    \item[2.] Conmutatividad: $X\cup Y=Y\cup X$.
+    \item[3.] Asociatividad: $\pr{X\cup Y}\cup Z=X\cup\pr{Y\cup Z}$.
+    \item[4.] Elemento neutro: $X\cup \varnothing=\varnothing\cup X=X$.
+    \item[5.] $X,Y\subseteq X\cup Y$.
+    \item[6.] $X\subseteq Y$ si y solamente si $X\cup Y=Y$.
+\end{itemize}
+\end{proposition}
+
+\textbf{Axioma de las partes.} Dado un conjunto $X$, existe un conjunto $Y$ cuyos elementos son todos los suconjuntos de $X$:
+
+\begin{equation}
+  \pr{\forall X}\pr{\exists Y}\pr{\forall Z}\pr{Z\in Y\iff Z\subseteq X}.
+\end{equation}
+
+\begin{proposition}
+  \rm Dado un conjunto $X$, existe un único conjunto cuyos elementos son todos los conjuntos de $X$. Este conjunto lo llamaremos conjunto de las partes de $X$ y lo denotaremos por $\mathcal{P}\pr{X}:=\set{A\middle|A\subseteq X}$.
+\end{proposition}
+
+\textbf{Esquema axiomático de separación}. Sea $\varphi\pr{u,p_1, \dots,p_n}$ una fórmula del lenguaje de la Teoría de Conjuntos. Para todo conjunto $X$, $p_1$, \dots, $p_n$, existe un conjunto $Y$ cuyos elementos son aquellos conjuntos $x$ tales que $x\in X$ y verifican $\varphi\pr{x,p_1,\dots,p_n}$ para todo los conjuntos $p_1,\dots,p_n$:
+
+\begin{equation}
+    \pr{\forall X}\pr{\forall p_1}\dots\pr{\forall p_n}\pr{\exists Y}\pr{\forall z}\pr{z\in Y\iff z\in X\land \varphi\pr{z,p_1,\dots,p_n}}
+\end{equation}
+
+\begin{proposition}
+  \rm Sean $\varphi\pr{u,p_1, \dots,p_n}$ una fórmula del lenguaje de la Teoría de Conjuntos y $X$ un conjunto. Entonces existe un único conjunto cuyos elementos son aquellos $x$ tales que $x\in X$ y verifican $\varphi\pr{x,p_1,\dots,p_n}$ para todo los conjuntos $p_1,\dots,p_n$. 
+  
+  Dados $n$ conjuntos $p_1,\dots,p_n$, el conjunto anterior lo denotaremos como $\set{x\in X\middle|\varphi\pr{x,p_1,\dots,p_n}}\subseteq X$. Es posible ver el conjunto anterior denotado como $\set{x\middle|\varphi\pr{x,p_1,\dots,p_n}}$ cuando se deduce que $x\in X$ de la fórmula $\varphi\pr{x,p_1,\dots,p_n}$.
+\end{proposition}
+
+
+\begin{definition}[\textbf{Intersección de conjuntos}]
+  \rm Sea $\mathcal{X}$ un conjunto no vacío. Se define la intersección de $\mathcal{X}$ como el conjunto formado por aquellos elementos de elementos de $X$ que están en todos los elementos de $X$:
+
+  \begin{equation}
+    \bigcap{\mathcal{X}}:=\set{x\middle|\pr{\forall Z}{Z\in X\implies x\in Z}}.
+  \end{equation}
+
+  Otra notación empleada es $\displaystyle\bigcap_{X\in\mathcal{X}}{X}$.
+
+  Sean $X_1,\dots,X_n$ $n$ conjuntos. Se define la intersección de $X_1,\dots,X_n$ como el conjunto:
+
+  \begin{equation}
+    \bigcap_{k=1}^{n}{X_k}:=\bigcap{\set{X_1,\dots,X_n}}.
+  \end{equation}
+
+  Otra notación empleada es $X_1\cap\dots\cap X_n$.
+
+  Dados dos conjuntos $X$ e $Y$, diremos que son disjuntos si $X\cap Y=\varnothing$.
+\end{definition}
+
+\begin{proposition}
+\rm Sean $X$, $Y$ y $Z$ tres conjuntos. Se cumple:
+
+\begin{itemize}
+    \item[1.] Dado un conjunto $z$, se tiene que $z\in X\cap Y$ si y solamente si $z\in X$ y $z\in Y$:
+    
+    \begin{equation}
+      X\cap Y:=\set{z\middle|z\in X\land z\in Y}.
+    \end{equation}
+    \item[2.] Conmutatividad: $X\cap Y=Y\cap A$.
+    \item[3.] Asociatividad: $\pr{X\cap Y}\cap Z=X\cap\pr{Y\cap Z}$.
+    \item[4.] $X\cap Y\subseteq X,Y$.
+    \item[5.] $X\subseteq Y$ si y solamente si $X\cap Y=X$.
+    \item[6.] Elemento disipativo: $X\cap\varnothing=\varnothing\cap X=\varnothing$.
+\end{itemize}
+\end{proposition}
+
+\begin{theorem}[\textbf{Leyes distributivas}]
+\rm Sean $X$ e $\mathcal{Y}$ dos conjuntos. Se cumple:
+
+\begin{itemize}
+    \item[1.] $\displaystyle X\cap\pr{\bigcup{\mathcal{Y}}}=\bigcup_{Y\in\mathcal{Y}}{\pr{X\cap Y}}=\bigcup{\set{X\cap Y\middle|Y\in\mathcal{Y}}}$. En particular, si $A$, $B$ y $C$ son tres conjuntos, tenemos que:
+    
+    \begin{equation}
+        A\cap\pr{B\cup C}=\pr{A\cap B}\cup\pr{A\cap C}.
+    \end{equation}
+    \item[2.] $\displaystyle X\cup\pr{\bigcap{\mathcal{Y}}}=\bigcap_{Y\in\mathcal{Y}}{\pr{X\cup Y}}=\bigcap{\set{X\cup Y\middle|Y\in\mathcal{Y}}}$. En particular, si $A$, $B$ y $C$ son tres conjuntos, tenemos que:
+
+    \begin{equation}
+        A\cup\pr{B\cap C}=\pr{A\cup B}\cap\pr{A\cup C}.
+    \end{equation}
+\end{itemize}
+\end{theorem}
+
+\section{Estructuras algebraicas}
+
+\begin{definition}[\textbf{Operación interna}]
+\rm Dado un conjunto no vacío $X$, una operación interna sobre $X$ es una aplicación $\ast: X\times X\rightarrow X$. Dados $x,y\in X$, denotaremos por $x\ast y:=\ast\pr{x,y}$. Si $\ast$ es una operación interna sobre $X$, diremos que:
+
+\begin{itemize}
+  \item $\ast$ es asociativa si para todo $x,y,z\in X$, se cumple que $x\ast\pr{y\ast z}=\pr{x\ast y}\ast z$.
+  \item $\ast$ es conmutativa si para todo $x,y\in X$, se cumple que $x\ast y=y\ast x$.
+  \item $e\in X$ es el elemento neutro de $\ast$ si para todo $x\in X$, se cumple que $e\ast x=x\ast e=x$. 
+  \item $x\in X$ es invertible respecto de $\ast$ si $\ast$ tiene elemento neutro y existe $x'\in X$ que cumple que $x\ast x'=x'\ast x=e$.
+  \item $\ast$ es distributiva respecto a otra operación interna $\star$ sobre $X$ si para todo $x,y,z\in X$, se cumple que $x\ast\pr{y\star z}=\pr{x\ast y}\star\pr{x\ast z}$.
+  \item $x\in X$ es simplificable respecto a $\ast$ si para todo $y,z\in X$, se cumple que $x\ast y=x\ast z$ implica $y=z$.
+  \item $\ast$ es compatible respecto a una relación de equivalencia $\thicksim$ sobre $X$ si para todo $x,x',y,y'\in X$, se cumple que $x\thicksim x'$ e $y\thicksim y'$ implica que $x\ast y\thicksim x'\ast y'$. En tal caso, $\ast$ induce una operación interna sobre el conjunto cociente $X/\thicksim$, denotada con el mismo símbolo $\ast$, llamada operación cociente y que se define como $\br{x}\ast\br{y}:=\br{x\ast y}$ para $\br{x},\br{y}\in X/\thicksim$.
+\end{itemize}
+\end{definition}
+
+\begin{proposition}
+  \rm Sean $X$ un conjunto no vacío y $\ast$ una operación interna sobre $X$. Se cumplen las siguientes propiedades:
+
+  \begin{itemize}
+    \item Si $\ast$ tiene elemento neutro, entonces es único.
+    \item Si $\ast$ tiene elemento neutro, entonces este es invertible y simplificable respecto de $\ast$.
+    \item Si $\ast$ es asociativa y tiene elemento neutro, y $x\in X$ es invertible respecto de $\ast$, entonces el elemento inverso de $x$ es único y lo denotaremos como $x^{-1}$. Además, $\pr{x^{-1}}^{-1}=x$.
+    \item Si $\ast$ es asociativa y tiene elemento neutro, y $x,y\in X$ son invertibles respecto de $\ast$, entonces $x\ast y$ es invertible respecto de $\ast$ y se cumple que $\pr{x\ast y}^{-1}=y^{-1}\ast x^{-1}$. 
+    \item Si $\ast$ es asociativa y tiene elemento neutro, dados $a,b\in X$ con $a$ invertible respecto de $\ast$, la ecuación $a\ast x=b$ tiene solución única $x=a^{-1}\ast b$ y la ecuación $y\ast a=b$ tiene solución única $y=b\ast a^{-1}$.
+    \item Si $\ast$ es asociativa y tiene elemento neutro, y $x\in X$ es invertible respecto de $\ast$, entonces $x$ es simplificable respecto de $\ast$.
+  \end{itemize}
+\end{proposition}
+
+\begin{definition}[\textbf{Estructura algebraica}]
+  \rm Sean $X$ un conjunto no vacío y $\ast_1,\dots,\ast_n$ $n$ operaciones internas sobre $X$. Diremos que la $\pr{n+1}$-upla $\pr{X,\ast_1,\dots,\ast_n}$ es una estructura algebraica.
+\end{definition}
+
+A continuación, trataremos algunas estructuras algebraicas de interés: grupos, anillos y cuerpos.
+
+\subsection{Grupos}
+
+\begin{definition}[\textbf{Grupo}]
+  \rm Sean $G$ un conjunto no vacío y $\ast$ una operación interna sobre $X$. Diremos que la pareja $\pr{G,\ast}$ es un grupo si se cumplen las siguientes condiciones:
+
+  \begin{itemize}
+    \item $\ast$ es asociativa.
+    \item $\ast$ tiene elemento neutro.
+    \item Para todo $x\in G$, existe un elemento inverso de $x$ respecto a $\ast$.
+  \end{itemize}
+
+  Si además $\ast$ es conmutativa, diremos que $\pr{G,\ast}$ es un grupo abeliano.
+\end{definition}
+
+\begin{definition}[\textbf{Subgrupo}]
+  \rm Sean $\pr{G,\ast}$ un grupo y $H\subseteq G$ no vacío. Diremos que $H$ es un subgrupo de $G$ (respecto de $\ast$) si se cumplen las siguientes propiedades:
+
+  \begin{itemize}
+    \item Para todo $x,y\in H$, se cumple que $x\ast y\in H$.
+    \item Si $e\in G$ es el elemento neutro de $\ast$, entonces $e\in H$.
+    \item Para todo $x\in H$, se cumple que $x^{-1}\in H$.
+  \end{itemize}
+
+  En particular, $\pr{H,\ast}:=\pr{H,\left.\ast\right|_{H\times H}}$ es un grupo.
+\end{definition}
+
+\begin{theorem}[\rm\textbf{Caracterización de subgrupos}]
+  \rm Sean $\pr{G,\ast}$ un grupo y $H\subseteq G$ no vacío. Entonces $H$ es un subgrupo de $G$ (respecto de $\ast$) si y solo si para todo $x,y\in H$, se cumple que $x\ast y^{-1}\in H$.
+\end{theorem}
+
+\begin{definition}[\textbf{Homomorfismo de grupos}]
+  \rm Sean $\pr{G,\ast}$ y $\pr{H,\star}$ dos grupos y $f:G\rightarrow H$ una aplicación. Diremos que $f$ es un homomorfismo (del grupo $\pr{G,\ast}$ en el grupo $\pr{H,\star}$) si para todo $x,y\in G$, se cumple que $f\pr{x\ast y}=f\pr{x}\star f\pr{y}$. Si $f:G\rightarrow H$ es un homomorfismo, diremos que:
+
+  \begin{itemize}
+    \item $f$ es un monomorfismo si $f$ es inyectiva.
+    \item $f$ es un epimorfismo si $f$ es sobreyectiva.
+    \item $f$ es un isomorfismo si $f$ es biyectiva. En tal caso, diremos que los grupos $\pr{G,\ast}$ y $\pr{H,\star}$ son isomorfos y lo denotaremos como $\pr{G,\ast}\cong\pr{H,\star}$.
+    \item $f$ es un endomorfismo si $\pr{G,\ast}=\pr{H,\star}$.
+    \item $f$ es un automorfismo si $f$ es un endomorfismo e isomorfismo.
+  \end{itemize}
+\end{definition}
+
+\begin{proposition}
+  \rm Sean $\pr{G,\ast}$ y $\pr{H,\star}$ dos grupos con elementos neutros $e_G\in G$ y $e_H\in H$ respectivamente, y $f:G\rightarrow H$ un homomorfismo. Se cumplen las siguientes propiedades:
+  \begin{itemize}
+    \item[1.] $f\pr{e_G}=e_H$.
+    \item[2.] Para todo $x\in G$, se cumple que $f\pr{x^{-1}}=f\pr{x}^{-1}$.
+    \item[3.] Si $S$ es un subgrupo de $G$, entonces $f\pr{S}$ es un subgrupo de $H$.
+    \item[4.] Si $T$ es un subgrupo de $H$, entonces $f^{-1}\pr{T}$ es un subgrupo de $G$.
+    \item[5.] Si $\pr{J, \odot}$ es un grupo y $g:H\rightarrow J$ un homomorfismo, entonces $g\circ f:G\rightarrow J$ es un homomorfismo. 
+  \end{itemize}
+\end{proposition}
+
+\begin{definition}[\textbf{Núcleo de un homomorfismo de grupos}]
+  \rm Sean $\pr{G,\ast}$ y $\pr{H,\star}$ dos grupos con elementos neutros $e_G\in G$ y $e_H\in H$ respectivamente, y $f:G\rightarrow H$ un homomorfismo. Definimos el núcleo de $f$ como el conjunto $\ker f:=\set{x\in G\middle|f\pr{x}=e_H}=f^{-1}\pr{e_H}$.
+\end{definition}
+
+\begin{proposition}
+  \rm Sean $\pr{G,\ast}$ y $\pr{H,\star}$ dos grupos y $f:G\rightarrow H$ un homomorfismo. Se cumplen las siguientes propiedades:
+  \begin{itemize}
+    \item[1.] $\ker f$ es un subgrupo de $G$.
+    \item[2.] $f$ es inyectiva si y solamente si $\ker f=\set{e_G}$.
+    \item[3.] $\text{im} f$ es un subgrupo de $H$.
+  \end{itemize}
+\end{proposition}
+\subsection{Anillos}
+\subsection{Cuerpos}
