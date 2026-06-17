@@ -1,0 +1,120 @@
+\chapter{Aritmética}
+\textbf{1. Demuestra que el número $a_n$ es divisible por $4$ para todo número entero positivo $n$, donde:}
+
+\begin{equation}
+  a_n=\pr{2\cdot n+1}^{2\cdot n-1}+\pr{2\cdot n-1}^{2\cdot n+1}.
+\end{equation}
+
+Sea $k\in\mathbb{N}$. Distinguimos dos casos:
+
+\begin{itemize}
+  \item[1.] Si $n=2\cdot k$, tenemos lo siguiente:
+  
+  \begin{equation}
+    \begin{split}
+      & \pr{2\cdot\pr{2\cdot k}+1}^{2\cdot\pr{2\cdot k}-1}+\pr{2\cdot\pr{2\cdot k}-1}^{2\cdot\pr{2\cdot k}+1} =\pr{4\cdot k+1}^{4\cdot k-1}+\pr{4\cdot k-1}^{4\cdot k+1}\\
+      \equiv &  1^{4\cdot k-1}+\pr{-1}^{4\cdot k+1}\pmod{4} \equiv 1-1\pmod{4}\equiv 0\pmod{4}.
+    \end{split}
+  \end{equation}
+
+  Luego $4\mid a_n$.
+
+  \item[2.] Si $n=2\cdot k-1$, tenemos lo siguiente:
+
+  \begin{equation}
+    \begin{split}
+      & \pr{2\cdot\pr{2\cdot k-1}+1}^{2\cdot\pr{2\cdot k-1}-1}+\pr{2\cdot\pr{2\cdot k-1}-1}^{2\cdot\pr{2\cdot k-1}+1} =\pr{4\cdot k-1}^{4\cdot k-3}+\pr{4\cdot k-3}^{4\cdot k-1}\\
+      \equiv & \pr{-1}^{4\cdot k-3}+\pr{-3}^{4\cdot k-1}\pmod{4} \equiv\pr{-1}^{4\cdot k-3}+1^{4\cdot k-1}\pmod{4}\equiv 1-1\pmod{4}\\
+      & \equiv 0\pmod{4}.
+    \end{split}
+  \end{equation}
+  
+  Luego $4\mid a_n$.
+\end{itemize}
+
+Esto prueba que $a_n$ es divisible por $4$ para todo $n\in\mathbb{N}$.
+
+\textbf{2. Demuestra que $3^{2\cdot n+2}+2^{6\cdot n+1}$ es un múltiplo de $11$ para todo número entero positivo $n$.}
+
+Sea $n\in\mathbb{N}$. Entonces:
+
+\begin{equation}
+  \begin{split}
+    3^{2\cdot n+2}+2^{6\cdot n+1}=9^n\cdot 9+64^n\cdot 2\equiv\pr{-2}^n\cdot\pr{-2}+\pr{-2}^n\cdot 2\pmod{11}\equiv 0\pmod{11}.
+  \end{split}
+\end{equation}
+
+Esto prueba que $3^{2\cdot n+2}+2^{6\cdot n+1}$ es un múltiplo de $11$ para todo $n\in\mathbb{N}$.
+
+\textbf{3. Responda razonadamente a las siguientes cuestiones:}
+
+\begin{itemize}
+  \item[\textbf{(1)}] \textbf{Demuestre que, en el sistema de numeración decimal, la cifra de las unidades del número $2^{2^{n+1}}+1$ es $7$, para cada $n\in\mathbb{N}$.}
+  
+  Lo anterior equivale a probar que $2^{2^{n+1}}-6\equiv 0\pmod{10}$. Como $10=2\cdot 5$, tenemos que ver que $2^{2^{n+1}}-6$ es divisible por $2$ y $5$. Como $2^{2^{n+1}}-6$ es par, entonces es divisible por $2$. Probemos que $2^{2^{n+1}}-6$ es divisible por $5$ por inducción. Para $n=1$, se tiene que $2^{2^{1+1}}-6=16-6=10\equiv 0\pmod{5}$, es decir, $5\mid 2^{2^{1+1}}-6$. Supongamos que lo hemos probado para $n$. Entonces $2^{2^{n+1}}\equiv 6\pmod{5}$ y:
+
+  \begin{equation}
+    \begin{split}
+      2^{2^{\pr{n+1}+1}}-6& =2^{2^{n+1}\cdot 2}-6=\pr{2^{2^{n+1}}}^2-6\equiv 6^2-6\pmod{5}\equiv 36-6\pmod{5}\\
+      & \equiv 30\pmod{5}\equiv 0\pmod{5}.
+    \end{split}
+  \end{equation}
+
+  Luego $5\mid2^{2^{\pr{n+1}+1}}-6$. Por inducción, deducimos que $5\mid2^{2^{n+1}}-6$ para todo $n\in\mathbb{N}$. Por tanto, $10\mid 2^{2^{n+1}}-6$ para todo $n\in\mathbb{N}$ que es lo que queríamos probar.
+
+  \item[\textbf{(2)}] \textbf{En una bolsa hay monedas de 5, de 10 y de 20 céntimos. Se sabe que hay 24 monedas y que su valor es de 2 euros. Determine todas las posibles combinaciones de monedas.}
+  
+
+  Sean $x\in\mathbb{N}_0$ el número de monedas de $5$ céntimos, $y\in\mathbb{N}_0$ el número de monedas de $10$ céntimos y $z\in\mathbb{N}_0$ el número de monedas de $20$ céntimos. Sabemos entonces que:
+
+  \begin{equation}
+    \begin{cases}
+      x+y+z=24\\
+      5\cdot x+10\cdot y+20\cdot z=200
+    \end{cases}\iff\begin{cases}
+      x+y+z=24\\
+      x+2\cdot y+4\cdot z=40
+    \end{cases}
+  \end{equation}
+
+  Restando la primera ecuación y la segunda, tenemos que $y+3\cdot z=16$. Necesariamente, $z\in\set{0,1,2,3,4,5}$. Sustituyendo en la ecuación anterior, obtenemos el valor de $y$ para cada $z$, y yéndonos a una de las ecuaciones de arriba, obtendríamos el valor de $x$ que deberíamos comprobar que es una solución verdadera. Nos quedaría la siguiente tabla:
+
+  
+  \begin{center}
+    \begin{tabular}{|c|c|c|c|c|} %chktex 44
+    \hline %chktex 44
+    x & y & z & $x+y+z\stackrel{?}{=}{24}$ & $x+2\cdot y+4\cdot z\stackrel{?}{=}40$\\\hline %chktex 44
+    8 & 16 & 0 & \checkmark{} & \checkmark{}\\
+    10 & 13 & 1 & \checkmark{} & \checkmark{}\\
+    12 & 10 & 2 & \checkmark{} & \checkmark{}\\
+    14 & 7 & 3 & \checkmark{} & \checkmark{}\\
+    16 & 4 & 4 & \checkmark{} & \checkmark{}\\
+    18 & 1 & 5  & \checkmark{} & \checkmark{}\\\hline %chktex 44
+  \end{tabular}
+  \end{center}
+  
+  Todas las combinaciones posibles quedan registradas en la tabla anterior.
+\end{itemize}
+
+\textbf{4. Sea $n$ un número entero positivo. Demuestre que $1^n+2^n+3^n+4^n$ es divisibile por $5$ si y solamente si $n$ no es divisibile por $4$.}
+
+Sean $k,r\in\mathbb{N}$ con $r\in\set{0,1,2,3}$ tales que $n=4\cdot k+r$. Entonces:
+
+\begin{equation}
+  1^n+2^n+3^n+4^n=1+16^k\cdot 2^r+81^k\cdot 3^r+256\cdot 4^r\equiv 1+2^r+3^r+4^r\pmod{5}.
+\end{equation}
+
+Basta ver para qué valores de $r\in\set{0,1,2,3}$, $1+2^r+3^r+4^r\equiv 0\pmod{5}$. Entonces:
+
+\begin{center}
+  \begin{tabular}{|c|c|c|c|c|} %chktex 44
+    \hline %chktex 44
+    r & $1+2^r+3^r+4^r$ & $1+2^r+3^r+4^r\pmod{5}$\\\hline %chktex 44
+    0 & 4 & 4 \\
+    1 & 10 & 0 \\
+    2 & 30 & 0 \\
+    3 & 100 & 0 \\\hline %chktex 44
+  \end{tabular}
+\end{center}
+
+De la tabla anterior, deducimos que $1^n+2^n+3^n+4^n$ es divisibile por $5$ si y solamente si $n$ no es divisibile por $4$.

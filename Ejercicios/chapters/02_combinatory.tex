@@ -1,0 +1,24 @@
+\chapter{Combinatoria}
+
+\textbf{4. Se considera un número natural $N$ que, en el sistema decimal, se representa con cinco cifras diferentes, todas ellas no nulas, $N=abcde$.}
+
+  \begin{itemize}
+    \item[\textbf{(1)}] \textbf{Sea $C$ el conjunto de números de tres cifras diferentes que se pueden formar con las de $N$. ¿Cuál es el cardinal de $C$?}
+    
+
+    Dados $i,j,k\in\set{a,b,c,d,e}$, el número en representación decimal $ijk$ siempre tendrá tres cifras pues $a,b,c,d,e\neq 0$. Sea $\widetilde{C}:=\set{\pr{i,j,k}\middle|i,j,k\in\set{a,b,c,d,e}\text{ distintos}}$. Entonces $\text{card}\pr{C}=\text{card}\pr{\widetilde{C}}=5\cdot 4\cdot 3=60$.
+
+    \item[\textbf{(2)}] \textbf{Exprese la suma $S$ de todos los elementos de $C$ en función de $a$, $b$, $c$, $d$ y $e$.}
+    
+    Fijada una posición (unidades, decenas y centenas) y una cifra de $\set{a,b,c,d,e}$, existen $4\cdot 3=12$ combinaciones del resto de posiciones para que en la posición fijada esté dicha cifra. Luego:
+
+    \begin{equation}
+      \begin{split}
+        S & =12\cdot\pr{a+b+c+d+e}+12\cdot\pr{a+b+c+d+e}\cdot 10+12\cdot\pr{a+b+c+d+e}\cdot 100\\
+        & =12\cdot\pr{a+b+c+d+e}\cdot\pr{1+10+100}=12\cdot 111\cdot\pr{a+b+c+d+e}\\
+        & =1332\cdot\pr{a+b+c+d}.
+      \end{split}
+    \end{equation}
+
+    \item[\textbf{\text{(3)}}] \textbf{Determine $N$ sabiendo que $S=N$.}
+  \end{itemize}
