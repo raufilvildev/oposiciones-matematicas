@@ -6,6 +6,8 @@ El matemático alemán Georg Cantor, creador de la Teoría de Conjuntos, introdu
 
 [\dots]
 
+\subsection{Igualdad de conjuntos. Conjunto vacío. Subconjuntos}
+
 \textbf{Axioma de extensionalidad}. Dos conjuntos $X$ e $Y$ son iguales si y solamente si tienen los mismos elementos:
 
 \begin{equation}
@@ -42,6 +44,8 @@ La implicación contraria es consecuencia directa del axioma de igualdad en lóg
 \end{itemize}
 \end{proposition}
 
+\subsection{Pares ordenados}
+
 \textbf{Axioma de pares.} Dados dos conjuntos $X$ e $Y$, existe un conjunto $Z$ cuyos únicos elementos son $X$ e $Y$:
 
 \begin{equation}
@@ -75,6 +79,8 @@ Dado un conjunto $X$, denotaremos por $\set{X}:=\set{X,X}$.
 \end{proposition}
 
 De la proposición anterior se deduce que si $A$, $B$ son dos conjuntos, entonces $\pr{A,B}\neq\pr{B,A}$ generalmente.
+
+\subsection{Unión, intersección, diferencia y producto cartesiano}
 
 \textbf{Axioma de la unión.} Para todo conjunto $X$, existe un conjunto $Y$ cuyos elementos son los elementos de los elementos de $X$:
 
@@ -193,6 +199,96 @@ Otra notación empleada es $X_1\cup\dots\cup X_n$.
     \end{equation}
 \end{itemize}
 \end{theorem}
+
+\begin{definition}[\textbf{Diferencia de conjuntos}]
+  
+\end{definition}
+
+\begin{definition}[\textbf{Producto cartesiano}]
+  \rm Sean $X_1,\dots,X_n$ $n$ conjuntos. Se define el producto cartesiano de $X_1,\dots,X_n$ como el conjunto:
+
+  \begin{equation}
+    \prod_{k=1}^{n}{X_k}:=\set{\pr{x_1,\dots,x_n}\middle|x_1\in X_1\land\dots\land x_n\in X_n}.
+  \end{equation}
+
+  Otra notación empleada es $X_1\times\cdots\times X_n$.
+\end{definition}
+
+\subsection{Aplicaciones}
+
+\begin{definition}[\textbf{Aplicación}]
+  \rm Sean $X$ e $Y$ dos conjuntos. Una aplicación (de $X$ en $Y$) es una terna $f=\pr{X,Y,G}$ tal que $G\subseteq X\times Y$ verifica que si $x\in X$ e $y,y'\in Y$ tales que $\pr{x,y},\pr{x,y'}\in G$, entonces $y=y'$:
+
+\begin{equation}
+    \pr{\forall x}\pr{\forall y}\pr{\forall y'}\pr{\pr{x,y}\in G\land\pr{x,y'}\in G\rightarrow y=y'}.
+\end{equation}
+
+Sean $x\in X$ e $y\in Y$. Si $\pr{x,y}\in G$, escribiremos $f\pr{x}=y$ y diremos que $y$ es el valor de $x$ por $f$. Por otro lado, si $f$ es una aplicación de $X$ en $Y$, escribiremos $f:X\rightarrow Y$. 
+
+En este contexto, diremos que:
+
+\begin{itemize}
+    \item $X$ es el dominio de $f$ y lo escribiremos como $\text{dom}\pr{f}:=X$.
+    \item $Y$ es el codominio de $f$ y lo escribiremos como $\text{cod}\pr{f}:=Y$.
+    \item $\text{im}\pr{f}:=\set{y\in Y\middle|\pr{\exists x}\pr{x\in X\rightarrow f\pr{x}=y}}$ es la imagen de $f$. 
+    \item $G$ es el grafo de $f$ y lo escribiremos como $\text{graf}\pr{f}:=G$.
+\end{itemize}
+\end{definition}
+
+\begin{definition}[\textbf{Restricción de una aplicación}]
+  \rm Sean $f:X\rightarrow Y$ una aplicación y $U\subseteq X$. Se define la restricción de $f$ a $U$ como la aplicación $\left.f\right|_U:U\rightarrow Y$ dada por $\left.f\right|_U\pr{x}=f\pr{x}$.
+\end{definition}
+
+
+\begin{definition}[\textbf{Inyectividad, sobreyectividad y biyectividad}]
+  \rm Sean $X$ e $Y$ dos conjuntos y $f:X\rightarrow Y$ una aplicación. Diremos que:
+
+\begin{itemize}
+    \item $f$ es inyectiva si para todo $x,x'\in X$, $f\pr{x}=f\pr{x'}$ implica que $x=x'$. Para indicarlo, escribiremos $f:X\hookrightarrow Y$.
+    \item $f$ es sobreyectiva si para todo $y\in Y$, existe $x\in X$ tal que $f\pr{x}=y$. Para indicarlo, escribiremos $f:X\twoheadrightarrow Y$.
+    \item $f$ es biyectiva si es inyectiva y sobreyectiva. Para indicarlo, escribiremos $f:X\xrightarrow{\cong}Y$.
+\end{itemize}
+\end{definition}
+
+\begin{definition}[\textbf{Imagen directa e inversa}]
+\rm Sean $f:X\rightarrow Y$ una aplicación, $A\subseteq X$ y $B\subseteq Y$. Definimos:
+
+\begin{itemize}
+    \item la imagen directa de $A$ como el conjunto:
+
+    \begin{equation}
+        f\pr{A}:=\set{y\in Y\middle|\pr{\exists x}\pr{x\in X\land f\pr{x}=y}}=\set{f\pr{x}\middle|x\in X}.
+    \end{equation}
+
+    Obsérvese que $\text{im}\pr{f}=f\pr{X}$.
+    \item la imagen inversa de $B$ como el conjunto:
+
+    \begin{equation}
+        f^{-1}\pr{B}:=\set{x\in X\middle|f\pr{x}\in B}.
+    \end{equation}
+
+    
+    Obsérvese que $X=f^{-1}\pr{Y}$.
+\end{itemize}
+\end{definition}
+
+\begin{definition}[\textbf{Composición de aplicaciones}]
+  \rm Sean $f:X\rightarrow Y$ y $g:Y\rightarrow Z$ dos aplicaciones. Se define la composición de $f$ con $g$ como la aplicación $g\circ f:X\rightarrow Z$ dada por $\pr{g\circ f}\pr{x}=g\pr{f\pr{x}}$.
+\end{definition}
+
+\begin{definition}[\textbf{Aplicación invertible}]
+  \rm Sea $f:X\rightarrow Y$ una aplicación. Diremos que $f$ es invertible si existe una aplicación $g:Y\rightarrow X$, que llamaremos aplicación inversa de $f$, tal que $g\circ f=\text{id}_X$ y $f\circ g=\text{id}_Y$.
+\end{definition}
+
+\begin{proposition}
+  \rm La aplicación inversa de una aplicación invertible es única.
+\end{proposition}
+
+\begin{proposition}
+  \rm Sea $f:X\rightarrow Y$ una aplicación. Se cumple que $f$ es invertible si y solamente si $f$ es biyectiva.
+\end{proposition}
+
+\subsection{Relaciones}
 
 \section{Estructuras algebraicas}
 
