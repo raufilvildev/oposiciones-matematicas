@@ -4,7 +4,9 @@
 
 El matemático alemán Georg Cantor, creador de la Teoría de Conjuntos, introdujo el concepto de conjunto como \textit{una colección bien definida de entes que reciben el nombre de elementos del conjunto}. 
 
-[\dots]
+Esta forma de introducir los conjuntos no es plenamente satisfactoria pues conduce a contradicciones como la conocida como \textit{paradoja de Russel}. 
+
+La Teoría de Conjuntos moderno no da ninguna definición operativa de conjunto y, en su lugar, postula la existencia de los conjuntos mediante una colección de axiomas conocidos como los \textit{Axiomas de Zermelo-Fraenkel}. Mencionaremos algunos de ellos que son los que necesitaremos para nuestro propósito.
 
 \subsection{Igualdad de conjuntos. Conjunto vacío. Subconjuntos}
 
@@ -201,8 +203,33 @@ Otra notación empleada es $X_1\cup\dots\cup X_n$.
 \end{theorem}
 
 \begin{definition}[\textbf{Diferencia de conjuntos}]
-  
+  \rm Sean $X$ y $Y$ dos conjuntos. Definimos la diferencia entre $X$ e $Y$ como el conjunto:
+
+\begin{equation}
+    X\setminus Y:=\set{x\middle|x\in X\land x\notin Y}.
+\end{equation}
 \end{definition}
+
+\begin{definition}[\textbf{Complementario de un conjunto}]
+\rm Fijado un conjunto universal $U$, es decir, un conjunto que contiene a todos los posibles conjuntos del problema que tratamos, definimos el complementario de un conjunto $X$, y lo denotaremos como $\overline{X}$ o $X^c$, como el conjunto $U\setminus A$.
+\end{definition}
+
+\begin{theorem}[\textbf{Leyes de De Morgan}]
+  \rm Sean $X$ e $\mathcal{Y}$ dos conjuntos. Se cumple:
+
+  \begin{itemize}
+      \item[1.] $X\setminus\pr{\bigcup{\mathcal{Y}}}=\bigcap_{Y\in\mathcal{Y}}{\pr{X\setminus Y}}=\bigcap{\set{X\setminus Y\middle|Y\in\mathcal{Y}}}$. En particular, si $A$, $B$ y $C$ son tres conjuntos, tenemos que:
+      
+      \begin{equation}
+          A\setminus\pr{B\cup C}=\pr{A\setminus B}\cap\pr{A\setminus C}.
+      \end{equation}
+      \item[2.] $X\setminus\pr{\bigcap{\mathcal{Y}}}=\bigcup_{Y\in\mathcal{Y}}{\pr{X\setminus Y}}=\bigcup{\set{X\setminus Y\middle|Y\in\mathcal{Y}}}$. En particular, si $A$, $B$ y $C$ son tres conjuntos, tenemos que:
+
+      \begin{equation}
+          A\setminus\pr{B\cap C}=\pr{A\setminus B}\cup\pr{A\setminus C}.
+      \end{equation}
+  \end{itemize}
+\end{theorem}
 
 \begin{definition}[\textbf{Producto cartesiano}]
   \rm Sean $X_1,\dots,X_n$ $n$ conjuntos. Se define el producto cartesiano de $X_1,\dots,X_n$ como el conjunto:
@@ -211,7 +238,7 @@ Otra notación empleada es $X_1\cup\dots\cup X_n$.
     \prod_{k=1}^{n}{X_k}:=\set{\pr{x_1,\dots,x_n}\middle|x_1\in X_1\land\dots\land x_n\in X_n}.
   \end{equation}
 
-  Otra notación empleada es $X_1\times\cdots\times X_n$.
+  Otra notación empleada es $X_1\times\cdots\times X_n$. Si $X$ es un conjunto tal que $X=X_1=\cdots=X_n$, denotaremos por $X^n:=\overbrace{X\times\cdots\times X}^{n\text{ veces}}$.
 \end{definition}
 
 \subsection{Aplicaciones}
@@ -272,6 +299,22 @@ En este contexto, diremos que:
 \end{itemize}
 \end{definition}
 
+\begin{proposition}
+\rm Sea $f:X\rightarrow Y$ una aplicación. Se cumple:
+
+\begin{itemize}
+    \item[1.] Si $A_1, A_2\subseteq X$ y $B_1,B_2\subseteq Y$ tales que $A_1\subseteq A_2$ $B_1\subseteq B_2$, entonces $f\pr{A_1}\subseteq f\pr{A_2}$ y $f^{-1}\pr{B_1}\subseteq f^{-1}\pr{B_2}$.
+    \item[2.] Si $\mathcal{X}\subseteq\mathcal{P}\pr{X}$ y $\mathcal{Y}\subseteq\mathcal{P}\pr{Y}$, entonces:
+    
+    \begin{equation}
+        f\pr{\bigcup{\mathcal{X}}}=\bigcup_{A'\in\mathcal{X}}{f\pr{A'}},\hspace{0.5cm}  f^{-1}\pr{\bigcup{\mathcal{Y}}}=\bigcup_{B'\in\mathcal{Y}}{f^{-1}\pr{B'}}.
+    \end{equation}
+    \item[3.] Si $\mathcal{X}\subseteq\mathcal{P}\pr{X}$ y $\mathcal{Y}\subseteq\mathcal{P}\pr{Y}$, entonces:
+    \begin{equation}
+        f\pr{\bigcap{\mathcal{X}}}\subseteq\bigcap_{A'\in\mathcal{X}}{f\pr{A'}}, \hspace{0.5cm} f^{-1}\pr{\bigcap{\mathcal{Y}}}=\bigcap_{B'\in\mathcal{B}}{f^{-1}\pr{B'}}. 
+    \end{equation}
+  \end{itemize}
+\end{proposition}
 \begin{definition}[\textbf{Composición de aplicaciones}]
   \rm Sean $f:X\rightarrow Y$ y $g:Y\rightarrow Z$ dos aplicaciones. Se define la composición de $f$ con $g$ como la aplicación $g\circ f:X\rightarrow Z$ dada por $\pr{g\circ f}\pr{x}=g\pr{f\pr{x}}$.
 \end{definition}
@@ -289,6 +332,36 @@ En este contexto, diremos que:
 \end{proposition}
 
 \subsection{Relaciones}
+\begin{definition}[\rm\textbf{Relación}]
+
+\rm Una relación $n$-aria sobre un conjunto $X$ es un subconjunto $R\subseteq X^n$. Comúnmente, escribiremos $R\pr{x_1,\dots,x_n}$ para indicar que $\pr{x_1,\dots,x_n}\in R$.
+
+Si $n=2$, diremos que $R$ es una relación binaria en $X$ y escribiremos $xRy$, que leeremos como \textit{$x$ está relacionado con $y$}, para indicar que $\pr{x,y}\in R$. Cuando la relación sea obvia por el contexto, escribiremos $x\thicksim y$ en lugar de $xRy$. En este caso, diremos que:
+
+\begin{itemize}
+  \item $R$ es reflexiva si $xRx$ para todo $x\in X$.
+  \item $R$ es simétrica si para todo $x,y\in X$, se tiene que $xRy$ implica que $yRx$.
+  \item $R$ es antisimétrica si para todo $x,y\in X$, se tiene que $xRy$ e $yRx$ implica que $x=y$.
+  \item $R$ es transitiva si para todo $x,y,z\in X$, se tiene que $xRy$ e $yRz$ implica que $xRz$.
+\end{itemize}
+\end{definition}
+
+\begin{definition}[\rm\textbf{Relación de equivalencia}]
+  \rm Sean $X$ un conjunto y $R$ una relación (binaria) sobre $X$. Diremos que $R$ es una relación de equivalencia si $\thicksim$ es reflexiva, simétrica y transitiva.
+\end{definition}
+
+\begin{definition}[\textbf{Clase de equivalencia}]
+\rm Sean $X$ un conjunto, $x\in X$ y $R$ una relación de equivalencia sobre $X$. Se define la clase de equivalencia de $x$ como el conjunto $R\pr{x}:=\set{y\in X\middle|xRy}$. Cuando la relación sea obvia por el contexto, escribiremos $\br{x}$ o $\overline{x}$ en lugar de $R\pr{x}$. Los elementos de $R\pr{x}$ se denominan representantes de la clase.
+\end{definition}
+
+\begin{definition}[\textbf{Conjunto cociente}]
+\rm Sean $X$ un conjunto y $R$ una relación de equivalencia sobre $X$. Definimos el conjunto cociente como sigue:
+
+\begin{equation}
+    X/R=\set{R\pr{x}\middle|x\in X}.
+\end{equation}
+
+\end{definition}
 
 \section{Estructuras algebraicas}
 
