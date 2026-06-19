@@ -1,12 +1,10 @@
 \chapter{Números naturales. Sistemas de numeración.}
 \section{Axiomas de Peano}
 
-[Introducción a los Axiomas de Peano]
-
 Los axiomas de Peano establecen definen sistema de números naturales como cualquier par $\pr{\mathbb{N},\sigma}$ donde $\mathbb{N}$ es un conjunto que llamaremos conjunto de números naturales y $\sigma:\mathbb{N}\rightarrow\mathbb{N}$ es una aplicación conocida como aplicación sucesor verificando las propiedades:
 
 \begin{itemize}
-  \item[1.] Existe un elemento distinguido $1\in\mathbb{N}$.
+  \item[1.] Existe un elemento distinguido $1\in\mathbb{N}$ que llamamos \textit{uno}.
   \item[2.] No existe $n\in\mathbb{N}\setminus\set{1}$ tal que $\sigma\pr{n}=1$.
   \item[3.] $\sigma$ es inyectiva.
   \item[4.] Principio de Inducción: Sea $S\subseteq\mathbb{N}$ tal que $1\in S$ y, para todo $n\in S$, se cumple que $\sigma\pr{n}\in S$. Entonces $S=\mathbb{N}$. 
@@ -104,6 +102,8 @@ Dados dos sistemas de números naturales $\pr{\mathbb{N},\sigma}$ y $\pr{\mathbb
 \end{proof}
 \end{proposition}
 
+A través de la suma, podemos denotar los siguientes números: $2:=1+1$, $3:=2+1$, $4:=3+1$, $5:=4+1$, $6:=5+1$, $7:=6+1$, $8:=7+1$ y $9:=8+1$.
+
 \begin{proposition}
   \rm La suma de números naturales verifica las siguientes propiedades:
 
@@ -164,18 +164,31 @@ Dados dos sistemas de números naturales $\pr{\mathbb{N},\sigma}$ y $\pr{\mathbb
   \rm El producto de números naturales verifica las siguientes propiedades:
 
   \begin{itemize}
-    \item[1.] Asociatividad: Para todo $x,y,z\in\mathbb{N}$, $\pr{x\cdot y}\cdot z=x\cdot\pr{y\cdot z}$.
-    \item[2.] Conmutatividad: Para todo $x,y\in\mathbb{N}$, $x\cdot y=y\cdot x$.
-    \item[3.] Distributividad: Para todo $x,y,z\in\mathbb{N}$, $x\cdot\pr{y+z}=x\cdot y+x\cdot z$.
+    \item[1.] Distributividad del producto respecto de la suma: Para todo $x,y,z\in\mathbb{N}$, $x\cdot\pr{y+z}=x\cdot y+x\cdot z$ y $\pr{x+y}\cdot z=x\cdot z+y\cdot z$.
+    \item[2.] Asociatividad: Para todo $x,y,z\in\mathbb{N}$, $\pr{x\cdot y}\cdot z=x\cdot\pr{y\cdot z}$.
+    \item[3.] Conmutatividad: Para todo $x,y\in\mathbb{N}$, $x\cdot y=y\cdot x$.
     \item[4.] Existencia y unicidad del elemento neutro del producto: Si $e\in\mathbb{N}$ es tal que $x\cdot e=e\cdot x=x$ para todo $x\in\mathbb{N}$, entonces $e=1$. 
   \end{itemize}
   \begin{proof}[\rm\textbf{Demostración}]
     \hfill
     \begin{itemize}
-      \item[1.] 
-      \item[2.] 
-      \item[3.] 
-      \item[4.] 
+      \item[1.] Fijados $x,y\in\mathbb{N}$, basta probar por inducción que los siguientes conjuntos:
+      
+      \begin{equation}
+        S:=\set{z\in\mathbb{N}\middle|x\cdot\pr{y+z}=x\cdot y+x\cdot z}\subseteq\mathbb{N},\hspace{0.5cm}S':=\set{z\in\mathbb{N}\middle|\pr{x+y}\cdot z=x\cdot z+y\cdot z}\subseteq\mathbb{N},
+      \end{equation}
+
+      son iguales a $\mathbb{N}$.
+
+      \item[2.] Fijados $x,y\in\mathbb{N}$, basta probar por inducción que el siguiente conjunto:
+      
+      \begin{equation}
+        S:=\set{z\in\mathbb{N}\middle|\pr{x+y}+z=x+\pr{y+z}}\subseteq\mathbb{N}
+      \end{equation}
+      
+      es igual a $\mathbb{N}$. Para ello, emplearemos la propiedad anterior.
+      \item[3.] Primero se prueba que $x\cdot 1=1\cdot x$ para todo $x\in\mathbb{N}$ probando por inducción que el conjunto $S:=\set{x\in\mathbb{N}\middle|x\cdot 1=1\cdot x}\subseteq\mathbb{N}$ es igual a $\mathbb{N}$. Fijado $x\in\mathbb{N}$, demostraríamos por inducción que el conjunto $S:=\set{y\in\mathbb{N}\middle|x\cdot y=y\cdot x}\subseteq\mathbb{N}$ es igual a $\mathbb{N}$. Para esto último, usaríamos la primera propiedad.
+      \item[4.] Sea $e\in\mathbb{N}$ elemento neutro del producto de números naturales. Entonces $1\cdot e=1$. Como $1$ también es elemento neutro del producto de números naturales, tendríamos que $e\cdot 1=e$. Como $1\cdot e=e\cdot 1$, deducimos que $e=1$. 
     \end{itemize}
   \end{proof}
 \end{proposition}
@@ -193,23 +206,184 @@ Dados dos sistemas de números naturales $\pr{\mathbb{N},\sigma}$ y $\pr{\mathbb
   \rm $\leq$ define una relación sobre $\mathbb{N}$ con las siguientes propiedades:
   \begin{itemize}
     \item[1.] $\leq$ es una relación de orden, es decir, $\leq$ es reflexiva, antisimétrica y transitiva.
-    \item[2.] Ley de Tricotomía: Dados $n,m\in\mathbb{N}$, se tiene una y solamente una de las siguientes relaciones: $n<m$, $n=m$ o $n>m$. En consecuencia, $\leq$ es una relación de orden total.
-    \item[3.] Para todo $n\in\mathbb{N}$, $1\leq n$.
-    \item[4.] Para todo $n\in\mathbb{N}$, no existe $m\in\mathbb{N}$ tal que $n<m<n+1$.
-    \item[5.] Compatibilidad del orden con la suma de números naturales: Dados $n,m,z\in\mathbb{N}$, se tiene que $n<m$ si y solamente si $n+z<m+z$.
-    \item[6.] Compatibilidad del orden con el producto de números naturales: Dados $n,m,z\in\mathbb{N}$, se tiene que $n<m$ si y solamente si $n\cdot z<m\cdot z$.
+    
+    \item[2.] Para todo $n\in\mathbb{N}$, $1\leq n$.
+    \item[3.] Para todo $n\in\mathbb{N}$, no existe $m\in\mathbb{N}$ tal que $n<m<n+1$.
+    \item[4.] Para todo $n,k\in\mathbb{N}$, $n+k\neq n$.
+    \item[5.] Ley de Tricotomía: Dados $n,m\in\mathbb{N}$, se tiene una y solamente una de las siguientes relaciones: $n<m$, $n=m$ o $n>m$. En consecuencia, $\leq$ es una relación de orden total.
+    \item[6.] Compatibilidad del orden con la suma de números naturales: Dados $x,y,z\in\mathbb{N}$, se tiene que $x<y$ si y solamente si $x+z<y+z$.
+    \item[7.] Compatibilidad del orden con el producto de números naturales: Dados $x,y,z\in\mathbb{N}$, se tiene que $x<y$ si y solamente si $x\cdot z<y\cdot z$.
+    \item[8.] Ley Cancelativa del Producto: Para todo $x,y,z\in\mathbb{N}$, si $x\cdot z=y\cdot z$, entonces $x=y$. 
+    \item[9.] $\mathbb{N}$ no está acotado superiormente, es decir, no existe $x\in\mathbb{N}$ tal que $n\leq x$ para todo $n\in\mathbb{N}$.
   \end{itemize}
-  \begin{proof}[\rm\textbf{Demostración}]
-    \hfill
-    \begin{itemize}
-      \item[1.] 
-      \item[2.] 
-      \item[3.] 
-      \item[4.] 
-      \item[5.] 
-      \item[6.] 
-    \end{itemize}
-  \end{proof}
 \end{proposition}
 \section{Equivalencias al Principio de Inducción}
+
+\begin{theorem}
+\rm Son equivalentes:
+
+\begin{itemize}
+    \item[1.] Principio de Inducción: Sea $S\subseteq\mathbb{N}$ tal que:
+    \begin{itemize}
+        \item[(i)] $1\in S$.
+        \item[(ii)] Para todo $n\in\mathbb{N}$, si $n\in S$, entonces $\sigma\pr{n}\in S$.
+    \end{itemize}
+    Entonces $S=\mathbb{N}$.
+    \item[2.] Principio de Inducción Fuerte: Sea $S\subseteq\mathbb{N}$ tal que:
+    \begin{itemize}
+        \item[(i)] $1\in S$.
+        \item[(ii)] Para todo $n\in\mathbb{N}$, si $k\in S$ para todo $k\leq n$, entonces $\sigma\pr{n}\in S$.
+    \end{itemize}
+    Entonces $S=\mathbb{N}$.
+    \item[3.] Principio de Buena Ordenación: Si $S\subseteq\mathbb{N}$ es un conjunto no vacío, entonces tiene un elemento mínimo, es decir, existe $x\in S$ tal que $x\leq n$ para todo $n\in S$.
+\end{itemize}
+\begin{proof}[\rm\textbf{Demostración}]
+\rm\hfill
+\begin{itemize}
+    \item[\boxed{1\implies2}] Trivial.
+    \item[\boxed{2\implies3}] Por reducción al absurdo, supongamos que para todo $n\in S$, existe $m\in S$ tal que $m<n$. Necesariamente, $1\in\mathbb{N}\setminus S$ pues $1\leq n$ para todo $n\in\mathbb{N}$. Sea $n\in\mathbb{N}$ y supongamos que para todo $k\in\mathbb{N}$ con $k\leq n$, $k\in\mathbb{N}\setminus S$. Necesariamente, $\sigma\pr{n}\in\mathbb{N}\setminus S$ pues, de lo contrario, $\sigma\pr{n}$ es el elemento mínimo de $S$. Por el Principio de Inducción, $\mathbb{N}\setminus S=\mathbb{N}$ y, por tanto, $S=\varnothing$ lo cual es absurdo.  
+    \item[\boxed{3\implies1}] Supongamos que $S\neq\mathbb{N}$. Entonces $\mathbb{N}\setminus S\neq\varnothing$. Por el Principio de Buena Ordenación, $\mathbb{N}\setminus S$ tiene un elemento mínimo que denotaremos por $m$. Por hipótesis, $m\neq 1$, pues $1\in S$. Entonces existe $m'\in\mathbb{N}$ tal que $\sigma\pr{m'}=m$. Por ser $m$ el elemento mínimo de $\mathbb{N}\setminus S$, entonces $m'\in S$. De nuevo, por hipótesis, esto implica que $m=\sigma\pr{m'}\in S$ lo cual es absurdo. Por tanto, $S=\mathbb{N}$.
+\end{itemize}
+\end{proof}
+\end{theorem}
+
+El Principio de Buena Ordenación prueba que el par $\pr{\mathbb{N},\leq}$ es un conjunto bien ordenado.
+
+\begin{proposition}
+\rm Sea $\varphi\pr{n}$ una fórmula de la Teoría de Conjuntos verificando:
+\begin{itemize}
+    \item[(i)] $\varphi\pr{1}$ es verdadero.
+    \item[(ii)] Para todo $n\in\mathbb{N}$, si $\varphi\pr{n}$ es verdadero, entonces $\varphi\pr{n+1}$ es verdadero.
+\end{itemize}
+
+Entonces $\varphi\pr{n}$ es verdadero para todo $n\in\mathbb{N}$.
+\begin{proof}[\rm\textbf{Demostración}]
+  \rm Trivial por el Principio de Inducción aplicado al siguiente conjunto:
+  
+  \begin{equation}
+    S:=\set{n\in\mathbb{N}\middle|\varphi\pr{n}\text{ es verdadero}}\subseteq\mathbb{N}.
+  \end{equation}
+\end{proof}
+\end{proposition}
+
 \section{Sistemas de numeración}
+
+Extenderemos la suma y producto de números naturales al conjunto $\mathbb{N}_0:=\mathbb{N}\cup\set{0}$, donde $0$ es un elemento distinguido que llamaremos $0$ de la siguiente forma:
+
+\begin{equation}
+  n+0=0+n=0,\hspace{0.5cm}n\cdot 0=0\cdot n=0.
+\end{equation}
+
+Definido así, es fácil ver que $+$ y $\cdot$ verifican las propiedades que hemos revisado antes a excepción de la Ley Cancelativa del Producto para la que hay que suponer que $z\neq 0$. 
+
+\begin{definition}
+  \rm Dados $m,n\in\mathbb{N}_0$ con $m>0$, definimos el número natural $m^n$ de forma recursiva como sigue:
+
+  \begin{itemize}
+    \item[1.] $m^0=1$.
+    \item[2.] $m^{n+1}=m^n\cdot m$.
+  \end{itemize}
+\end{definition}
+
+El Teorema de Recurrencia nos garantiza que $m^n$ está bien definido para todo $m,n\in\mathbb{N}_0$ con $m>0$.
+
+\begin{theorem}[\rm\textbf{Teorema de la División Euclídea}]
+  \rm Sean $D,d\in\mathbb{N}_0$ con $d\neq 0$. Entonces existen $c,r\in\mathbb{N}_0$ tales que $D=d\cdot c+r$ y $0\leq r<d$.
+\end{theorem}
+
+\begin{theorem}[\textbf{Teorema Fundamental de la Numeración}]
+  \rm Sea $b\in\mathbb{N}$ con $b>1$. Entonces, para todo $m\in\mathbb{N}$, existen unos únicos $a_0,a_1,\dots,a_n\in\mathbb{N}_0$ con $n\in\mathbb{N}_0$ tales que $0\leq a_0,a_1,\dots,a_n<b$, $a_n\neq 0$ y:
+
+  \begin{equation}
+    m=a_0+a_1\cdot b+\cdots+a_n\cdot b^n.
+  \end{equation}
+
+  \begin{proof}[\rm\textbf{Demostración}]
+    \rm Veamos primero la existencia. Para $n=1$, basta tomar $n=0$ y $a_0=1$. Dado $m\in\mathbb{N}$, supongamos que hemos probado la existencia para todo $k\in\mathbb{N}$ con $k\leq m$. Por el Teorema de la División Euclídea, existen $c,r\in\mathbb{N}_0$ tales que $m+1=b\cdot c+r$ y $0\leq r<b$. Necesariamente, $c<m+1$. Entonces existen $a_0,a_1,\dots,a_n\in\mathbb{N}$ con $n\in\mathbb{N}_0$ tales que $0\leq a_0,a_1,\dots,a_n<b$, $a_n\neq 0$ y:
+
+    \begin{equation}
+      c=a_0+a_1\cdot b+\cdots+a_n\cdot b^n.
+    \end{equation}
+
+    Entonces:
+
+    \begin{equation}
+      m+1=b\cdot\pr{a_0+a_1\cdot b+\cdots+a_n\cdot b^n}+r=r+a_0\cdot b+a_1\cdot b^2+\cdots+a_n\cdot b^{n+1}.
+    \end{equation}
+
+    Por el Principio de Inducción, probamos que para todo $m\in\mathbb{N}$, existen $a_0,a_1,\dots,a_n\in\mathbb{N}_0$ con $n\in\mathbb{N}_0$ tales que $0\leq a_0,a_1,\dots,a_n<b$, $a_n\neq 0$ y:
+
+  \begin{equation}
+    m=a_0+a_1\cdot b+\cdots+a_n\cdot b^n.
+  \end{equation}
+
+  Basta probar la unicidad. Sean $a_0,a_1,\dots,a_k,a_0',a_1',\dots,a_l'\in\mathbb{N}_0$ con $k,l\in\mathbb{N}_0$ verificando:
+  
+  \begin{itemize}
+    \item[1.] $0\leq a_0,a_1,\dots,a_k,a_0',a_1',\dots,a_l'<b$ con $a_k,a_l'\neq 0$.
+    \item[2.] $m=a_0+a_1\cdot b+\cdots+a_k\cdot b^k=a_0'+a_1'\cdot b+\cdots+a_l'\cdot b^l$.
+  \end{itemize}
+
+  Podemos suponer sin pérdida de generalidad que $l\leq l'$. Por reducción al absurdo, supongamos que $l<l'$. Dado $x\in\mathbb{N}\setminus\set{1}$, denotemos por $x-1\in\mathbb{N}$ el valor que cumple que $\sigma\pr{x-1}=x$. Entonces:
+
+  \begin{equation}
+      a_0+a_1\cdot b+\cdots+a_k\cdot b^k\leq\pr{b-1}\cdot\pr{1+b+\cdots+b^k}
+  \end{equation}
+
+  Veamos que para todo $p\in\mathbb{N}_0$, se cumple que $\pr{b-1}\cdot\pr{1+b+\cdots+b^p}=b^{p+1}-1$. Para $p=0$, el resultado es trivial. Para $p=1$, se tiene que:
+
+  \begin{equation}
+    \pr{b-1}\cdot\pr{1+b}+1=\pr{b-1}+\pr{b-1}\cdot b+1=b+b\cdot\pr{b-1}=b\cdot\pr{\pr{b-1}+1}=b^2,
+  \end{equation}
+
+  es decir, $\pr{b-1}\cdot\pr{1+b}=b^2-1$. Supongamos que hemos probado la identidad para $p\in\mathbb{N}$. Entonces:
+
+  \begin{equation}
+    \begin{split}
+      \pr{b-1}\cdot\pr{1+b+\cdots+b^k+b^{p+1}} & =\pr{b-1}\cdot\pr{1+b+\cdots+b^p}+\pr{b-1}\cdot b^{p+1}\\
+      & =b^{p+1}-1+\pr{b-1}\cdot b^{p+1}=b^{p+1}\cdot\pr{b-1+1}=b^{p+2}.
+    \end{split}
+  \end{equation}
+
+  Por el Principio de Inducción, demostramos que, para todo $p\in\mathbb{N}_0$, se cumple que:
+  
+  \begin{equation}
+    \pr{b-1}\cdot\pr{1+b+\cdots+b^p}=b^{p+1}-1.
+  \end{equation}
+
+  Luego:
+
+  \begin{equation}
+    a_0+a_1\cdot b+\cdots+a_k\cdot b^k\leq b^{k+1}-1<b^{k+1}\leq a_0'+a_1'\cdot b+\cdots+a_l'\cdot b^l.
+  \end{equation}
+
+  Hemos llegado a una contradicción. Por tanto, $k=l$. Falta probar que si $b\in\mathbb{N}$ con $b>1$ y los valores $a_0,a_1,\dots,a_k,a'_0,a'_1,\dots,a'_k\in\mathbb{N}_0$ con $k\in\mathbb{N}_0$ son tales que $0\leq a_0,a_1,\dots,a_k,a'_0,a'_1,\dots,a'_k<b$ con $a_k,a'_k\neq 0$ y $a_0+a_1\cdot b+\cdots+a_n\cdot b^n=a'_0+a'_1\cdot b+\cdots+a'_n\cdot b^n$, entonces $a_0=a'_0,a_1=a'_1,\dots,a_k=a'_k$. 
+  
+  Si $k=0$, es trivial. Para $k=1$, si $a_0,a_1,a'_0,a'_1\in\mathbb{N}_0$ son tales que $0\leq a_0,a_1,a'_0,a'_1<b$ con $a_1,a'_1\neq 0$ y $a_0+a_1\cdot b=a'_0+a'_1\cdot b$, por el Teorema de la División Euclídea, deducimos que $a_0=a'_0$ y $a_1=a'_1$. Supongamos que lo hemos probado para $k\in\mathbb{N}$. Sean $a_0,a_1,\dots,a_k,a_{k+1},a'_0,a'_1,\dots,a'_k,a'_{k+1}\in\mathbb{N}_0$ con $k\in\mathbb{N}_0$ son tales que $0\leq a_0,a_1,\dots,a_k,a_{k+1},a'_0,a'_1,\dots,a'_k,a'_{k+1}<b$ con $a_{k+1},a_{k+1}'\neq 0$ y $a_0+a_1\cdot b+\cdots+a_{k+1}\cdot b^{k+1}=a'_0+a'_1\cdot b+\cdots+a'_{k+1}\cdot b^{k+1}$. Sean $c,r\in\mathbb{N}_0$ con $0\leq r<b$ tales que $m=b\cdot c+r$. Como:
+
+  \begin{equation}
+    m=a_0+b\cdot\pr{a_1+a_2\cdot b+\cdots+a_{k+1}\cdot b^k}=a'_0+b\cdot\pr{a'_1+a'_2\cdot b+\cdots+a'_{k+1}\cdot b^k},
+  \end{equation}
+
+  deducimos por el Teorema de la División Euclídea que $r=a_0=a'_0$ y:
+
+  \begin{equation}
+    c=a_1+a_2\cdot b+\cdots+a_{k+1}\cdot b^k=a'_1+a'_2\cdot b+\cdots+a'_{k+1}\cdot b^k.
+  \end{equation}
+
+  Por hipótesis de inducción, tenemos que $a_1=a'_1,a_2=a'_2,\dots,a_{k+1}=a_{k+1}'$. Por el Principio de Inducción, probamos que si $b\in\mathbb{N}$ con $b>1$ y los valores $a_0,a_1,\dots,a_k,a'_0,a'_1,\dots,a'_k\in\mathbb{N}_0$ con $k\in\mathbb{N}_0$ son tales que $0\leq a_0,a_1,\dots,a_k,a'_0,a'_1,\dots,a'_k<b$ con $a_k,a'_k\neq 0$ y $a_0+a_1\cdot b+\cdots+a_n\cdot b^n=a'_0+a'_1\cdot b+\cdots+a'_n\cdot b^n$, entonces $a_0=a'_0,a_1=a'_1,\dots,a_k=a'_k$.
+  \end{proof}
+\end{theorem}
+
+En el sistema de numeración posicional en base $b\in\mathbb{N}$ con $b>1$, un número $n\in\mathbb{N}_0$ se puede representar de manera única como $\pr{a_0a_1\dots a_k}_b$ con $k\in\mathbb{N}_0$ donde $a_0,a_1,\dots,a_k\in\mathbb{N}_0$ con $a_k\neq 0$ y $0\leq a_0,a_1,\dots,a_k<b$ son los únicos tales que $n=a_0+a_1\cdot b+\cdot+a_k\cdot b^k$. Diremos que $k+1$ es el número de cifras de $n$ en base $b$.
+
+\begin{proposition}
+  \rm Sean $n,m\in\mathbb{N}_0$ y $b\in\mathbb{N}$ con $b>1$. Se cumplen las siguientes propiedades:
+
+  \begin{itemize}
+    \item[1.] Si $n=\pr{a_0a_1\dots a_k}_b$ y $m=\pr{a'_0a'_1\dots a'_l}$ con $k,l\in\mathbb{N}_0$, se tiene que $n=m$ si y solamente si $k=l$ y $a_0=a'_0,a_1=a'_1,\dots,a_n=a'_n$.
+    \item[2.] Si $n>1$ y tiene $k+1$ cifras en base $b$ con $k\in\mathbb{N}_0$, entonces $b^k\leq n<b^{k+1}$. 
+    \item[3.] Si $n$ tiene $k_1+1$ cifras y $m$ tiene $k_2+1$ cifras en base $b$ con $k_1,k_2\in\mathbb{N}_0$ y $k_1<k_2$, entonces $n<m$.
+    \item[4.] Si $n$ y $m$ tienen $k+1$ cifras en base $b$ con $k\in\mathbb{N}_0$, se tiene que $n<m$ si y solamente si existe $i\in\mathbb{N}_0$ con $0\leq i\leq k$ tal que $a_i<a'_i$ y $a_j=a'_j$ para todo $j\in\mathbb{N}_0$ con $0\leq j\leq k$ y $j<i$.
+  \end{itemize}
+\end{proposition}
