@@ -1,1 +1,60 @@
 \chapter{Números naturales. Sistemas de numeración.}
+\section{Axiomas de Peano}
+
+[Introducción a los Axiomas de Peano]
+
+Los axiomas de Peano establecen definen sistema de números naturales como cualquier par $\pr{\mathbb{N},\sigma}$ donde $\mathbb{N}$ es un conjunto que llamaremos conjunto de números naturales y $\sigma:\mathbb{N}\rightarrow\mathbb{N}$ es una aplicación conocida como aplicación sucesor verificando las propiedades:
+
+\begin{itemize}
+  \item[1.] Existe un elemento distinguido $1\in\mathbb{N}$.
+  \item[2.] No existe $n\in\mathbb{N}\setminus\set{1}$ tal que $\sigma\pr{n}=1$.
+  \item[3.] $\sigma$ es inyectiva.
+  \item[4.] Principio de Inducción: Sea $S\subseteq\mathbb{N}$ tal que $1\in S$ y, para todo $n\in S$, se cumple que $\sigma\pr{n}\in S$. Entonces $S=\mathbb{N}$. 
+\end{itemize}
+
+\begin{proposition}
+  \rm Se cumplen las siguientes propiedades:
+  \begin{itemize}
+    \item Para todo $n\in\mathbb{N}\setminus\set{1}$, existe $m\in\mathbb{N}$ tal que $\sigma\pr{m}=n$.
+    \item Para todo $n\in\mathbb{N}$, $\sigma\pr{n}\neq n$.
+  \end{itemize}
+\end{proposition}
+
+[Existencia y unicidad de los sistemas de números naturales]
+
+\section{Suma y producto de números naturales}
+
+\begin{theorem}[\textbf{Teorema de recurrencia}]
+  \rm Sea $X$ un conjunto, $a\in X$ y $f:X\rightarrow X$ una aplicación. Entonces existe una única aplicación $\varphi:\mathbb{N}\rightarrow X$ que cumple las siguientes propiedades:
+  
+  \begin{itemize}
+    \item $\varphi\pr{1}=a$.
+    \item Para todo $n\in\mathbb{N}$, $\varphi\pr{\sigma\pr{n}}=f\pr{\varphi\pr{n}}$.
+  \end{itemize}
+
+  \begin{proof}[\rm\textbf{Demostración}]
+    s
+  \end{proof}
+\end{theorem}
+
+\begin{definition}[\textbf{Suma de números naturales}]
+  \rm Definimos la suma de números naturales como la única operación $+:\mathbb{N}\times\mathbb{N}\rightarrow\mathbb{N}$ verificando:
+
+  \begin{itemize}
+    \item[1.] Para todo $n\in\mathbb{N}$, $n+1=\sigma\pr{n}$.
+    \item[2.] Para todo $n,m\in\mathbb{N}$, $n+\sigma\pr{m}=\sigma\pr{n+m}$.
+  \end{itemize}
+\end{definition}
+
+\begin{definition}[\textbf{Producto de números naturales}]
+  \rm Definimos el producto de números naturales como la única operación $\cdot:\mathbb{N}\times\mathbb{N}\rightarrow\mathbb{N}$ verificando:
+
+  \begin{itemize}
+    \item[1.] Para todo $n\in\mathbb{N}$, $n\cdot 1=n$.
+    \item[2.] Para todo $n,m\in\mathbb{N}$, $n\cdot\sigma\pr{m}=n\cdot m+n$.
+  \end{itemize}
+\end{definition}
+\section{Orden de números naturales}
+
+\section{Equivalencias al Principio de Inducción}
+\section{Sistemas de numeración}

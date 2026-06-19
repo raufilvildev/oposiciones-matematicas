@@ -152,7 +152,7 @@ Otra notación empleada es $X_1\cup\dots\cup X_n$.
   \rm Sea $\mathcal{X}$ un conjunto no vacío. Se define la intersección de $\mathcal{X}$ como el conjunto formado por aquellos elementos de elementos de $X$ que están en todos los elementos de $X$:
 
   \begin{equation}
-    \bigcap{\mathcal{X}}:=\set{x\middle|\pr{\forall Z}{Z\in X\implies x\in Z}}.
+    \bigcap{\mathcal{X}}:=\set{x\middle|\pr{\forall Z}\pr{Z\in\mathcal{X}\implies x\in Z}}.
   \end{equation}
 
   Otra notación empleada es $\displaystyle\bigcap_{X\in\mathcal{X}}{X}$.
@@ -404,9 +404,9 @@ A continuación, trataremos algunas estructuras algebraicas de interés: grupos,
   \rm Sean $G$ un conjunto no vacío y $\ast$ una operación interna sobre $X$. Diremos que la pareja $\pr{G,\ast}$ es un grupo si se cumplen las siguientes condiciones:
 
   \begin{itemize}
-    \item $\ast$ es asociativa.
-    \item $\ast$ tiene elemento neutro.
-    \item Para todo $x\in G$, existe un elemento inverso de $x$ respecto a $\ast$.
+    \item[1.] $\ast$ es asociativa.
+    \item[2.] $\ast$ tiene elemento neutro.
+    \item[3.] Para todo $x\in G$, existe un elemento inverso de $x$ respecto a $\ast$.
   \end{itemize}
 
   Si además $\ast$ es conmutativa, diremos que $\pr{G,\ast}$ es un grupo abeliano.
@@ -416,9 +416,9 @@ A continuación, trataremos algunas estructuras algebraicas de interés: grupos,
   \rm Sean $\pr{G,\ast}$ un grupo y $H\subseteq G$ no vacío. Diremos que $H$ es un subgrupo de $G$ (respecto de $\ast$) si se cumplen las siguientes propiedades:
 
   \begin{itemize}
-    \item Para todo $x,y\in H$, se cumple que $x\ast y\in H$.
-    \item Si $e\in G$ es el elemento neutro de $\ast$, entonces $e\in H$.
-    \item Para todo $x\in H$, se cumple que $x^{-1}\in H$.
+    \item[1.] Para todo $x,y\in H$, se cumple que $x\ast y\in H$.
+    \item[2.] Si $e\in G$ es el elemento neutro de $\ast$, entonces $e\in H$.
+    \item[3.] Para todo $x\in H$, se cumple que $x^{-1}\in H$.
   \end{itemize}
 
   En particular, $\pr{H,\ast}:=\pr{H,\left.\ast\right|_{H\times H}}$ es un grupo.
@@ -464,4 +464,132 @@ A continuación, trataremos algunas estructuras algebraicas de interés: grupos,
   \end{itemize}
 \end{proposition}
 \subsection{Anillos}
+
+\begin{definition}[\textbf{Anillo}]
+  \rm Sean $R$ un conjunto y $+,\cdot:R\times R\rightarrow R$ dos operaciones internas sobre $R$. Diremos que la terna $\pr{R,+,\cdot}$ es un anillo si $\pr{R,+}$ es un grupo abeliano y $\cdot$ es asociativa, distributiva respecto de $+$ y tiene elemento neutro. 
+  
+  Al elemento neutro de $+$ lo denotaremos como $0$ y al de $\cdot$ como $1$. Diremos que $\pr{R,+,\cdot}$ es un anillo no trivial si $0\neq 1$.
+  
+  Dado $r\in R$, su elemento inverso respecto a $+$ lo denotaremos por $-r$ y diremos que $-r$ es el opuesto de $r$. Dados $r,s\in R$, denotaremos por $r-s:=r+\pr{-s}$.
+  
+  Si $r\in R$ es invertible respecto al producto, diremos que $r$ es una unidad (respecto a $\pr{R,+,\cdot}$). El conjunto de unidades en $R$ lo denotaremos por $R^*$.
+
+  Si $\cdot$ es conmutativo, diremos que $\pr{R,+,\cdot}$ es un anillo conmutativo. 
+\end{definition}
+
+\begin{proposition}
+  \rm Sea $\pr{R,+,\cdot}$ un anillo. Se cumplen las siguientes propiedades:
+
+  \begin{itemize}
+    \item Elemento disipativo: Para todo $r\in R$, $r\cdot 0=0\cdot r=0$.
+    \item Regla de los signos: Para todo $r,s\in R$, se cumple que $r\cdot\pr{-s}=\pr{-r}\cdot s=-\pr{r\cdot s}$ y $\pr{-r}\cdot\pr{-s}=r\cdot s$.
+    \item Si $\pr{R,+,\cdot}$ es un anillo no trivial, entonces $0$ no es una unidad.
+    \item $\pr{R^*,\cdot}$ es un grupo.
+  \end{itemize}
+\end{proposition}
+
+\begin{definition}[\textbf{Divisor de cero en un anillo}]
+  \rm Sea $\pr{R,+,\cdot}$ un anillo. Diremos que $r\in R\setminus\set{0}$ es un divisor de cero si existe $s\in R\setminus\set{0}$ tal que $r\cdot s=0$. Si $R$ no posee divisores de $0$, diremos que $\pr{R,+,\cdot}$ es un dominio de integridad.
+\end{definition}
+
+\begin{definition}[\textbf{Característica de un anillo}]
+  \rm Sea $\pr{R,+.\cdot}$ un anillo con $0_R$ como elemento neutro de $+$ y $1_R$ como elemento neutro de $\cdot$, $r\in R$ y $n\in\mathbb{N}$. Definimos:
+
+  \begin{equation}
+    n\cdot r:=\overbrace{r+\cdots+r}^{n\text{ veces}}.
+  \end{equation}
+
+  Diremos que $R$ tiene característica finita si existe $n\in\mathbb{N}$ tal que $n\cdot 1_R=0_R$. Si $R$ tiene característica finita, denotaremos por $\text{car}\pr{R}$ al menor $n\in\mathbb{N}$ que verifica que $n\cdot 1_R=0_R$ y lo llamaremos característica de $R$. Si $R$ no tiene característica finita, diremos que $R$ tiene característica infinita.
+\end{definition}
+
+\begin{proposition}
+  \rm Sea $\pr{R,+,\cdot}$ un anillo. Se tiene que $r\in R\setminus\set{0}$ es un elemento simplificable si y solamente si $r$ no es divisor de $0$.
+\end{proposition}
+
+\begin{definition}[\textbf{Subanillo}]
+  \rm Sean $\pr{R,+,\cdot}$ un anillo y $S\subseteq R$. Diremos que $S$ es un subanillo de $R$ si se cumplen las siguientes propiedades:
+  
+  \begin{itemize}
+    \item[1.] $S$ es un subgrupo de $\pr{R,+}$.
+    \item[2.] $1\in S$.
+    \item[3.] Para todo $s,t\in S$, $s\cdot t\in S$.
+  \end{itemize} 
+\end{definition}
+
+\begin{theorem}[\textbf{Caracterización de subanillos}]
+  \rm Sean $\pr{R,+,\cdot}$ un anillo y $S\subseteq R$ no vacío. Se tiene que $S$ es un subanillo de $R$ si y solamente si para todo $s,t\in S$, $s-t,s\cdot t\in S$.
+\end{theorem}
+
+\begin{definition}[\textbf{Ideal de un anillo}]
+  \rm Sean $\pr{R,+,\cdot}$ un anillo e $I\subseteq R$. Diremos que $I$ es un ideal de $R$ si $\pr{I,+}$ es un subgrupo de $R$ respecto a $+$ y, para todo $r\in R$ y $s\in I$, $r\cdot s\in I$.
+\end{definition}
+
+\begin{definition}[\textbf{Homomorfismo de anillos}]
+  \rm Sean $\pr{R,+,\cdot}$ y $\pr{S,\oplus,\odot}$ dos anillos con elementos neutros para el producto $1_R$ y $1_S$ respectivamente, y $f:R\rightarrow S$ una aplicación. Diremos que $f$ es un homomorfismo (del anillo $\pr{R,+,\cdot}$ al anillo $\pr{S,\oplus,\odot}$) si se cumplen las siguientes propiedades:
+
+  \begin{itemize}
+    \item[1.] $f$ es un homomorfismo del grupo $\pr{R,+}$ al grupo $\pr{S,\oplus}$.
+    \item[2.] Para todo $r,s\in R$, $f\pr{r\cdot s}=f\pr{r}\odot f\pr{s}$.
+    \item[3.] $f\pr{1_R}=1_S$.
+  \end{itemize}
+
+  Si $f:R\rightarrow S$ es un homomorfismo, diremos que:
+
+  \begin{itemize}
+    \item $f$ es un monomorfismo si $f$ es inyectiva.
+    \item $f$ es un epimorfismo si $f$ es sobreyectiva.
+    \item $f$ es un isomorfismo si $f$ es biyectiva. En tal caso, diremos que los anillos $\pr{R,+,\cdot}$ y $\pr{S,\oplus,\odot}$ son isomorfos y lo denotaremos como $\pr{R,+,\cdot}\cong\pr{S,\oplus,\odot}$.
+    \item $f$ es un endomorfismo si $\pr{R,+,\cdot}=\pr{S,\oplus,\odot}$.
+    \item $f$ es un automorfismo si $f$ es un endomorfismo e isomorfismo.
+  \end{itemize}
+
+  De manera análoga a como hicimos para grupos, podemos definir monomorfismo, epimorfismo, isomorfismo, endomorfismo y automorfismo.
+\end{definition}
+
+\begin{proposition}
+  \rm Sean $\pr{R,+,\cdot}$ y $\pr{S,\oplus,\odot}$ dos anillos y $f:R\rightarrow S$ un homomorfismo. Se cumplen las siguientes propiedades:
+
+  \begin{itemize}
+    \item[1.] Para todo $r\in R$, $f\pr{-r}=-f\pr{r}$.
+    \item[2.] Si $R'$ es un subanillo de $R$, entonces $f\pr{R'}$ es un subgrupo de $S$.
+    \item[3.] Si $S'$ es un subgrupo de $S$, entonces $f^{-1}\pr{S'}$ es un subgrupo de $R$.
+    \item[4.] Si $\pr{T, \boxplus , \boxdot}$ es un anillo y $g:S\rightarrow T$ un homomorfismo, entonces $g\circ f:R\rightarrow T$ es un homomorfismo. 
+  \end{itemize}
+\end{proposition}
+
+\begin{definition}[\textbf{Núcleo de un homomorfismo de anillos}]
+  \rm Sean $\pr{R,+,\cdot}$ y $\pr{S,\oplus,\odot}$ dos anillos con elementos neutros para la suma $0_R$ y $0_S$ respectivamente, y $f:R\rightarrow S$ un homomorfismo. Definimos el núcleo de $f$ como el conjunto $\ker f:=\set{x\in R\middle|f\pr{x}=0_S}=f^{-1}\pr{0_S}$.
+\end{definition}
+
+\begin{proposition}
+  \rm Sean $\pr{R,+,\cdot}$ y $\pr{S,\oplus,\odot}$ dos anillos y $f:R\rightarrow S$ un homomorfismo. Se cumplen las siguientes propiedades:
+
+  \begin{itemize}
+    \item[1.] $\ker f$ es un subanillo de $R$.
+    \item[2.] $f$ es inyectiva si y solamente si $\ker f=\set{1_R}$, donde $1_R$ es el elemento neutro de $+$.
+    \item[3.] $\text{im} f$ es un subanillo de $S$.  
+  \end{itemize}
+\end{proposition}
 \subsection{Cuerpos}
+
+\begin{definition}[\textbf{Cuerpo}]
+  \rm Se dice que un anillo $\pr{\mathbb{K},+,\cdot}$ es un cuerpo si es un anillo conmutativo tal que $\mathbb{K}^*=\mathbb{K}\setminus\set{0}$. 
+\end{definition}
+
+\begin{definition}[\textbf{Subcuerpo}]
+  \rm Sea $\pr{\mathbb{K},+,\cdot}$ un cuerpo y $H\subseteq\mathbb{K}$. Diremos que $H$ es un subcuerpo de $\mathbb{K}$ si $H$ es un subanillo de $\mathbb{K}$ y $\pr{H,+,\cdot}$ es un cuerpo.
+\end{definition}
+
+\begin{proposition}
+  \rm Sean $\pr{\mathbb{K},+,\cdot}$ y $\pr{\mathbb{H},\oplus, \odot}$ dos cuerpos y $f:\mathbb{K}\rightarrow\mathbb{H}$ una aplicación. Entonces $f$ es un homomorfismo si y solamente si para todo $x,y\in\mathbb{K}$, $f\pr{x+y}=f\pr{x}\oplus f\pr{y}$ y $f\pr{x\cdot y}=f\pr{x}\odot f\pr{y}$.
+\end{proposition}
+
+\begin{proposition}
+  \rm Sean $\pr{\mathbb{K},+,\cdot}$ y $\pr{\mathbb{H},\oplus, \odot}$ dos cuerpos y $f:\mathbb{K}\rightarrow\mathbb{H}$ un homomorfismo. Se cumplen las siguientes propiedades:
+
+  \begin{itemize}
+    \item[1.] $\ker f=\set{0_\mathbb{K}}$ o $\ker f=\mathbb{K}$.
+    \item[2.] $f$ es inyectiva si y solamente si $f\not\equiv 0$.
+    \item[3.] $\text{im} f$ es un subcuerpo de $\mathbb{H}$.
+  \end{itemize}
+\end{proposition}
