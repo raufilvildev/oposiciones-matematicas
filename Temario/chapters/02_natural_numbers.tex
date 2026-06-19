@@ -15,14 +15,21 @@ Los axiomas de Peano establecen definen sistema de números naturales como cualq
 \begin{proposition}
   \rm Se cumplen las siguientes propiedades:
   \begin{itemize}
-    \item Para todo $n\in\mathbb{N}\setminus\set{1}$, existe $m\in\mathbb{N}$ tal que $\sigma\pr{m}=n$.
-    \item Para todo $n\in\mathbb{N}$, $\sigma\pr{n}\neq n$.
+    \item[1.] Para todo $n\in\mathbb{N}\setminus\set{1}$, existe $m\in\mathbb{N}$ tal que $\sigma\pr{m}=n$.
+    \item[2.] Para todo $n\in\mathbb{N}$, $\sigma\pr{n}\neq n$.
   \end{itemize}
+  \begin{proof}[\rm\textbf{Demostración}]
+    \hfill
+    \begin{itemize}
+      \item[1.] Sea $S:=\set{n\in\mathbb{N}\middle|n=1\lor\exists m\in\mathbb{N}\text{ tal que }\sigma\pr{m}=n}\subseteq\mathbb{N}$. Claramente, $1\in S$. Sea $n\in S$. Tomando $m=n\in\mathbb{N}$, se tiene que $\sigma\pr{m}=\sigma\pr{n}$ y, en consecuencia, $\sigma\pr{n}\in S$. Por el Principio de Inducción, deducimos que $S=\mathbb{N}$. Por tanto, para todo $n\in\mathbb{N}\setminus\set{1}$, existe $m\in\mathbb{N}$ tal que $\sigma\pr{m}=n$.
+      \item[2.] Sea $S:=\set{n\in\mathbb{N}\middle|\sigma\pr{n}\neq n}\subseteq\mathbb{N}$. Por los Axiomas de Peano, sabemos que $1\notin S$. Sea $n\in S$. Por reducción al absurdo, supongamos que $\sigma\pr{\sigma\pr{n}}=\sigma\pr{n}$. Como $\sigma$ es inyectiva, deducimos que $\sigma\pr{n}=n$ lo cual es absurdo. Luego $\sigma\pr{\sigma\pr{n}}\neq\sigma\pr{n}$, es decir, $\sigma\pr{n}\in S$. Por el Principio de Inducción, deducimos que $S=\mathbb{N}$. Por tanto, para todo $n\in\mathbb{N}$, $\sigma\pr{n}\neq n$.
+    \end{itemize}
+  \end{proof}
 \end{proposition}
 
-[Existencia y unicidad de los sistemas de números naturales]
+A través de la Teoría de Conjuntos, más concretamente haciendo uso del Axioma del infinito, podemos probar la existencia de sistemas de números naturales. 
 
-\section{Suma y producto de números naturales}
+Dados dos sistemas de números naturales $\pr{\mathbb{N},\sigma}$ y $\pr{\mathbb{N}',\sigma'}$ con elementos distinguidos $1_{\mathbb{N}}$ y $1_{\mathbb{N}'}$, se pueden probar que son canónicamente isomorfos, es decir, que existe una biyección $\varphi:\mathbb{N}\rightarrow\mathbb{N}'$ verificando $\varphi\pr{1_{\mathbb{N}}}=1_{\mathbb{N}'}$ y $\varphi\pr{\sigma\pr{n}}=\sigma'\pr{\varphi\pr{n}}$ para todo $n\in\mathbb{N}$. Esto último se puede probar mediante el Teorema de Recurrencia que enunciamos y probamos a continuación.
 
 \begin{theorem}[\textbf{Teorema de recurrencia}]
   \rm Sea $X$ un conjunto, $a\in X$ y $f:X\rightarrow X$ una aplicación. Entonces existe una única aplicación $\varphi:\mathbb{N}\rightarrow X$ que cumple las siguientes propiedades:
@@ -33,28 +40,176 @@ Los axiomas de Peano establecen definen sistema de números naturales como cualq
   \end{itemize}
 
   \begin{proof}[\rm\textbf{Demostración}]
-    s
-  \end{proof}
+    Consideremos la familia de conjuntos $\mathcal{G}$ formada por los subconjuntos $R\subseteq\mathbb{N}\times X$ verificando las siguientes propiedades:
+
+    \begin{itemize}
+      \item[1.] $\pr{1,a}\in R$.
+      \item[2.] Para todo $n\in\mathbb{N}$ y $x\in X$, si $\pr{n,x}\in R$, entonces $\pr{\sigma\pr{n},f\pr{x}}\in R$.
+    \end{itemize}
+
+    Claramente, $\mathcal{G}\neq\varnothing$ pues $\mathbb{N}\times X\in\mathcal{G}$. Definimos $\varphi:=\pr{\mathbb{N},X,G}$, donde:
+
+    \begin{equation}
+      G:=\bigcap{\mathcal{G}}\subseteq\mathbb{N}\times X.
+    \end{equation}
+
+    Claramente, $G\in\mathcal{G}$. Tenemos que probar que $\varphi$ es una aplicación. Consideremos el siguiente conjunto:
+    
+    \begin{equation}
+      S:=\set{n\in\mathbb{N}\middle|\exists!x\in X\text{ tal que }\pr{n,x}\in G}\subseteq\mathbb{N}.
+    \end{equation}
+    
+    Para $n=1$, observemos que $\pr{1,a}\in R$ para todo $R\in\mathcal{G}$. Entonces $\pr{1,a}\in G$. Sea $x\in X$ tal que $\pr{1,x}\in G$. Entonces $\pr{1,x}\in R$ para todo $R\in G$. Sea $R:=G\setminus\set{\pr{1,y}\in G\middle|y\neq a}$. Es fácil comprobar que $R\in\mathcal{G}$. Luego $G\subseteq R$ y, necesariamente, $x=a$. En consecuencia, $1\in S$. 
+    
+    Sea $n\in S$. Entonces existe un único $x\in X$ tal que $\pr{n,x}\in G$. Luego $\pr{n,x}\in R$ para todo $R\in\mathcal{G}$. Por consiguiente, $\pr{\sigma\pr{n},f\pr{x}}\in R$ para todo $R\in\mathcal{G}$. De aquí, deducimos que $\pr{\sigma\pr{n}, f\pr{x}}\in G$. Sea $y\in X$ tal que $\pr{\sigma\pr{n},y}\in G$. Sea $R:=G\setminus\set{\pr{\sigma\pr{n},z}\in G\middle|z\neq f\pr{x}}$. Es fácil comprobar que $R\in\mathcal{G}$. Luego $G\subseteq R$ y, necesariamente, $y=f\pr{x}$. Esto nos lleva a que $\sigma\pr{n}\in S$. 
+    
+    Por el Principio de Inducción, deducimos que $S=\mathbb{N}$. Por tanto, $\varphi$ es una aplicación. Por ser $G\in\mathcal{G}$, se tiene que $\varphi$ cumple las propiedades del teorema.
+    
+    Sean $\varphi,\psi:\mathbb{N}\rightarrow X$ dos aplicaciones verificando las siguientes propiedades:
+
+    \begin{itemize}
+      \item $\varphi\pr{1}=a$ y $\psi\pr{1}=a$.
+      \item Para todo $n\in\mathbb{N}$, $\varphi\pr{\sigma\pr{n}}=f\pr{\varphi\pr{n}}$ y $\psi\pr{\sigma\pr{n}}=f\pr{\psi\pr{n}}$.
+    \end{itemize}
+
+  Sea $S:=\set{n\in\mathbb{N}\middle|\varphi\pr{n}=\psi\pr{n}}$. Claramente, $1\in S$. Sea $n\in S$. Como $\varphi\pr{n}=\psi\pr{n}$, entonces $f\pr{\varphi\pr{n}}=f\pr{\psi\pr{n}}$. En consecuencia, $\varphi\pr{\sigma\pr{n}}=\psi\pr{\sigma\pr{n}}$, es decir, $\sigma\pr{n}\in S$. Por el Principio de Inducción, deducimos que $S=\mathbb{N}$. Por tanto, $\varphi=\psi$.
+  \end{proof}  
 \end{theorem}
 
-\begin{definition}[\textbf{Suma de números naturales}]
-  \rm Definimos la suma de números naturales como la única operación $+:\mathbb{N}\times\mathbb{N}\rightarrow\mathbb{N}$ verificando:
+\section{Suma y producto de números naturales}
+
+\begin{proposition}
+  \rm Existe una única operación $+:\mathbb{N}\times\mathbb{N}\rightarrow\mathbb{N}$ que llamaremos suma de números naturales verificando:
 
   \begin{itemize}
     \item[1.] Para todo $n\in\mathbb{N}$, $n+1=\sigma\pr{n}$.
     \item[2.] Para todo $n,m\in\mathbb{N}$, $n+\sigma\pr{m}=\sigma\pr{n+m}$.
   \end{itemize}
-\end{definition}
+\begin{proof}[\rm\textbf{Demostración}]
+  Sea $f:\mathbb{N}\rightarrow\mathbb{N}$ definida como $f\pr{x}=\sigma\pr{x}$. Fijado $n\in\mathbb{N}$, por el Teorema de Recurrencia, existe una única aplicación $\varphi_n:\mathbb{N}\rightarrow\mathbb{N}$ verificando:
 
-\begin{definition}[\textbf{Producto de números naturales}]
-  \rm Definimos el producto de números naturales como la única operación $\cdot:\mathbb{N}\times\mathbb{N}\rightarrow\mathbb{N}$ verificando:
+  \begin{itemize}
+  \item[1.] $\varphi_n\pr{1}=\sigma\pr{n}$.
+  \item[2.] Para todo $n,m\in\mathbb{N}$, $\varphi_n\pr{\sigma\pr{m}}=f\pr{\varphi_n\pr{m}}=\sigma\pr{\varphi_n\pr{m}}$.
+  \end{itemize}
+  
+  Definimos $+:\mathbb{N}\times\mathbb{N}\rightarrow\mathbb{N}$ como $n+m:=\varphi_n\pr{m}$ para todo $n,m\in\mathbb{N}$. Sea $\oplus:\mathbb{N}\times\mathbb{N}\rightarrow\mathbb{N}$ una aplicación verificando:
+
+  \begin{itemize}
+    \item[1.] Para todo $n\in\mathbb{N}$, $n\oplus 1=\sigma\pr{n}$.
+    \item[2.] Para todo $n,m\in\mathbb{N}$, $n\oplus\sigma\pr{m}=\sigma\pr{n\oplus m}$.
+  \end{itemize}
+
+  Fijado $n\in\mathbb{N}$, definimos $\psi_n:\mathbb{N}\rightarrow\mathbb{N}$ como $\psi_n\pr{m}=n\oplus m$. Por el Teorema de Recurrencia, $\varphi_n=\psi_n$ para todo $n\in\mathbb{N}$ y, por tanto, $+=\oplus$.
+\end{proof}
+\end{proposition}
+
+\begin{proposition}
+  \rm La suma de números naturales verifica las siguientes propiedades:
+
+  \begin{itemize}
+    \item[1.] Asociatividad: Para todo $x,y,z\in\mathbb{N}$, $\pr{x+y}+z=x+\pr{y+z}$.
+    \item[2.] Conmutatividad: Para todo $x,y\in\mathbb{N}$, $x+y=y+x$.
+    \item[3.] Ley Cancelativa de la Suma: Para todo $x,y,z\in\mathbb{N}$, si $x+z=y+z$, entonces $x=y$.
+  \end{itemize}
+
+  \begin{proof}[\rm\textbf{Demostración}]
+    \hfill
+    \begin{itemize}
+      \item[1.] Fijados $x,y\in\mathbb{N}$, basta probar por inducción que el siguiente conjunto:
+      
+      \begin{equation}
+        S:=\set{z\in\mathbb{N}\middle|\pr{x+y}+z=x+\pr{y+z}}\subseteq\mathbb{N}
+      \end{equation}
+      
+      es igual a $\mathbb{N}$.
+      \item[2.] Primero se prueba que $x+1=1+x$ para todo $x\in\mathbb{N}$ probando por inducción que el conjunto $S:=\set{x\in\mathbb{N}\middle|x+1=1+x}\subseteq\mathbb{N}$ es igual a $\mathbb{N}$. Fijado $x\in\mathbb{N}$, demostraríamos por inducción que el conjunto $S:=\set{y\in\mathbb{N}\middle|x+y=y+x}\subseteq\mathbb{N}$ es igual a $\mathbb{N}$.
+      \item[3.] Basta probar por inducción que el siguiente conjunto:
+      
+      \begin{equation}
+        S:=\set{z\in\mathbb{N}\middle|\forall x,y\in\mathbb{N},x+z=y+z\implies x=y}\subseteq\mathbb{N}
+      \end{equation}
+
+      es igual a $\mathbb{N}$.
+    \end{itemize}
+  \end{proof}
+\end{proposition}
+
+\begin{proposition}
+  \rm Existe una única operación $\cdot:\mathbb{N}\times\mathbb{N}\rightarrow\mathbb{N}$ que llamaremos producto de números naturales verificando:
 
   \begin{itemize}
     \item[1.] Para todo $n\in\mathbb{N}$, $n\cdot 1=n$.
     \item[2.] Para todo $n,m\in\mathbb{N}$, $n\cdot\sigma\pr{m}=n\cdot m+n$.
   \end{itemize}
-\end{definition}
-\section{Orden de números naturales}
+\begin{proof}[\rm\textbf{Demostración}]
+  Fijado $n\in\mathbb{N}$, sea $f_n:\mathbb{N}\rightarrow\mathbb{N}$ definida como $f_n\pr{x}=x+n$. Por el Teorema de Recurrencia, existe una única aplicación $\varphi_n:\mathbb{N}\rightarrow\mathbb{N}$ verificando:
 
+  \begin{itemize}
+  \item[1.] $\varphi_n\pr{1}=n$.
+  \item[2.] Para todo $n,m\in\mathbb{N}$, $\varphi_n\pr{\sigma\pr{m}}=f_n\pr{\varphi_n\pr{m}}=\varphi_n\pr{m}+n$.
+  \end{itemize}
+  
+  Definimos $\cdot:\mathbb{N}\times\mathbb{N}\rightarrow\mathbb{N}$ como $n\cdot m:=\varphi_n\pr{m}$ para todo $n,m\in\mathbb{N}$. Sea $\odot:\mathbb{N}\times\mathbb{N}\rightarrow\mathbb{N}$ una aplicación verificando:
+
+  \begin{itemize}
+    \item[1.] Para todo $n\in\mathbb{N}$, $n\odot 1=n$.
+    \item[2.] Para todo $n,m\in\mathbb{N}$, $n\odot\sigma\pr{m}=n\odot m+n$.
+  \end{itemize}
+
+  Fijado $n\in\mathbb{N}$, definimos $\psi_n:\mathbb{N}\rightarrow\mathbb{N}$ como $\psi_n\pr{m}=n\odot m$. Por el Teorema de Recurrencia, $\varphi_n=\psi_n$ para todo $n\in\mathbb{N}$ y, por tanto, $\cdot=\odot$.
+\end{proof}
+\end{proposition}
+\begin{proposition}
+  \rm El producto de números naturales verifica las siguientes propiedades:
+
+  \begin{itemize}
+    \item[1.] Asociatividad: Para todo $x,y,z\in\mathbb{N}$, $\pr{x\cdot y}\cdot z=x\cdot\pr{y\cdot z}$.
+    \item[2.] Conmutatividad: Para todo $x,y\in\mathbb{N}$, $x\cdot y=y\cdot x$.
+    \item[3.] Distributividad: Para todo $x,y,z\in\mathbb{N}$, $x\cdot\pr{y+z}=x\cdot y+x\cdot z$.
+    \item[4.] Existencia y unicidad del elemento neutro del producto: Si $e\in\mathbb{N}$ es tal que $x\cdot e=e\cdot x=x$ para todo $x\in\mathbb{N}$, entonces $e=1$. 
+  \end{itemize}
+  \begin{proof}[\rm\textbf{Demostración}]
+    \hfill
+    \begin{itemize}
+      \item[1.] 
+      \item[2.] 
+      \item[3.] 
+      \item[4.] 
+    \end{itemize}
+  \end{proof}
+\end{proposition}
+\section{Orden de números naturales}
+\begin{definition}[\textbf{Orden de números naturales}]
+  \rm Dados $n,m\in\mathbb{N}$, diremos que:
+
+  \begin{itemize}
+    \item \textit{$n$ es menor que $m$}, y lo denotaremos como $n<m$, si existe $k\in\mathbb{N}$ tal que $n+k=m$. Diremos que \textit{$n$ es menor o igual que $m$}, y lo denotaremos como $n\leq m$, si $n<m$ o $n=m$.
+    \item \textit{$n$ es mayor que $m$}, y lo denotaremos como $n>m$, si $m<n$. Diremos que \textit{$n$ es mayor o igual que $m$}, y lo denotaremos como $n\geq m$, si $n>m$ o $n=m$.
+  \end{itemize}
+\end{definition}
+
+\begin{proposition}
+  \rm $\leq$ define una relación sobre $\mathbb{N}$ con las siguientes propiedades:
+  \begin{itemize}
+    \item[1.] $\leq$ es una relación de orden, es decir, $\leq$ es reflexiva, antisimétrica y transitiva.
+    \item[2.] Ley de Tricotomía: Dados $n,m\in\mathbb{N}$, se tiene una y solamente una de las siguientes relaciones: $n<m$, $n=m$ o $n>m$. En consecuencia, $\leq$ es una relación de orden total.
+    \item[3.] Para todo $n\in\mathbb{N}$, $1\leq n$.
+    \item[4.] Para todo $n\in\mathbb{N}$, no existe $m\in\mathbb{N}$ tal que $n<m<n+1$.
+    \item[5.] Compatibilidad del orden con la suma de números naturales: Dados $n,m,z\in\mathbb{N}$, se tiene que $n<m$ si y solamente si $n+z<m+z$.
+    \item[6.] Compatibilidad del orden con el producto de números naturales: Dados $n,m,z\in\mathbb{N}$, se tiene que $n<m$ si y solamente si $n\cdot z<m\cdot z$.
+  \end{itemize}
+  \begin{proof}[\rm\textbf{Demostración}]
+    \hfill
+    \begin{itemize}
+      \item[1.] 
+      \item[2.] 
+      \item[3.] 
+      \item[4.] 
+      \item[5.] 
+      \item[6.] 
+    \end{itemize}
+  \end{proof}
+\end{proposition}
 \section{Equivalencias al Principio de Inducción}
 \section{Sistemas de numeración}
