@@ -1,11 +1,11 @@
 \chapter{Números naturales. Sistemas de numeración.}
 \section{Axiomas de Peano}
 
-Los axiomas de Peano establecen definen sistema de números naturales como cualquier par $\pr{\mathbb{N},\sigma}$ donde $\mathbb{N}$ es un conjunto que llamaremos conjunto de números naturales y $\sigma:\mathbb{N}\rightarrow\mathbb{N}$ es una aplicación conocida como aplicación sucesor verificando las propiedades:
+Los axiomas de Peano definen sistema de números naturales como cualquier par $\pr{\mathbb{N},\sigma}$ donde $\mathbb{N}$ es un conjunto que llamaremos conjunto de números naturales y $\sigma:\mathbb{N}\rightarrow\mathbb{N}$ es una aplicación conocida como aplicación sucesor verificando las propiedades:
 
 \begin{itemize}
   \item[1.] Existe un elemento distinguido $1\in\mathbb{N}$ que llamamos \textit{uno}.
-  \item[2.] No existe $n\in\mathbb{N}\setminus\set{1}$ tal que $\sigma\pr{n}=1$.
+  \item[2.] No existe $n\in\mathbb{N}$ tal que $\sigma\pr{n}=1$.
   \item[3.] $\sigma$ es inyectiva.
   \item[4.] Principio de Inducción: Sea $S\subseteq\mathbb{N}$ tal que $1\in S$ y, para todo $n\in S$, se cumple que $\sigma\pr{n}\in S$. Entonces $S=\mathbb{N}$. 
 \end{itemize}
@@ -27,7 +27,66 @@ Los axiomas de Peano establecen definen sistema de números naturales como cualq
 
 A través de la Teoría de Conjuntos, más concretamente haciendo uso del Axioma del infinito, podemos probar la existencia de sistemas de números naturales. 
 
-Dados dos sistemas de números naturales $\pr{\mathbb{N},\sigma}$ y $\pr{\mathbb{N}',\sigma'}$ con elementos distinguidos $1_{\mathbb{N}}$ y $1_{\mathbb{N}'}$, se pueden probar que son canónicamente isomorfos, es decir, que existe una biyección $\varphi:\mathbb{N}\rightarrow\mathbb{N}'$ verificando $\varphi\pr{1_{\mathbb{N}}}=1_{\mathbb{N}'}$ y $\varphi\pr{\sigma\pr{n}}=\sigma'\pr{\varphi\pr{n}}$ para todo $n\in\mathbb{N}$. Esto último se puede probar mediante el Teorema de Recurrencia que enunciamos y probamos a continuación.
+\begin{definition}[\textbf{Conjunto inductivo}]
+  \rm Diremos que un conjunto $X$ es inductivo si $\varnothing\in X$ y, para todo $x\in X$, $x\cup\set{x}\in X$.
+\end{definition}
+
+\textbf{Axioma del infinito.} Existe un conjunto inductivo:
+
+\begin{equation}
+  \pr{\exists X}\pr{\varnothing\in X\land\pr{\forall x}\pr{x\in X\implies x\cup\set{x}\in X}}.
+\end{equation}
+
+\begin{proposition}
+  \rm La intersección arbitraria de conjuntos inductivos es un conjunto inductivo.
+  \begin{proof}[\rm\textbf{Demostración}]
+    Sea $\mathcal{I}$ una familia de conjuntos inductivos y definamos $I:=\bigcap{\mathcal{I}}$. Como $\varnothing\in J$ para todo $J\in\mathcal{I}$, tenemos que $\varnothing\in I$. Sea $x\in I$. Entonces $x\in J$ para todo $J\in\mathcal{I}$. Luego $x\cup\set{x}\in J$ para todo $J\in\mathcal{I}$. En consecuencia, $x\cup\set{x}\in I$. Por tanto, $I$ es un conjunto inductivo.
+  \end{proof}
+\end{proposition}
+
+Para la siguiente proposición, haremos uso del Axioma de Regularidad de la Teoría de Conjuntos, el cual prohíbe casos patológicos como que un conjunto pueda contenerse así mismo:
+
+\textbf{Axioma de Regularidad.} Para todo conjunto no vacío $X$, existe un elemento del mismo disjunto con $X$:
+
+\begin{equation}
+  \forall X\pr{X\neq\varnothing\implies\pr{\exists x}\pr{x\in X\land x\cap X=\varnothing}}.
+\end{equation}
+
+\begin{proposition}
+  \rm Dado un conjunto inductivo $J$ cualquiera, definimos el conjunto:
+  
+  \begin{equation}
+    \mathcal{J}:=\set{J'\middle|J'\subseteq J\text{ conjunto inductivo}}.
+  \end{equation}
+  
+  Sea $\mathbb{N}_{0,J}$ el siguiente conjunto:
+
+  \begin{equation}
+    \mathbb{N}_{0,J}:=\bigcap{\mathcal{J}}.
+  \end{equation}
+
+  Se cumplen las siguientes propiedades:
+
+  \begin{itemize}
+    \item[1.] Si $I$ e $I'$ son conjuntos inductivos, entonces $\mathbb{N}_{0,I}=\mathbb{N}_{0,I'}$. 
+    \item[2.] Definimos $\mathbb{N}_0:=\mathbb{N}_{0,I}$ para $I$ cualquiera y $\mathbb{N}=\mathbb{N}_0\setminus\set{\varnothing}$. Sea $\sigma:\mathbb{N}\rightarrow\mathbb{N}$ dada por $\sigma\pr{x}:=x\cup\set{x}$. Entonces $\pr{\mathbb{N},\sigma}$ es un sistema de números naturales.
+  \end{itemize}
+  \begin{proof}[\rm\textbf{Demostración}]
+    \hfill
+    \begin{itemize}
+      \item[1.] Sea $I''=I\cap I'\subseteq I,I'$. Sabemos que $I''$ es un conjunto inductivo. Como $\mathbb{N}_{0,I},\mathbb{N}_{0,I'}\subseteq\mathbb{N}_{0,I''}$, en particular, se tiene que $\mathbb{N}_{0,I}=\mathbb{N}_{0,I}\cap I''$ y $\mathbb{N}_{0,I'}=\mathbb{N}_{0,I'}\cap I''$. Es fácil ver en ese caso que $\mathbb{N}_{0,I}=\mathbb{N}_{0,I''}=\mathbb{N}_{0,I'}$.
+      \item[2.] Sea $1:=\varnothing\cup\set{\varnothing}=\set{\varnothing}\in\mathbb{N}$. 
+      
+      Por reducción al absurdo, supongamos que existe $x\in\mathbb{N}$ tal que $\sigma\pr{x}=x\cup\set{x}=\set{\varnothing}=1$. Necesariamente, $x\in\set{\varnothing}$ y, por consiguiente, $x=\varnothing$ lo cual es absurdo pues $\varnothing\notin\mathbb{N}$. En consecuencia, no existe $n\in\mathbb{N}$ tal que $\sigma\pr{n}=1$.
+      
+      Sean $x,y\in\mathbb{N}$ tales que $\sigma\pr{x}=\sigma\pr{y}$. Entonces $x\cup\set{x}=y\cup\set{y}$. Si $x=y$ no hay nada que probar. Por reducción al absurdo, supongamos que $x\neq y$.  Necesariamente, $x\in y$ e $y\in x$ pues $x\in\set{y}$ o $y\in x$ ya que esto implicaría que $x=y$. Entonces $x\in x$ e $y\in y$ y esto entra en contradicción con el Axioma de Regularidad pues ningún conjunto es elemento de sí mismo. En consecuencia, $x=y$. Esto prueba que $\sigma$ es inyectiva.
+      
+      Sea $S\subseteq\mathbb{N}$ tal que $1\in S$ y, para todo $n\in S$, se cumple que $\sigma\pr{n}\in S$. Definimos $S':=S\cup\set{\varnothing}$. Entonces $S'$ es un conjunto inductivo. Luego $\mathbb{N}_0\subseteq S'$ y, en consecuencia, $S'=\mathbb{N}_0$. Luego $S=S'\setminus\set{\varnothing}=\mathbb{N}$. Por tanto, $\pr{\mathbb{N},\sigma}$ es un sistema de números naturales.
+    \end{itemize}
+  \end{proof}
+\end{proposition}
+
+El siguiente teorema nos permitirá definir de manera unívoca la suma y producto de números naturales. También veremos que los sistemas de números naturales son canónicamente isomorfos entre sí.
 
 \begin{theorem}[\textbf{Teorema de recurrencia}]
   \rm Sea $X$ un conjunto, $a\in X$ y $f:X\rightarrow X$ una aplicación. Entonces existe una única aplicación $\varphi:\mathbb{N}\rightarrow X$ que cumple las siguientes propiedades:
@@ -73,6 +132,33 @@ Dados dos sistemas de números naturales $\pr{\mathbb{N},\sigma}$ y $\pr{\mathbb
   Sea $S:=\set{n\in\mathbb{N}\middle|\varphi\pr{n}=\psi\pr{n}}$. Claramente, $1\in S$. Sea $n\in S$. Como $\varphi\pr{n}=\psi\pr{n}$, entonces $f\pr{\varphi\pr{n}}=f\pr{\psi\pr{n}}$. En consecuencia, $\varphi\pr{\sigma\pr{n}}=\psi\pr{\sigma\pr{n}}$, es decir, $\sigma\pr{n}\in S$. Por el Principio de Inducción, deducimos que $S=\mathbb{N}$. Por tanto, $\varphi=\psi$.
   \end{proof}  
 \end{theorem}
+
+\begin{proposition}
+  \rm Sean $\pr{\mathbb{N},\sigma}$ y $\pr{\mathbb{N}',\sigma'}$ dos sistemas de números naturales con elementos distinguidos $1_{\mathbb{N}}$ y $1_{\mathbb{N}'}$. Entonces existe una biyección $\varphi:\mathbb{N}\rightarrow\mathbb{N}'$ verificando $\varphi\pr{1_{\mathbb{N}}}=1_{\mathbb{N}'}$ y $\varphi\pr{\sigma\pr{n}}=\sigma'\pr{\varphi\pr{n}}$ para todo $n\in\mathbb{N}$.
+  \begin{proof}[\rm\textbf{Demostración}]
+    \rm Sean $f:\mathbb{N}'\rightarrow\mathbb{N}'$ y $f':\mathbb{N}\rightarrow\mathbb{N}$ definidas como $f=\sigma'$ y $f'=\sigma$. Por el Teorema de Recurrencia, existen dos únicas aplicaciones $\varphi:\mathbb{N}\rightarrow\mathbb{N}'$ y $\psi:\mathbb{N}'\rightarrow\mathbb{N}$ verificando:
+
+    \begin{itemize}
+      \item $\varphi\pr{1_{\mathbb{N}}}=1_{\mathbb{N}'}$ y $\psi\pr{1_{\mathbb{N}'}}=1_{\mathbb{N}}$.
+      \item Para todo $n\in\mathbb{N}$ y $n'\in\mathbb{N}'$, $\varphi\pr{\sigma\pr{n}}=\sigma'\pr{\varphi\pr{n}}$ y $\psi\pr{\sigma'\pr{n'}}=\sigma\pr{\psi\pr{n'}}$.
+    \end{itemize}
+
+    Sea $S=\set{n\in\mathbb{N}\middle|\pr{\psi\circ\varphi}\pr{n}=n}\subseteq\mathbb{N}$. Observemos lo siguiente:
+
+    \begin{equation}
+      \pr{\psi\circ\varphi}\pr{1_{\mathbb{N}}}=\psi\pr{\varphi\pr{1_{\mathbb{N}}}}=\psi\pr{1_{\mathbb{N}'}}=1_{\mathbb{N}}.
+    \end{equation}
+
+    Luego $1\in S$. Sea $n\in S$. Entonces:
+
+    \begin{equation}
+      \pr{\psi\circ\varphi}\pr{\sigma\pr{n}}=\psi\pr{\varphi\pr{\sigma\pr{n}}}=\psi\pr{\sigma'\pr{\varphi\pr{n}}}=\sigma\pr{\psi\pr{\varphi\pr{n}}}=\sigma\pr{\pr{\psi\circ\varphi}\pr{n}}=\sigma\pr{n}.
+    \end{equation}
+
+    Luego $\sigma\pr{n}\in S$. Por el Principio de Inducción, tenemos que $S=\mathbb{N}$, es decir, $\pr{\varphi\circ\psi}\pr{n}=n$ para todo $n\in\mathbb{N}$. Como los papeles de $\mathbb{N}$ y $\mathbb{N}'$ son intercambiables, se deduce también que $\pr{\varphi\circ\psi}\pr{n'}=n'$ para todo $n'\in\mathbb{N}$. Entonces $\varphi$ es invertible con $\varphi^{-1}=\psi$. Por tanto, $\varphi$ es biyectiva que es lo que queríamos probar.
+
+  \end{proof}
+\end{proposition}
 
 \section{Suma y producto de números naturales}
 
@@ -299,7 +385,7 @@ El Teorema de Recurrencia nos garantiza que $m^n$ está bien definido para todo 
   \end{equation}
 
   \begin{proof}[\rm\textbf{Demostración}]
-    \rm Veamos primero la existencia. Para $n=1$, basta tomar $n=0$ y $a_0=1$. Dado $m\in\mathbb{N}$, supongamos que hemos probado la existencia para todo $k\in\mathbb{N}$ con $k\leq m$. Por el Teorema de la División Euclídea, existen $c,r\in\mathbb{N}_0$ tales que $m+1=b\cdot c+r$ y $0\leq r<b$. Necesariamente, $c<m+1$. Entonces existen $a_0,a_1,\dots,a_n\in\mathbb{N}$ con $n\in\mathbb{N}_0$ tales que $0\leq a_0,a_1,\dots,a_n<b$, $a_n\neq 0$ y:
+    \rm Veamos primero la existencia. Para $m=1$, basta tomar $n=0$ y $a_0=1$. Dado $m\in\mathbb{N}$, supongamos que hemos probado la existencia para todo $k\in\mathbb{N}$ con $k\leq m$. Por el Teorema de la División Euclídea, existen $c,r\in\mathbb{N}_0$ tales que $m+1=b\cdot c+r$ y $0\leq r<b$. Necesariamente, $c<m+1$. Entonces existen $a_0,a_1,\dots,a_n\in\mathbb{N}_0$ con $n\in\mathbb{N}_0$ tales que $0\leq a_0,a_1,\dots,a_n<b$, $a_n\neq 0$ y:
 
     \begin{equation}
       c=a_0+a_1\cdot b+\cdots+a_n\cdot b^n.
@@ -340,7 +426,7 @@ El Teorema de Recurrencia nos garantiza que $m^n$ está bien definido para todo 
 
   \begin{equation}
     \begin{split}
-      \pr{b-1}\cdot\pr{1+b+\cdots+b^k+b^{p+1}} & =\pr{b-1}\cdot\pr{1+b+\cdots+b^p}+\pr{b-1}\cdot b^{p+1}\\
+      \pr{b-1}\cdot\pr{1+b+\cdots+b^p+b^{p+1}} & =\pr{b-1}\cdot\pr{1+b+\cdots+b^p}+\pr{b-1}\cdot b^{p+1}\\
       & =b^{p+1}-1+\pr{b-1}\cdot b^{p+1}=b^{p+1}\cdot\pr{b-1+1}=b^{p+2}.
     \end{split}
   \end{equation}
@@ -359,7 +445,7 @@ El Teorema de Recurrencia nos garantiza que $m^n$ está bien definido para todo 
 
   Hemos llegado a una contradicción. Por tanto, $k=l$. Falta probar que si $b\in\mathbb{N}$ con $b>1$ y los valores $a_0,a_1,\dots,a_k,a'_0,a'_1,\dots,a'_k\in\mathbb{N}_0$ con $k\in\mathbb{N}_0$ son tales que $0\leq a_0,a_1,\dots,a_k,a'_0,a'_1,\dots,a'_k<b$ con $a_k,a'_k\neq 0$ y $a_0+a_1\cdot b+\cdots+a_n\cdot b^n=a'_0+a'_1\cdot b+\cdots+a'_n\cdot b^n$, entonces $a_0=a'_0,a_1=a'_1,\dots,a_k=a'_k$. 
   
-  Si $k=0$, es trivial. Para $k=1$, si $a_0,a_1,a'_0,a'_1\in\mathbb{N}_0$ son tales que $0\leq a_0,a_1,a'_0,a'_1<b$ con $a_1,a'_1\neq 0$ y $a_0+a_1\cdot b=a'_0+a'_1\cdot b$, por el Teorema de la División Euclídea, deducimos que $a_0=a'_0$ y $a_1=a'_1$. Supongamos que lo hemos probado para $k\in\mathbb{N}$. Sean $a_0,a_1,\dots,a_k,a_{k+1},a'_0,a'_1,\dots,a'_k,a'_{k+1}\in\mathbb{N}_0$ con $k\in\mathbb{N}_0$ son tales que $0\leq a_0,a_1,\dots,a_k,a_{k+1},a'_0,a'_1,\dots,a'_k,a'_{k+1}<b$ con $a_{k+1},a_{k+1}'\neq 0$ y $a_0+a_1\cdot b+\cdots+a_{k+1}\cdot b^{k+1}=a'_0+a'_1\cdot b+\cdots+a'_{k+1}\cdot b^{k+1}$. Sean $c,r\in\mathbb{N}_0$ con $0\leq r<b$ tales que $m=b\cdot c+r$. Como:
+  Si $k=0$, es trivial. Para $k=1$, si $a_0,a_1,a'_0,a'_1\in\mathbb{N}_0$ son tales que $0\leq a_0,a_1,a'_0,a'_1<b$ con $a_1,a'_1\neq 0$ y $a_0+a_1\cdot b=a'_0+a'_1\cdot b$, por el Teorema de la División Euclídea, deducimos que $a_0=a'_0$ y $a_1=a'_1$. Supongamos que lo hemos probado para $k\in\mathbb{N}$. Sean $a_0,a_1,\dots,a_k,a_{k+1},a'_0,a'_1,\dots,a'_k,a'_{k+1}\in\mathbb{N}_0$ con $k\in\mathbb{N}_0$ son tales que $0\leq a_0,a_1,\dots,a_k,a_{k+1},a'_0,a'_1,\dots,a'_k,a'_{k+1}<b$ con $a_{k+1},a_{k+1}'\neq 0$ y $m:=a_0+a_1\cdot b+\cdots+a_{k+1}\cdot b^{k+1}=a'_0+a'_1\cdot b+\cdots+a'_{k+1}\cdot b^{k+1}$. Sean $c,r\in\mathbb{N}_0$ con $0\leq r<b$ tales que $m=b\cdot c+r$. Como:
 
   \begin{equation}
     m=a_0+b\cdot\pr{a_1+a_2\cdot b+\cdots+a_{k+1}\cdot b^k}=a'_0+b\cdot\pr{a'_1+a'_2\cdot b+\cdots+a'_{k+1}\cdot b^k},
@@ -375,13 +461,13 @@ El Teorema de Recurrencia nos garantiza que $m^n$ está bien definido para todo 
   \end{proof}
 \end{theorem}
 
-En el sistema de numeración posicional en base $b\in\mathbb{N}$ con $b>1$, un número $n\in\mathbb{N}_0$ se puede representar de manera única como $\pr{a_0a_1\dots a_k}_b$ con $k\in\mathbb{N}_0$ donde $a_0,a_1,\dots,a_k\in\mathbb{N}_0$ con $a_k\neq 0$ y $0\leq a_0,a_1,\dots,a_k<b$ son los únicos tales que $n=a_0+a_1\cdot b+\cdot+a_k\cdot b^k$. Diremos que $k+1$ es el número de cifras de $n$ en base $b$.
+En el sistema de numeración posicional en base $b\in\mathbb{N}$ con $b>1$, un número $n\in\mathbb{N}_0$ se puede representar de manera única como $\pr{a_0a_1\dots a_k}_b$ con $k\in\mathbb{N}_0$ donde $a_0,a_1,\dots,a_k\in\mathbb{N}_0$ con $a_k\neq 0$ y $0\leq a_0,a_1,\dots,a_k<b$ son los únicos tales que $n=a_0+a_1\cdot b+\cdots+a_k\cdot b^k$. Diremos que $k+1$ es el número de cifras de $n$ en base $b$.
 
 \begin{proposition}
   \rm Sean $n,m\in\mathbb{N}_0$ y $b\in\mathbb{N}$ con $b>1$. Se cumplen las siguientes propiedades:
 
   \begin{itemize}
-    \item[1.] Si $n=\pr{a_0a_1\dots a_k}_b$ y $m=\pr{a'_0a'_1\dots a'_l}$ con $k,l\in\mathbb{N}_0$, se tiene que $n=m$ si y solamente si $k=l$ y $a_0=a'_0,a_1=a'_1,\dots,a_n=a'_n$.
+    \item[1.] Si $n=\pr{a_0a_1\dots a_k}_b$ y $m=\pr{a'_0a'_1\dots a'_l}_b$ con $k,l\in\mathbb{N}_0$, se tiene que $n=m$ si y solamente si $k=l$ y $a_0=a'_0,a_1=a'_1,\dots,a_k=a'_k$.
     \item[2.] Si $n>1$ y tiene $k+1$ cifras en base $b$ con $k\in\mathbb{N}_0$, entonces $b^k\leq n<b^{k+1}$. 
     \item[3.] Si $n$ tiene $k_1+1$ cifras y $m$ tiene $k_2+1$ cifras en base $b$ con $k_1,k_2\in\mathbb{N}_0$ y $k_1<k_2$, entonces $n<m$.
     \item[4.] Si $n$ y $m$ tienen $k+1$ cifras en base $b$ con $k\in\mathbb{N}_0$, se tiene que $n<m$ si y solamente si existe $i\in\mathbb{N}_0$ con $0\leq i\leq k$ tal que $a_i<a'_i$ y $a_j=a'_j$ para todo $j\in\mathbb{N}_0$ con $0\leq j\leq k$ y $j<i$.
