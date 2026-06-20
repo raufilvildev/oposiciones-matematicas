@@ -1,1 +1,75 @@
 \chapter{Números enteros. Divisibilidad. Números primos. Congruencia.}
+
+\section{El anillo ordenado de los números enteros.}
+
+Sobre $\mathbb{N}\times\mathbb{N}$ definimos la relación $\thicksim$ dada por $\pr{a,b}\thicksim\pr{c,d}$ si y solamente si $a+d=b+c$. 
+
+
+Definimos el conjunto de números enteros como sigue:
+
+\begin{equation}
+  \mathbb{Z}:=\frac{\mathbb{N}\times\mathbb{N}}{\thicksim}.
+\end{equation}
+
+\begin{proposition}
+  \rm Definimos las operaciones $+:\mathbb{Z}\times\mathbb{Z}\rightarrow\mathbb{Z}$ y $\cdot:\mathbb{Z}\times\mathbb{Z}\rightarrow\mathbb{Z}$ como sigue:
+
+  \begin{equation}
+    \br{\pr{a,b}}+\br{\pr{c,d}}:=\br{\pr{a+c,b+d}},\hspace{0.5cm}\br{\pr{a,b}}\cdot\br{\pr{c,d}}=\br{\pr{a\cdot c+b\cdot d,a\cdot d+b\cdot c}}.
+  \end{equation}
+
+  Se cumplen las siguientes propiedades:
+
+  \begin{itemize}
+    \item[1.] $+$ y $\cdot$ están bien definidas, es decir, no dependen de los representantes escogidos.
+    \item[2.] $\pr{\mathbb{Z},+,\cdot}$ es un anillo conmutativo, es decir, $+$ es una operación asociativa, conmutativa, con elemento neutro que denotaremos por $0$ que es igual a $\br{\pr{n,n}}$ para cualquier $n\in\mathbb{N}$ y cada entero $x:=\br{\pr{a,b}}\in\mathbb{Z}$ tiene elemento opuesto $-x:=\br{\pr{b,a}}\in\mathbb{Z}$, y, $\cdot$ es una operación asociativa, conmutativa, con elemento neutro que denotaremos por $1$ que es igual a $\br{\pr{1+n,n}}$ para cualquier $n\in\mathbb{N}$ y es distributivo respecto a la suma.
+    \item[3.] $\pr{\mathbb{Z},+,\cdot}$ es un dominio de integridad, es decir, si $x,y\in\mathbb{Z}$ son tales que $x\cdot y=0$, entonces $x=0$ o $y=0$.
+  \end{itemize}
+\end{proposition}
+
+\begin{definition}
+  \rm Dados $x:=\br{\pr{a,b}},y:=\br{\pr{c,d}}\in\mathbb{Z}$ dos números enteros, diremos que:
+
+  \begin{itemize}
+    \item \textit{$x$ es menor que $y$}, y lo denotaremos como $x<y$, si $a+d<b+c$. Diremos que \textit{$x$ es menor o igual que $y$}, y lo denotaremos como $x\leq y$, si $x<y$ o $x=y$.
+    \item \textit{$x$ es mayor que $y$}, y lo denotaremos como $x>y$, si $y<x$. Diremos que \textit{$x$ es mayor o igual que $y$}, y lo denotaremos como $x\geq y$, si $y\leq x$.
+    \item \textit{$x$ es positivo} (resp. \textit{$x$ es no negativo}) si $x>0$ (resp. $x\geq 0$).
+    \item \textit{$x$ es negativo} (resp. \textit{$x$ es no positivo}) si $x<0$ (resp. $x\leq 0$).
+  \end{itemize}
+\end{definition}
+
+\begin{proposition}
+  \rm La relación $\leq$ sobre $\mathbb{Z}$ verifica las siguientes propiedades:
+  \begin{itemize}
+    \item[1.] $\leq$ está bien definida, es decir, no depende de los representantes escogidos.
+    \item[2.] Para todo $x,y\in\mathbb{Z}$, si $x<y$, entonces $-y<-x$. En particular, si $x>0$, entonces $-x<0$.
+    \item[3.] Ley de Tricotomía: Dados $x,y\in\mathbb{Z}$, se tiene una y solamente una de las siguientes relaciones: $x<y$, $x=y$ o $x>y$. En consecuencia, $\leq$ es una relación de orden total.
+    \item[4.] Compatibilidad del orden con la suma de números enteros: Dados $x,y,z\in\mathbb{Z}$, se tiene que $x<y$ si y solamente si $x+z<y+z$.
+    \item[5.] Compatibilidad del orden con el producto de números enteros: Dados $x,y,z\in\mathbb{Z}$ con $z>0$, se tiene que $x<y$ si y solamente si $x\cdot z<y\cdot z$.
+    \item[6.] Ley Cancelativa del Producto: Para todo $x,y,z\in\mathbb{Z}$ con $z\neq 0$, si $x\cdot z=y\cdot z$, entonces $x=y$.
+  \end{itemize}
+\end{proposition}
+
+\begin{proposition}
+  \rm Sea $f:\mathbb{N}\rightarrow\mathbb{Z}$ dada por $f\pr{n}=\br{\pr{k+n,k}}$ para $k\in\mathbb{N}$ cualquiera. Se cumplen las siguientes propiedades:
+
+  \begin{itemize}
+    \item[1.] $f$ está bien definida, es decir, su definición no depende del $k$ escogido.
+    \item[2.] $f$ es inyectiva.
+    \item[3.] Para todo $n,m\in\mathbb{N}$, se cumple que $f\pr{n+m}=f\pr{n}+f\pr{m}$ y $f\pr{n\cdot m}=f\pr{n}\cdot f\pr{m}$.
+    \item[4.] Para todo $n,m\in\mathbb{N}$, $n<m$ si y solamente si $f\pr{n}<f\pr{m}$. 
+  \end{itemize}
+\end{proposition}
+
+La proposición anterior nos permite ver $\mathbb{N}$ como subconjunto de $\mathbb{Z}$. Dado $n\in\mathbb{N}$, denotaremos por $n:=\br{\pr{k+n,k}}$ y $-n:=\br{\pr{k,k+n}}$ para $k\in\mathbb{N}$ cualquiera. De esta forma, el conjunto de números enteros puede escribirse como es habitual:
+
+\begin{equation}
+  \mathbb{Z}:=\set{\dots,-3,-2,-1,0,1,2,3,\dots}.
+\end{equation}
+\section{Divisibilidad en \texorpdfstring{$\mathbb{Z}$}{Z}.}
+
+\begin{definition}[\rm\textbf{Divisibilidad}]
+  \rm Sean $n,m\in\mathbb{Z}$, diremos que \textit{$n$ divide a $m$}, \textit{$m$ es divisible por $n$} o \textit{$m$ es múltiplo de $n$} $n|m$ si existe $k\in\mathbb{Z}$ tal que $m=k\cdot n$.
+\end{definition}
+\section{Números primos. Teorema Fundamental de la Aritmética.}
+\section{Congruencias. Pequeño Teorema de Fermat.}
