@@ -13,7 +13,7 @@ La Teoría de Conjuntos moderno no da ninguna definición operativa de conjunto 
 \textbf{Axioma de extensionalidad}. Dos conjuntos $X$ e $Y$ son iguales si y solamente si tienen los mismos elementos:
 
 \begin{equation}
-  \pr{\forall X}\pr{\forall Y}\pr{\forall z}\pr{\pr{z\in X\iff z\in Y}\implies X=Y}.
+  \pr{\forall X}\pr{\forall Y}\pr{\forall z}\pr{\pr{z\in X\iff z\in Y}\Rightarrow X=Y}.
 \end{equation}
 
 La implicación contraria es consecuencia directa del axioma de igualdad en lógica de primer orden.
@@ -34,7 +34,7 @@ La implicación contraria es consecuencia directa del axioma de igualdad en lóg
 \rm Sean $X$ y $Y$ dos conjuntos. Diremos que $X$ es un subonjunto de $Y$ o que $X$ está contenido en $Y$, y lo escribiremos como $X\subseteq Y$, si todo elemento de $X$ también es un elemento de $Y$:
 
 \begin{equation}
-  X\subseteq Y\triangleq \forall z\pr{z\in X\implies z\in Y}
+  X\subseteq Y\triangleq \forall z\pr{z\in X\Rightarrow z\in Y}
 \end{equation}
 \end{definition}
 
@@ -152,7 +152,7 @@ Otra notación empleada es $X_1\cup\dots\cup X_n$.
   \rm Sea $\mathcal{X}$ un conjunto no vacío. Se define la intersección de $\mathcal{X}$ como el conjunto formado por aquellos elementos de elementos de $X$ que están en todos los elementos de $X$:
 
   \begin{equation}
-    \bigcap{\mathcal{X}}:=\set{x\middle|\pr{\forall Z}\pr{Z\in\mathcal{X}\implies x\in Z}}.
+    \bigcap{\mathcal{X}}:=\set{x\middle|\pr{\forall Z}\pr{Z\in\mathcal{X}\Rightarrow x\in Z}}.
   \end{equation}
 
   Otra notación empleada es $\displaystyle\bigcap_{X\in\mathcal{X}}{X}$.

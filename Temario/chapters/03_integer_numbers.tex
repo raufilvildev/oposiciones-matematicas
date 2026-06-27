@@ -22,7 +22,14 @@ Definimos el conjunto de números enteros como sigue:
 
   \begin{itemize}
     \item[1.] $+$ y $\cdot$ están bien definidas, es decir, no dependen de los representantes escogidos.
-    \item[2.] $\pr{\mathbb{Z},+,\cdot}$ es un anillo conmutativo, es decir, $+$ es una operación asociativa, conmutativa, con elemento neutro que denotaremos por $0$ que es igual a $\br{\pr{n,n}}$ para cualquier $n\in\mathbb{N}$ y cada entero $x:=\br{\pr{a,b}}\in\mathbb{Z}$ tiene elemento opuesto $-x:=\br{\pr{b,a}}\in\mathbb{Z}$, y, $\cdot$ es una operación asociativa, conmutativa, con elemento neutro que denotaremos por $1$ que es igual a $\br{\pr{1+n,n}}$ para cualquier $n\in\mathbb{N}$ y es distributivo respecto a la suma.
+    \item[2.] $\pr{\mathbb{Z},+,\cdot}$ es un anillo conmutativo, es decir, verifica las siguientes propiedades:
+    \begin{itemize}
+      \item Asociatividad: Para todo $a,b,c\in\mathbb{Z}$, $a+\pr{b+c}=\pr{a+b}+c$ y $a\cdot\pr{b\cdot c}=\pr{a\cdot b}\cdot c$.
+      \item Conmutatividad: Para todo $a,b\in\mathbb{Z}$, $a+b=b+a$ y $a\cdot b=b\cdot a$.
+      \item Existencia y unicidad de elemento neutro de la suma: Existe $e\in\mathbb{Z}$ tal que $x+e=e+x=x$ para todo $x\in\mathbb{Z}$. Además, $e$ es único y lo denotaremos como $0$.
+      \item Existencia y unicidad de elemento neutro del producto: Existe $e'\in\mathbb{Z}$ tal que $x\cdot e=e\cdot x=x$ para todo $x\in\mathbb{Z}$. Además, $e$ es único y lo denotaremos como $1$.
+      \item Distributividad del producto respecto de la suma: Para todo $a,b,c\in\mathbb{Z}$, $a\cdot \pr{b+c}=a\cdot b+a\cdot c$.
+    \end{itemize}
     \item[3.] $\pr{\mathbb{Z},+,\cdot}$ es un dominio de integridad, es decir, si $x,y\in\mathbb{Z}$ son tales que $x\cdot y=0$, entonces $x=0$ o $y=0$.
   \end{itemize}
 \end{proposition}
@@ -42,11 +49,12 @@ Definimos el conjunto de números enteros como sigue:
   \rm La relación $\leq$ sobre $\mathbb{Z}$ verifica las siguientes propiedades:
   \begin{itemize}
     \item[1.] $\leq$ está bien definida, es decir, no depende de los representantes escogidos.
-    \item[2.] Para todo $x,y\in\mathbb{Z}$, si $x<y$, entonces $-y<-x$. En particular, si $x>0$, entonces $-x<0$.
-    \item[3.] Ley de Tricotomía: Dados $x,y\in\mathbb{Z}$, se tiene una y solamente una de las siguientes relaciones: $x<y$, $x=y$ o $x>y$. En consecuencia, $\leq$ es una relación de orden total.
-    \item[4.] Compatibilidad del orden con la suma de números enteros: Dados $x,y,z\in\mathbb{Z}$, se tiene que $x<y$ si y solamente si $x+z<y+z$.
-    \item[5.] Compatibilidad del orden con el producto de números enteros: Dados $x,y,z\in\mathbb{Z}$ con $z>0$, se tiene que $x<y$ si y solamente si $x\cdot z<y\cdot z$.
-    \item[6.] Ley Cancelativa del Producto: Para todo $x,y,z\in\mathbb{Z}$ con $z\neq 0$, si $x\cdot z=y\cdot z$, entonces $x=y$.
+    \item[2.] $\leq$ es una relación de orden, es decir, $\leq$ es reflexiva, antisimétrica y transitiva.
+    \item[3.] Para todo $x,y\in\mathbb{Z}$, si $x<y$, entonces $-y<-x$. En particular, si $x>0$, entonces $-x<0$.
+    \item[4.] Ley de Tricotomía: Dados $x,y\in\mathbb{Z}$, se tiene una y solamente una de las siguientes relaciones: $x<y$, $x=y$ o $x>y$. En consecuencia, $\leq$ es una relación de orden total.
+    \item[5.] Compatibilidad del orden con la suma de números enteros: Dados $x,y,z\in\mathbb{Z}$, se tiene que $x<y$ si y solamente si $x+z<y+z$.
+    \item[6.] Compatibilidad del orden con el producto de números enteros: Dados $x,y,z\in\mathbb{Z}$ con $z>0$ (resp. $z<0$), se tiene que $x<y$ si y solamente si $x\cdot z<y\cdot z$ (resp. $x\cdot z>y\cdot z$).
+    \item[7.] Ley Cancelativa del Producto: Para todo $x,y,z\in\mathbb{Z}$ con $z\neq 0$, si $x\cdot z=y\cdot z$, entonces $x=y$.
   \end{itemize}
 \end{proposition}
 
@@ -68,8 +76,194 @@ La proposición anterior nos permite ver $\mathbb{N}$ como subconjunto de $\math
 \end{equation}
 \section{Divisibilidad en \texorpdfstring{$\mathbb{Z}$}{Z}.}
 
-\begin{definition}[\rm\textbf{Divisibilidad}]
-  \rm Sean $n,m\in\mathbb{Z}$, diremos que \textit{$n$ divide a $m$}, \textit{$m$ es divisible por $n$} o \textit{$m$ es múltiplo de $n$} $n|m$ si existe $k\in\mathbb{Z}$ tal que $m=k\cdot n$.
+Dado $n\in\mathbb{Z}$, definimos el valor absoluto de $n$ como el siguiente valor:
+
+\begin{equation}
+  \bars{n}:=\begin{cases}
+    n & \text{si $n\geq 0$}\\
+    -n & \text{si $n<0$}
+  \end{cases}
+\end{equation}
+
+\begin{theorem}[\textbf{Teorema de la División Euclídea}]\label{Teorema de la División Euclídea}
+  \rm Sean $D,d\in\mathbb{Z}$ con $d\neq 0$. Entonces existen $c,r\in\mathbb{Z}$ únicos tales que $D=d\cdot c+r$ y $0\leq r<\bars{d}$.
+  \begin{proof}[\rm\textbf{Demostración}]
+    Sea $S:=\set{D-d\cdot x\middle|x\in\mathbb{Z},D-d\cdot x\geq 0}\subseteq \mathbb{N}_0$. Como $d\neq 0$, entonces $d^2\geq 1$. Observemos que $D-d\cdot\pr{-d\cdot\bars{D}}=D+d^2\cdot\bars{D}\geq D+1\cdot\bars{D}\geq 0$. Entonces $S\neq 0$. Además, $S$ está acotado inferiormente por $0$. Por el Principio de Buena Ordenación en $\mathbb{N}_0$, existe $c\in\mathbb{Z}$ tal que $\min S=D-d\cdot c$. Sea $r:=D-d\cdot c$. Por reducción al absurdo, supongamos que $r\geq\bars{d}$. Entonces $\bars{d}\leq D-d\cdot c$. Luego $0\leq D-d\cdot c-\bars{d}=D+d\cdot\pr{c\pm 1}\leq D-d\cdot c-1<D-d\cdot c$ lo cual es absurdo pues $D-d\cdot c=\min S$. 
+
+    Sean $c,r,c',r'\in\mathbb{Z}$ tales que $0\leq r,r'<\bars{d}$ y $D=d\cdot c+r=d\cdot c'+r'$. Sin pérdida de generalidad, podemos suponer que $r\geq r'$. Entonces $r-r'=d\cdot\pr{c'-c}$. Si $r=r'$, como $d\neq 0$, por la Ley Cancelativa del Producto en $\mathbb{Z}$, se deduce fácilmente que $c=c'$. Por reducción al absurdo, supongamos que $r>r'$. Entonces $d\cdot\pr{c'-c}=r-r'=d\cdot\pr{c'-c}$ $0<r-r'\leq r<\bars{d}$. En consecuencia, $-\bars{d}<d\cdot\pr{c'-c}<\bars{d}$. Si $d>0$ (resp. $d<0$), por la compatibilidad del orden con el producto de números enteros, tenemos que $-1<c'-c<1$ (resp. $-1<c-c'<1$), es decir, $c=c'$ y, en consecuencia, $r=r'$ lo cual es absurdo. Por tanto, $r=r'$ y $c=c'$.
+  \end{proof}
+\end{theorem}
+
+\begin{definition}[\textbf{Divisibilidad}]
+  \rm Sean $n,m\in\mathbb{Z}$, diremos que \textit{$n$ divide a $m$}, \textit{$m$ es divisible por $n$} o \textit{$m$ es múltiplo de $n$} $n\mid m$ si existe $k\in\mathbb{Z}$ tal que $m=k\cdot n$.
 \end{definition}
+
+Dados $n,m\in\mathbb{Z}$, si $n|m$, por la Ley Cancelativa del Producto, es fácil ver que existe un único $k\in\mathbb{Z}$ tal que $m=k\cdot n$. Denotaremos por $\frac{m}{n}:=k$.
+
+\begin{definition}[\textbf{Máximo común divisor}]
+  \rm Sean $a,b\in\mathbb{Z}$ no ambos nulos y $d\in\mathbb{Z}$. Diremos que $d$ es un máximo común divisor de $a$ y $b$, y lo denotaremos como $\text{mcd}\pr{a,b}=d$, si $d\mid a,b$ y, para todo $d'\in\mathbb{Z}$ tal que $d'\mid a,b$, se tiene que $d'\mid d$. Si $\text{mcd}\pr{a,b}=1$, diremos que $a$ y $b$ son coprimos o primos relativos.
+\end{definition}
+
+\begin{observation}
+  \rm Es fácil ver que el máximo común divisor de dos enteros no ambos nulos es único salvo signo. Además, $\text{mcd}\pr{a,b}=\text{mcd}\pr{b,a}$ para todo $a,b\in\mathbb{Z}$ no ambos nulos.
+\end{observation}
+
+\begin{proposition}
+  \rm Sean $a,b\in\mathbb{Z}$ no ambos nulos y $c\in\mathbb{Z}$. Entonces $\text{mcd}\pr{a,b}=\text{mcd}\pr{a+b\cdot c,b}$.
+  \begin{proof}[\rm\textbf{Demostración}]
+    Sea $d=\text{mcd}\pr{a,b}$. Como $d\mid a,b$, entonces existen $k,l\in\mathbb{Z}$ tales que $a=k\cdot d$ y $b=l\cdot d$. Luego $a+b\cdot c=\pr{k+l\cdot c}\cdot d$, es decir, $d\mid a+b\cdot c$. Sea $d'\in\mathbb{Z}$ tal que $d'\mid a+b\cdot c$ y $d'\mid b$. Entonces existen $k,l\in\mathbb{Z}$ tales que $a+b\cdot c=k\cdot d$ y $b=l\cdot d$. Luego $a=\pr{k-l\cdot c}\cdot d$, es decir, $d'\mid a$. Como $d'\mid a,b$ y $d=\text{mcd}\pr{a,b}$, tenemos que $d'\mid d$. Por tanto, $d=\text{mcd}\pr{a+b\cdot c,b}$ que es lo que queríamos probar.
+  \end{proof}
+\end{proposition}
+
+\textbf{Algoritmo de Euclides.} Sean $a,b\in\mathbb{Z}$ no ambos nulos. Sin pérdida de generalidad, supongamos que $b\neq 0$. Entonces existen $c,r\in\mathbb{Z}$ tales que $0\leq r<\bars{b}$ y $a=b\cdot c+r$. Entonces:
+
+\begin{equation}
+  \text{mcd}\pr{a,b}=\text{mcd}\pr{b\cdot c+r,b}=\text{mcd}\pr{r,b}.
+\end{equation}
+
+Sean $a_1:=a$, $b_1=b$ y $r_1=r$. Para cada $n\in\mathbb{N}$, definidos $a_n$, $b_n$ y $r_n$ con $0\leq r_n<b_n$ de forma que $a_n=b_n\cdot c_n+r_n$ para cierto $c_n\in\mathbb{Z}$, entonces:
+
+\begin{equation}
+  \text{mcd}\pr{a,b}=\text{mcd}\pr{a_1,b_1}=\text{mcd}\pr{a_2,b_2}=\cdots=\text{mcd}\pr{a_n,b_n}=\text{mcd}\pr{r_n,b_n}.
+\end{equation}
+
+Si $r_n=0$, entonces $\text{mcd}\pr{a,b}=\text{mcd}\pr{b_n,0}=b_n$. Si $r_n>0$, definimos $a_{n+1}:=b_n$, $b_{n+1}:=r_n$ y $r_{n+1}\in\mathbb{Z}$ con $0\leq r_{n+1}<\bars{b_{n+1}}$ de forma que $a_{n+1}=b_{n+1}\cdot c_{n+1}+r_{n+1}$ para cierto $c_{n+1}\in\mathbb{Z}$.
+
+\begin{theorem}[\rm\textbf{Identidad de Bezout}]\label{Identidad de Bézout}
+  \rm Dados $a,b\in\mathbb{Z}$ no ambos nulos, existen $x,y\in\mathbb{Z}$ tales que $\text{mcd}\pr{a,b}=a\cdot x+b\cdot y$.
+  \begin{proof}[\rm\textbf{Demostración}]
+    Sin pérdida de generalidad, supongamos que $a\neq 0$. Consideremos el conjunto $S:=\set{a\cdot x+b\cdot y\middle|x,y\in\mathbb{Z},a\cdot x+b\cdot y>0}\subseteq\mathbb{N}$. Para $y=0$, sea $x=1$ si $a>0$ o $x=-1$ si $a<0$. Entonces $a\cdot x+b\cdot y=\bars{a}\in S$, es decir, $S$ es no vacío. Como $S$ está acotado inferiormente por $1$, por el Principio de Buena Ordenación en $\mathbb{N}$, existen $x,y\in\mathbb{Z}$ tal que $\min S=a\cdot x+b\cdot y$. 
+    
+    Sea $d:=a\cdot x+b\cdot y$. Veamos que $\text{mcd}\pr{a,b}=d$. Sean $c,r\in\mathbb{Z}$ tales que $0\leq r<d$ y $a=d\cdot c+r=\pr{a\cdot x+b\cdot y}\cdot c+r$. Entonces $r=a\cdot\pr{1-c\cdot x}-b\cdot\pr{c\cdot y}\in S\cup\set{0}$. Como $r<d$ y $d=\min S$, necesariamente $r=0$, es decir, $d\mid a$. Análogamente, se prueba que $d\mid b$. Sea $d'\in\mathbb{Z}$ tal que $d'\mid a,b$. Entonces existen $k,l\in\mathbb{Z}$ tales que $a=k\cdot d'$ y $b=l\cdot d'$. Luego $d=a\cdot x+b\cdot y=\pr{k\cdot x+l\cdot y}\cdot d'$, es decir, $d'\mid d$. Por tanto, $d=a\cdot x+b\cdot y=\text{mcd}\pr{a,b}$.
+  \end{proof}
+\end{theorem}
+
+\begin{proposition}
+  \rm Sean $a,b\in\mathbb{Z}$ no ambos nulos. Se cumplen las siguientes propiedades:
+
+  \begin{itemize}
+    \item[1.] $a$ y $b$ son coprimos si y solamente si existen $x,y\in\mathbb{Z}$ tales que $1=a\cdot x+b\cdot y$.
+    \item[2.] Para todo $k\in\mathbb{Z}$ no nulo, $\text{mcd}\pr{k\cdot a,k\cdot b}=k\cdot\text{mcd}\pr{a,b}$.
+    \item[3.] Sea $d,\in\mathbb{Z}$ tal que $d=\text{mcd}\pr{a,b}$. Entonces $\text{mcd}\pr{\frac{a}{d},\frac{b}{d}}=1$.
+    \item[4.] Dado $c\in\mathbb{Z}$, si $\text{mcd}\pr{a,b}=1$ y $a,b\mid c$, entonces $a\cdot b\mid c$.
+  \end{itemize}
+  \begin{proof}[\rm\textbf{Demostración}]
+    \hfill
+    \begin{itemize}
+      \item[1.] \begin{itemize}
+        \item[\boxed{\Rightarrow}] Trivial.
+        \item[\boxed{\Leftarrow}] Por la prueba de la \hyperref[Identidad de Bézout]{Identidad de Bézout}, sabemos que:
+        
+        \begin{equation}
+          \text{mcd}\pr{a,b}=\min\set{a\cdot x+b\cdot y\middle|x,y\in\mathbb{Z},a\cdot x+b\cdot y}>0.
+        \end{equation}
+
+        Necesariamente, $1=\text{mcd}\pr{a,b}$, es decir, $a$ y $b$ son coprimos.
+      \end{itemize}
+      \item[2.] Sea $d\in\mathbb{Z}$ tal que $d=\text{mcd}\pr{a,b}$. Entonces existen $l,l'\in\mathbb{Z}$ tales que $a=l\cdot d$ y $b=l'\cdot d$. Luego $k\cdot a=l\cdot\pr{k\cdot d}$ y $k\cdot b=l'\cdot\pr{k\cdot d}$, es decir, $k\cdot d|k\cdot a,k\cdot b$. Sea $d'\in\mathbb{Z}$ tal que $d'|k\cdot a,k\cdot b$. Entonces existen $c,c'\in\mathbb{Z}$ tales que $k\cdot a=c\cdot d'$ y $k\cdot b=c'\cdot d'$. Por la \hyperref[Identidad de Bézout]{Identidad de Bézout}, existen $x,y\in\mathbb{Z}$ tales que $d=a\cdot x+b\cdot y$. Entonces $k\cdot d=\pr{k\cdot a}\cdot x+\pr{k\cdot b}\cdot y=\pr{c\cdot x+c'\cdot y}\cdot d'$, es decir, $d'|k\cdot d$. Por tanto, $\text{mcd}\pr{k\cdot a,k\cdot b}=k\cdot\text{mcd}\pr{a,b}$.
+      \item[3.] Sean $x,y\in\mathbb{Z}$ tales que $d=a\cdot x+b\cdot y$. Como $d|a,b$, sean $k,l\in\mathbb{Z}$ tales que $a=k\cdot d$ y $b=l\cdot d$. Entonces $d=\pr{k+l}\cdot d$. Por la Ley Cancelativa del Producto, deducimos que $1=k+l$ de donde deducimos que $\text{mcd}\pr{k,l}=1$.
+      \item[4.] Por la \hyperref[Identidad de Bézout]{Identidad de Bézout}, existen $x,y\in\mathbb{Z}$ tales que $1=a\cdot x+b\cdot y$. Sean $k,l\in\mathbb{Z}$ tales que $c=k\cdot a=l\cdot b$. Entonces $c=a\cdot c\cdot x+b\cdot c\cdot y=a\cdot\pr{l\cdot b}\cdot x+b\cdot\pr{k\cdot a}\cdot y=\pr{l\cdot x+k\cdot y}\cdot\pr{a\cdot b}$, es decir, $a\cdot b|c$.
+    \end{itemize}
+  \end{proof}
+\end{proposition}
+
+
+\begin{lemma}[\textbf{Lema de Euclides}]\label{Lema de Euclides}
+  \rm Sean $a,b\in\mathbb{Z}$ no ambos nulos y $c\in\mathbb{Z}$. Si $\text{mcd}\pr{a,b}=1$ y $a\mid b\cdot c$, entonces $a\mid c$.
+  \begin{proof}[\rm\textbf{Demostración}]
+    Por la \hyperref[Identidad de Bézout]{Identidad de Bézout}, existen $x,y\in\mathbb{Z}$ tales que $1=a\cdot x+b\cdot y$. Sea $k\in\mathbb{Z}$ tal que $b\cdot c=k\cdot a$. Entonces $c=a\cdot x\cdot c+b\cdot y\cdot c=a\cdot x\cdot c+k\cdot a\cdot y=a\cdot\pr{c\cdot x+k\cdot y}$, es decir, $a\mid c$.
+  \end{proof}
+\end{lemma}
 \section{Números primos. Teorema Fundamental de la Aritmética.}
+
+\begin{definition}[\textbf{Número primo}]
+  \rm Se dice que $n\in\mathbb{Z}\setminus\set{-1,1}$ es primo si los únicos divisores de $n$ son $-1$, $1$, $n$ y $-n$. En caso contrario, diremos que $n$ es compuesto.
+\end{definition}
+
+\begin{observation}
+  \rm Si $p,q\in\mathbb{Z}$ son números primos y $p|q$, es fácil ver que $\bars{p}=\bars{q}$.
+\end{observation}
+
+\begin{proposition}
+  \rm Si $a,b,p\in\mathbb{Z}$ son tales que $p$ es primo y $p\mid a\cdot b$, entonces $p\mid a$ o $p\mid b$.
+  \begin{proof}[\rm\textbf{Demostración}]
+    Si $p\mid a$, hemos terminado. Supongamos que $p\nmid a$. Como los únicos divisores de $p$ son $-1$, $1$, $p$ y $-p$, necesariamente $\text{mcd}\pr{a,p}=1$. Por el \hyperref[Lema de Euclides]{Lema de Euclides}, $p\mid b$. % chktex 44
+  \end{proof}
+\end{proposition}
+
+\begin{theorem}[\textbf{Teorema Fundamental de la Aritmética}]\label{Teorema Fundamental de la Aritmética}
+  \rm Todo entero $n\in\mathbb{Z}\setminus\set{-1,0,1}$ se descompone como producto finito de primos de manera única salvo orden y signo.
+  \begin{proof}[\rm\textbf{Demostración}]
+    Podemos suponer que $n>1$. En primer lugar, veamos la existencia de la descomposición en producto de números primos positivos. Haremos inducción en $n$. Para $n=2$, es trivial. Supongamos que lo hemos probado para todo $k\in\mathbb{N}$ con $k\leq n$. Si $n+1$ es primo, hemos terminado. En caso contrario, existen $k,l\in\mathbb{N}$ tales que $k,l\notin\set{1,n+1}$ y $n+1=k\cdot l$. Como $1<k,l<n+1$, se tiene que ambos pueden descomponerse como producto finito de primos. En consecuencia, $n+1$ también. Por el Principio de Inducción, deducimos que todo número natural $n\in\mathbb{N}$ con $n>1$ tiene una descomposición en producto de números primos positivos.
+
+    Sean $p_1,p_2,\dots,p_r,q_1,q_2,\dots,q_s\in\mathbb{N}$ números primos con $r,s\in\mathbb{N}$ tales que $p_1\cdot p_2\cdot\cdots\cdot p_r=q_1\cdot q_2\cdot\cdots\cdot q_s$. Sin pérdida de generalidad, supongamos que $r\leq s$. Como $p_1|n=q_1\cdot q_2\cdot\cdots\cdot q_s$, existe $j\in\set{1,2,\dots,s}$ tal que $p_1|q_j$ y, en consecuencia, $p_1=q_j$. Reordenando índices, podemos suponer que $j=1$. Por la Ley Cancelativa del Producto, nos queda que $p_2\cdot p_3\cdot\cdots\cdot p_r=q_2\cdot q_3\cdot\cdots\cdot q_s$. Repitiendo el procedimiento para cada $i\in\set{2,3,\dots,r}$, deducimos que $p_i=q_i$ para todo $i\in\set{1,2,\dots,r}$ y $1=q_{r+1}\cdot q_{r+2}\cdot\cdots\cdot q_s$. Necesariamente, $r=s$. Esto prueba la unicidad.
+  \end{proof}
+\end{theorem}
+
+Del \hyperref[Teorema Fundamental de la Aritmética]{Teorema Fundamental de la Aritmética}, se deduce fácilmente que, para todo $n\in\mathbb{Z}\setminus\set{-1,0,1}$, existen números primos $p_1,p_2,\dots,p_n\in\mathbb{N}$ y $r_1,\dots,r_n\in\mathbb{N}$ únicos con $n\in\mathbb{N}$ tales que:
+
+\begin{equation}
+  n=\pr{\pm 1}\cdot p_1^{r_1}\cdot p_2^{r_2}\cdot\cdots\cdot p_n^{r_n}.
+\end{equation}
+
+En el Libro IX de los Elementos, el matemático y geómetra griego Euclides prueba que existe una infinidad de números primos.
+
+\begin{corollary}
+  \rm Existen infinitos números primos.
+  \begin{proof}[\rm\textbf{Demostración}]
+    Por reducción al absurdo, supongamos que $p_1,p_2,\dots,p_n\in\mathbb{N}$ con $n\in\mathbb{N}$ con los únicos números primos positivos. Entonces $q=p_1\cdot p_2\cdot\dots p_n+1>1$ es producto de primos y, en consecuencia, deberá existir $i\in\set{1,2,\dots,n}$ tal que $p_i|n$. Luego $p_i|\pr{n-p_1\cdot p_2\cdot\dots p_n}=1$, así que, $p_i\in\set{-1,1}$ lo cual es absurdo. 
+  \end{proof}
+\end{corollary}
 \section{Congruencias. Pequeño Teorema de Fermat.}
+
+\begin{definition}[\textbf{Congruencia módulo $n$}]
+  \rm Dados $a,b,n\in\mathbb{Z}$ con $n\neq 0$, decimos que $a$ es congruente con $b$ módulo $n$, y lo denotaremos como $a\equiv b\pmod{n}$ si $n|a-b$.
+\end{definition}
+
+\begin{theorem}
+  \rm Dados $a,n\in\mathbb{Z}$ con $n\neq 0$, existe $r\in\mathbb{Z}$ con $0\leq r<\bars{n}$ tal que $a\equiv r\pmod{n}$. En consecuencia, el resto de la división de $a$ por $n$ es $r\in\mathbb{Z}$ con $0\leq r<\bars{n}$ si y solamente si $a\equiv r\pmod{n}$. En particular, $n|a$ si y solamente si $a\equiv 0\pmod{n}$.
+  \begin{proof}[\rm\textbf{Demostración}]
+    Sea $c,r\in\mathbb{Z}$ con $0\leq r<\bars{n}$ tal que $a=n\cdot c+r$. Entonces $a-r=n\cdot c$, es decir, $n|a-r$. Luego $a\equiv r\pmod{n}$.
+  \end{proof}
+\end{theorem}
+
+\begin{proposition}
+  \rm Sea $n\in\mathbb{Z}$ no nulo. Se cumplen las siguientes propiedades:
+  \begin{itemize}
+    \item[1.] La relación $\thicksim_n$ sobre $\mathbb{Z}$ dada por $a\thicksim_n b$ si y solamente si $a\equiv b\pmod{n}$ es una relación de equivalencia.
+    \item[2.] Dados $a,b,c,d\in\mathbb{Z}$ tales que $a\equiv b\pmod{n}$ y $c\equiv d\pmod{n}$, se tiene que $a+c\equiv b+d\pmod{n}$ y $a\cdot c\equiv b\cdot d\pmod{n}$. En consecuencia, si $p\pr{x}\in\mathbb{Z}\br{x}$ es un polinomio con coeficientes enteros y $a,b\in\mathbb{Z}$ son tales que $a\equiv b\pmod{n}$, entonces $p\pr{a}\equiv p\pr{b}\pmod{n}$.
+    \item[3.] Dados $a,b,c,d\in\mathbb{Z}$ tales que $c\cdot a\equiv c\cdot b\pmod{n}$ y $d=\text{mcd}\pr{n,c}$, se tiene que $a\equiv b\pmod{\frac{n}{d}}$. En consecuencia, si $\text{mcd}\pr{c,n}=1$, se tiene que $a\equiv b\pmod{n}$.
+    \item[4.] Dados $a,b,c,p\in\mathbb{Z}$ tales que $p$ es un número primo, $c\cdot a\equiv c\cdot b\pmod{p}$ y $p\nmid c$, se tiene que $a\equiv b\pmod{p}$.
+  \end{itemize}
+  \begin{proof}[\rm\textbf{Demostración}]
+    \hfill
+    \begin{itemize}
+      \item[1.] Dado $a\in\mathbb{Z}$, es trivial que $a\thicksim_n a$ pues $n|0=a-a$. Sean $a,b\in\mathbb{Z}$ tales que $a\thicksim_n b$. Entonces $n|a-b$, es decir, existe $k\in\mathbb{Z}$ tal que $a-b=k\cdot n$. Luego $b-a=-\pr{a-b}=\pr{-k}\cdot n$ lo que equivale a que $n|b-a$ o, dicho de otro modo, $b\thicksim_n a$. Sean $a,b,c\in\mathbb{Z}$ tales que $a\thicksim_n b$ y $b\thicksim_n c$. Entonces $n|a-b,b-c$, es decir, existen $k,l\in\mathbb{Z}$ tales que $a-b=k\cdot n$ y $b-c=l\cdot n$. Luego $a-c=\pr{a-b}+\pr{b-c}=k\cdot n+l\cdot n=\pr{k+l}\cdot n$ y, en consecuencia, $n|a-c$, esto es, $a\thicksim_n c$. Por tanto, $\thicksim_n$ es una relación de equivalencia.
+      \item[2.] Sean $k,l\in\mathbb{Z}$ tales que $a-b=k\cdot n$ y $c-d=l\cdot n$. Entonces $\pr{a+c}-\pr{b+d}=\pr{a-b}+\pr{c-d}=\pr{k+l}\cdot n$, es decir, $n|\pr{a+c}-\pr{b+d}$ o, dicho en otras palabras, $a+c\equiv b+d\pmod{n}$. Por otro lado, $a\cdot c-b\cdot d=\pr{a\cdot c-b\cdot c}+\pr{b\cdot c-b\cdot d}=\pr{a-b}\cdot c+b\cdot\pr{c-d}=\pr{k\cdot c+b\cdot l}\cdot n$, esto es, $n|a\cdot c-b\cdot d$ o, dicho en otras palabras, $a\cdot c\equiv b\cdot d\pmod{n}$.
+      \item[3.] Sea $k\in\mathbb{Z}$ tal que $c\cdot a-c\cdot b=k\cdot n$. Como $c=\frac{c}{d}\cdot d$ y $n=\frac{n}{d}\cdot d$, por la Ley Cancelativa del Producto, nos queda que $\frac{c}{d}\cdot \pr{a-b}=k\cdot\frac{n}{d}$. Como $\text{mcd}\pr{\frac{c}{d},\frac{n}{d}}=1$, necesariamente $\frac{n}{d}\mid a-b$, es decir, $a\equiv b\pmod{\frac{n}{d}}$.
+      \item[4.] Si $p\nmid c$, entonces $\text{mcd}\pr{p,c}=1$ y bastaría aplicar el apartado anterior.
+    \end{itemize}
+  \end{proof}
+\end{proposition}
+
+La primera demostración del \hyperref[Pequeño Teorema de Fermat]{Pequeño Teorema de Fermat} fue debida a Euler la cual no se publicó hasta 1736, casi 100 años después que Fermat la postulase. Leibniz había dejado la misma demostración en un manuscrito de 1683 que nunca se publicó.
+
+\begin{theorem}[\textbf{Pequeño Teorema de Fermat}]\label{Pequeño Teorema de Fermat}
+  \rm Sean $a,p\in\mathbb{Z}$ tal que $p$ es primo y $p\nmid a$. Entonces $a^{p-1}\equiv 1\pmod{p}$.
+  \begin{proof}[\rm\textbf{Demostración}]
+    Consideremos el conjunto $\set{a,2\cdot a,\dots,\pr{p-1}\cdot a}$. Sean $r,s\in\set{1,2,\dots,p-1}$ tales que $r\cdot a\equiv s\cdot a\pmod{p}$. Como $p\nmid a$, deducimos que $r\equiv s\pmod{p}$ lo que necesariamente implica que $r=s$. Además, como $p\nmid r$ para todo $r\in\set{1,2,\dots, p-1}$ y $p\nmid a$, entonces $r\cdot a\not\equiv 0\pmod{p}$ para todo $r\in\set{1,2,\dots, p-1}$. De lo anterior, deducimos que dados dos elementos del conjunto $\set{a,2\cdot a,\dots,\pr{p-1}\cdot a}$ distintos, estos son congruentes a valores distintos en $\set{1,2,\dots, p-1}$ módulo $p$. Luego:
+
+    \begin{equation}
+      a\cdot\pr{2\cdot a}\cdot\cdots\cdot\pr{p-1}\cdot a= a^{p-1}\cdot\pr{p-1}!\equiv\pr{p-1}!\pmod{p}.
+    \end{equation}
+
+    Como $p\nmid\pr{p-1}!$, tenemos que $a^{p-1}\equiv 1\pmod{p}$. % chktex 40
+  \end{proof}
+\end{theorem}
+
+\begin{corollary}
+  \rm Si $p\in\mathbb{Z}$ es primo, entonces $a^p\equiv a\pmod{p}$ para todo $a\in\mathbb{Z}$.
+  \begin{proof}[\rm\textbf{Demostración}]
+    Si $p\mid a$, el resultado es inmediato pues $a^p\equiv 0\pmod{p}\equiv a\pmod{p}$. Si $p\nmid a$, por el \hyperref[Pequeño Teorema de Fermat]{Pequeño Teorema de Fermat}, $a^{p-1}\equiv 1\pmod{p}$. Luego $a^p=a^{p-1}\cdot a\equiv a\pmod{p}$.
+  \end{proof}
+\end{corollary}

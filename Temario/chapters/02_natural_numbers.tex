@@ -34,7 +34,7 @@ A través de la Teoría de Conjuntos, más concretamente haciendo uso del Axioma
 \textbf{Axioma del infinito.} Existe un conjunto inductivo:
 
 \begin{equation}
-  \pr{\exists X}\pr{\varnothing\in X\land\pr{\forall x}\pr{x\in X\implies x\cup\set{x}\in X}}.
+  \pr{\exists X}\pr{\varnothing\in X\land\pr{\forall x}\pr{x\in X\Rightarrow x\cup\set{x}\in X}}.
 \end{equation}
 
 \begin{proposition}
@@ -49,7 +49,7 @@ Para la siguiente proposición, haremos uso del Axioma de Regularidad de la Teor
 \textbf{Axioma de Regularidad.} Para todo conjunto no vacío $X$, existe un elemento del mismo disjunto con $X$:
 
 \begin{equation}
-  \forall X\pr{X\neq\varnothing\implies\pr{\exists x}\pr{x\in X\land x\cap X=\varnothing}}.
+  \forall X\pr{X\neq\varnothing\Rightarrow\pr{\exists x}\pr{x\in X\land x\cap X=\varnothing}}.
 \end{equation}
 
 \begin{proposition}
@@ -213,7 +213,7 @@ A través de la suma, podemos denotar los siguientes números: $2:=1+1$, $3:=2+1
       \item[3.] Basta probar por inducción que el siguiente conjunto:
       
       \begin{equation}
-        S:=\set{z\in\mathbb{N}\middle|\forall x,y\in\mathbb{N},x+z=y+z\implies x=y}\subseteq\mathbb{N}
+        S:=\set{z\in\mathbb{N}\middle|\forall x,y\in\mathbb{N},x+z=y+z\Rightarrow x=y}\subseteq\mathbb{N}
       \end{equation}
 
       es igual a $\mathbb{N}$.
@@ -326,9 +326,9 @@ A través de la suma, podemos denotar los siguientes números: $2:=1+1$, $3:=2+1
 \begin{proof}[\rm\textbf{Demostración}]
 \rm\hfill
 \begin{itemize}
-    \item[\boxed{1\implies2}] Trivial.
-    \item[\boxed{2\implies3}] Por reducción al absurdo, supongamos que para todo $n\in S$, existe $m\in S$ tal que $m<n$. Necesariamente, $1\in\mathbb{N}\setminus S$ pues $1\leq n$ para todo $n\in\mathbb{N}$. Sea $n\in\mathbb{N}$ y supongamos que para todo $k\in\mathbb{N}$ con $k\leq n$, $k\in\mathbb{N}\setminus S$. Necesariamente, $\sigma\pr{n}\in\mathbb{N}\setminus S$ pues, de lo contrario, $\sigma\pr{n}$ es el elemento mínimo de $S$. Por el Principio de Inducción, $\mathbb{N}\setminus S=\mathbb{N}$ y, por tanto, $S=\varnothing$ lo cual es absurdo.  
-    \item[\boxed{3\implies1}] Supongamos que $S\neq\mathbb{N}$. Entonces $\mathbb{N}\setminus S\neq\varnothing$. Por el Principio de Buena Ordenación, $\mathbb{N}\setminus S$ tiene un elemento mínimo que denotaremos por $m$. Por hipótesis, $m\neq 1$, pues $1\in S$. Entonces existe $m'\in\mathbb{N}$ tal que $\sigma\pr{m'}=m$. Por ser $m$ el elemento mínimo de $\mathbb{N}\setminus S$, entonces $m'\in S$. De nuevo, por hipótesis, esto implica que $m=\sigma\pr{m'}\in S$ lo cual es absurdo. Por tanto, $S=\mathbb{N}$.
+    \item[\boxed{1\Rightarrow2}] Trivial.
+    \item[\boxed{2\Rightarrow3}] Por reducción al absurdo, supongamos que para todo $n\in S$, existe $m\in S$ tal que $m<n$. Necesariamente, $1\in\mathbb{N}\setminus S$ pues $1\leq n$ para todo $n\in\mathbb{N}$. Sea $n\in\mathbb{N}$ y supongamos que para todo $k\in\mathbb{N}$ con $k\leq n$, $k\in\mathbb{N}\setminus S$. Necesariamente, $\sigma\pr{n}\in\mathbb{N}\setminus S$ pues, de lo contrario, $\sigma\pr{n}$ es el elemento mínimo de $S$. Por el Principio de Inducción, $\mathbb{N}\setminus S=\mathbb{N}$ y, por tanto, $S=\varnothing$ lo cual es absurdo.  
+    \item[\boxed{3\Rightarrow1}] Supongamos que $S\neq\mathbb{N}$. Entonces $\mathbb{N}\setminus S\neq\varnothing$. Por el Principio de Buena Ordenación, $\mathbb{N}\setminus S$ tiene un elemento mínimo que denotaremos por $m$. Por hipótesis, $m\neq 1$, pues $1\in S$. Entonces existe $m'\in\mathbb{N}$ tal que $\sigma\pr{m'}=m$. Por ser $m$ el elemento mínimo de $\mathbb{N}\setminus S$, entonces $m'\in S$. De nuevo, por hipótesis, esto implica que $m=\sigma\pr{m'}\in S$ lo cual es absurdo. Por tanto, $S=\mathbb{N}$.
 \end{itemize}
 \end{proof}
 \end{theorem}
