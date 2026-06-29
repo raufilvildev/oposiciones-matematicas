@@ -1,1 +1,153 @@
 \chapter{Números racionales.}
+\section{El cuerpo ordenado de los números racionales}
+
+Sobre $\mathbb{Z}\times\pr{\mathbb{Z}\setminus\set{0}}$, definimos la relación $\thicksim$ dada por $\pr{a,b}\thicksim\pr{c,d}$ si y solamente si $a\cdot d=b\cdot c$. Definimos el conjunto de los números racionales como sigue:
+
+\begin{equation}
+    \mathbb{Q}:=\frac{\mathbb{Z}\times\pr{\mathbb{Z}\setminus\set{0}}}{\thicksim}.
+\end{equation}
+
+Dados $a,b\in\mathbb{Z}$ con $b\neq 0$, la clase de equivalencia $\br{\pr{a,b}}$ la denotaremos por $\displaystyle\frac{a}{b}$. 
+
+\begin{equation}
+    \mathbb{Q}=\set{\frac{a}{b}\middle|a,b\in\mathbb{Z},b\neq 0}.
+\end{equation}
+
+A los representantes de cada número racional los llamaremos fracciones. Diremos que la primera componente de una fracción es el numerador y la segunda el denominador.
+
+Dados $a,b,k\in\mathbb{Z}$ con $b,k\neq 0$, es fácil ver que $\displaystyle\frac{k\cdot a}{k\cdot b}:=\frac{a}{b}$. Esto nos permite escribir cada número racional de manera unívoca como $\displaystyle\frac{a}{b}$ donde $a\in\mathbb{Z}$, $b\in\mathbb{N}$ y $\text{mcd}\pr{a,b}=1$.
+
+\begin{proposition}
+\rm Definimos las operaciones $+:\mathbb{Q}\times\mathbb{Q}\rightarrow\mathbb{Q}$ y $\cdot:\mathbb{Q}\times\mathbb{Q}\rightarrow\mathbb{Q}$ como sigue:
+
+\begin{equation}
+    \frac{a}{b}+\frac{c}{d}:=\frac{a\cdot d+b\cdot c}{b\cdot d},\hspace{0.5cm}\frac{a}{b}\cdot\frac{c}{d}:=\frac{a\cdot b}{c\cdot d}.
+\end{equation}
+
+Se cumplen las siguientes propiedades:
+
+\begin{itemize}
+    \item[1.] $+$ y $\cdot$ están bien definidas, es decir, la suma y el producto de números racionales no dependen de los representantes escogidos.
+    \item[2.] $\pr{\mathbb{Q},+,\cdot}$ es un cuerpo, es decir, verifica las siguientes propiedades:
+    \begin{itemize}
+      \item Asociatividad: Para todo $p,q,r\in\mathbb{Q}$, $p+\pr{q+r}=\pr{p+q}+r$ y $p\cdot\pr{q\cdot r}=\pr{p\cdot q}\cdot r$.
+      \item Conmutatividad: Para todo $p,q\in\mathbb{Q}$, $p+q=q+p$ y $p\cdot q=q\cdot p$.
+      \item Existencia y unicidad de elemento neutro de la suma: Existe $e\in\mathbb{Q}$ tal que $x+e=e+x=x$ para todo $x\in\mathbb{Q}$. Además, $e$ es único y lo denotaremos como $0$.
+      \item Existencia y unicidad del elemento opuesto de un número: Dado $x\in\mathbb{Q}$, existe $y=y\pr{x}\in\mathbb{Q}$ tal que $x+y=y+x=0$. Además, para cada $x\in\mathbb{Q}$, $y$ es único y lo denotaremos como $-x$. Dados $x,y\in\mathbb{Q}$, con $y\neq 0$, denotaremos por $\displaystyle\frac{x}{y}:=x\cdot y^{-1}$.
+      \item Existencia y unicidad de elemento neutro del producto: Existe $e'\in\mathbb{Q}$ tal que $x\cdot e=e\cdot x=x$ para todo $x\in\mathbb{Q}$. Además, $e$ es único y lo denotaremos como $1$.
+      \item Existencia y unicidad del elemento inverso de un número: Dado $x\in\mathbb{Q}\setminus\set{0}$, existe $y=y\pr{x}\in\mathbb{Q}$ tal que $x\cdot y=y\cdot x=1$. Además, para cada $x\in\mathbb{Q}$, $y$ es único y lo denotaremos como $x^{-1}$. 
+      \item Distributividad del producto respecto de la suma: Para todo $p,q,r\in\mathbb{Q}$, $p\cdot \pr{q+r}=p\cdot q+p\cdot r$.
+    \end{itemize}
+    \item[3.] Regla de los signos: Para todo $x,y\in\mathbb{Q}$, $\pr{-1}\cdot x=-x$, $-\pr{-x}=x$, $\pr{-x}\cdot y=x\cdot\pr{-y}=-\pr{x\cdot y}$ y $\pr{-x}\cdot\pr{-y}=x\cdot y$.
+    \item[4.] Para todo $x,y\in\mathbb{Q}\setminus\set{0}$, $\frac{1}{x}=x^{-1}$, $\pr{x^{-1}}^{-1}=x$ y $\pr{x\cdot y}^{-1}=x^{-1}\cdot y^{-1}$.
+    \item[5.] Ley Cancelativa de la Suma: Para todo $x,y,z\in\mathbb{Q}$, si $x+z=y+z$, entonces $x=y$.
+    \item[6.] Ley Cancelativa del Producto: Para todo $x,y,z\in\mathbb{Q}$ con $z\neq 0$, $x\cdot z=y\cdot z$, entonces $x=y$.
+    \item[7.] Para todo $x\in\mathbb{Q}$, $x\cdot 0=0\cdot x=0$. Más aún, $\pr{\mathbb{Q},+,\cdot}$ es un dominio de integridad, es decir, si $x,y\in\mathbb{Q}$ son tales que $x\cdot y=0$, entonces $x=0$ o $y=0$.
+\end{itemize}
+\end{proposition}
+
+\begin{definition}
+  \rm Dados $x:=\frac{a}{b},y:=\frac{c}{d}\in\mathbb{Q}$ dos números racionales con $b,d\in\mathbb{N}$, diremos que:
+
+  \begin{itemize}
+    \item \textit{$x$ es menor que $y$}, y lo denotaremos como $x<y$, si $a\cdot d<b\cdot c$. Diremos que \textit{$x$ es menor o igual que $y$}, y lo denotaremos como $x\leq y$, si $x<y$ o $x=y$.
+    \item \textit{$x$ es mayor que $y$}, y lo denotaremos como $x>y$, si $y<x$. Diremos que \textit{$x$ es mayor o igual que $y$}, y lo denotaremos como $x\geq y$, si $y\leq x$.
+    \item \textit{$x$ es positivo} (resp. \textit{$x$ es no negativo}) si $x>0$ (resp. $x\geq 0$).
+    \item \textit{$x$ es negativo} (resp. \textit{$x$ es no positivo}) si $x<0$ (resp. $x\leq 0$).
+  \end{itemize}
+\end{definition}
+
+\begin{proposition}
+  \rm La relación $\leq$ sobre $\mathbb{Q}$ verifica las siguientes propiedades:
+  \begin{itemize}
+    \item[1.] $\leq$ está bien definida, es decir, no depende de los representantes escogidos.
+    \item[2.] $\leq$ es una relación de orden, es decir, $\leq$ es reflexiva, antisimétrica y transitiva.
+    \item[3.] Para todo $x,y\in\mathbb{Q}$, si $x<y$, entonces $-y<-x$. En particular, si $x>0$, entonces $-x<0$.
+    \item[4.] Para todo $x\in\mathbb{Q}$, si $x>0$ (resp. $x<0$), entonces $x^{-1}>0$ (resp. $x^{-1}<0$).
+    \item[5.] Para todo $x,y\in\mathbb{Q}$, si $x<y$, entonces $y^{-1}<x^{-1}$ 
+    \item[6.] Ley de Tricotomía: Dados $x,y\in\mathbb{Z}$, se tiene una y solamente una de las siguientes relaciones: $x<y$, $x=y$ o $x>y$. En consecuencia, $\leq$ es una relación de orden total.
+    \item[7.] Compatibilidad del orden con la suma de números enteros: Dados $x,y,z\in\mathbb{Q}$, se tiene que $x<y$ si y solamente si $x+z<y+z$.
+    \item[8.] Compatibilidad del orden con el producto de números enteros: Dados $x,y,z\in\mathbb{Q}$ con $z>0$ (resp. $z<0$), se tiene que $x<y$ si y solamente si $x\cdot z<y\cdot z$ (resp. $x\cdot z>y\cdot z$).
+  \end{itemize}
+\end{proposition}
+
+
+
+\begin{proposition}
+  \rm Sea $f:\mathbb{Z}\rightarrow\mathbb{Q}$ dada por $\displaystyle f\pr{n}=\frac{n}{1}$. Se cumplen las siguientes propiedades:
+
+  \begin{itemize}
+    \item[1.] $f$ es inyectiva.
+    \item[2.] Para todo $n,m\in\mathbb{Z}$, se cumple que $f\pr{n+m}=f\pr{n}+f\pr{m}$ y $f\pr{n\cdot m}=f\pr{n}\cdot f\pr{m}$.
+    \item[3.] Para todo $n,m\in\mathbb{Z}$, $n<m$ si y solamente si $f\pr{n}<f\pr{m}$. 
+  \end{itemize}
+  \begin{proof}[\rm\textbf{Demostración}]
+    \hfill
+    \begin{itemize}
+    \item[1.] Dados $n,m\in\mathbb{Z}$, si $f\pr{n}=f\pr{m}$, entonces $\frac{n}{1}=\frac{m}{1}$, es decir, $n=n\cdot 1=1\cdot m=m$. Por tanto, $f$ es inyectiva.
+    \item[2.] En efecto, se tiene lo siguiente:
+    
+    \begin{equation}
+        \begin{split}
+            f\pr{n+m} & =\frac{n+m}{1}=\frac{n\cdot 1+1\cdot m}{1\cdot 1}=\frac{n}{1}+\frac{m}{1}=f\pr{n}+f\pr{m},\\
+            \\
+            f\pr{n\cdot m} & =\frac{n\cdot m}{1}=\frac{n\cdot m}{1\cdot 1}=\frac{n}{1}\cdot\frac{m}{1}=f\pr{n}\cdot f\pr{m}.
+        \end{split}
+    \end{equation}
+    \item[3.] $f\pr{n}<f\pr{m}$ si y solamente si $\frac{n}{1}<\frac{m}{1}$, esto es, $n=n\cdot 1<1\cdot m=m$.
+  \end{itemize}
+  \end{proof}
+  
+\end{proposition}
+
+La proposición anterior nos permite ver $\mathbb{Z}$ como subconjunto de $\mathbb{Q}$. Dado $n\in\mathbb{Z}$, denotaremos por $n:=\frac{n}{1}$. 
+
+\begin{proposition}
+  \rm $\mathbb{Q}$ es un conjunto infinito numerable.
+  \begin{proof}[\rm\textbf{Demostración}]
+    Como $\mathbb{N}\subseteq\mathbb{Z}\subseteq\mathbb{Q}$, necesariamente, $\mathbb{Q}$ es un conjunto infinito. Sea $\psi:\mathbb{Q}\rightarrow\mathbb{N}$ dada por $\psi\pr{\frac{a}{b}}=2\cdot 3^a\cdot 5^b$ si $a\geq 0$ y $\psi\pr{\frac{a}{b}}=3^{-a}\cdot 5^b$ si $a<0$ donde $a\in\mathbb{Z}$, $b\in\mathbb{N}$ y $\text{mcd}\pr{a,b}=1$. Obsérvese que $\psi$ está bien definida y es inyectiva por el \hyperref[Teorema Fundamental de la Aritmética]{Teorema Fundamental de la Aritmética}. 
+    
+    Sea $S:=\set{2^k\cdot 3^a\cdot 5^b\middle|k\in\set{0,1},a\in\mathbb{N}_0,b\in\mathbb{N},\text{mcd}\pr{a,b}=1}\subseteq\mathbb{N}$. Basta observar que $\mathbb{Q}\cong S$ y $S$ es infinito numerable.
+    
+  \end{proof}
+\end{proposition}
+
+\begin{proposition}
+    \rm $\mathbb{Q}$ es el menor cuerpo conteniendo a $\mathbb{Z}$, es decir, si $\pr{\mathbb{K},+,\cdot}$ es un cuerpo y $f:\mathbb{Z}\rightarrow\mathbb{K}$ es un homomorfismo inyectivo de anillos, existe un homomorfismo inyectivo de cuerpos $g:\mathbb{Q}\rightarrow\mathbb{K}$.
+    \begin{proof}[\rm\textbf{Demostración}]
+        Sea $f:\mathbb{Z}\rightarrow\mathbb{K}$ un homomorfismo inyectivo de anillos. Definimos $g:\mathbb{Q}\rightarrow\mathbb{K}$ como $g\pr{\frac{a}{b}}=\frac{f\pr{a}}{f\pr{b}}$ donde $a\in\mathbb{Z}$ y $b\in\mathbb{N}$. Como $f$ es inyectivo, se tiene que $f\pr{b}\neq 0_{\mathbb{K}}$ para todo $n\in\mathbb{N}$ donde $0_{\mathbb{K}}$ es el elemento neutro de la suma en $\mathbb{K}$. Veamos que $g$ está bien definida, es decir, el valor de $g$ no depende del representante escogido. Sean $a,a'\in\mathbb{Z}$ y $b,b'\in\mathbb{N}$ tales que $\frac{a}{b}=\frac{a'}{b'}$, es decir, $a\cdot b'=a'\cdot b$. Entonces $f\pr{a}\cdot f\pr{b'}=f\pr{a\cdot b'}=f\pr{a'\cdot b}=f\pr{a'}\cdot f\pr{b}$. Esto prueba que $\frac{f\pr{a}}{f\pr{b}}=\frac{f\pr{a'}}{f\pr{b'}}$.
+
+        Por otro lado, dados $a,c\in\mathbb{Z}$ y $b,d\in\mathbb{N}$, se tiene lo siguiente:
+
+        \begin{equation}
+            \begin{split}
+                g\pr{\frac{a}{b}}+g\pr{\frac{c}{d}} & =\frac{f\pr{a}}{f\pr{b}}+\frac{f\pr{c}}{f\pr{d}}=\frac{f\pr{a}\cdot f\pr{d}+f\pr{b}\cdot f\pr{c}}{f\pr{b}\cdot f\pr{d}}=\frac{f\pr{a\cdot d+b\cdot c}}{f\pr{b\cdot d}}\\
+                & =g\pr{\frac{a\cdot d+b\cdot c}{b\cdot d}}=g\pr{\frac{a}{b}+\frac{c}{d}},\\
+                g\pr{\frac{a}{b}}\cdot g\pr{\frac{c}{d}} & =\frac{f\pr{a}}{f\pr{b}}\cdot\frac{f\pr{c}}{f\pr{d}}=\frac{f\pr{a}\cdot f\pr{c}}{f\pr{b}\cdot f\pr{d}}=\frac{f\pr{a\cdot c}}{f\pr{b\cdot d}}\\
+                & =g\pr{\frac{a\cdot b}{c\cdot d}}=g\pr{\frac{a}{b}\cdot\frac{c}{d}}.
+            \end{split}
+        \end{equation}
+
+        Esto prueba que $g$ es un homorfismo. Además, si $g\pr{\frac{a}{b}}=0$, entonces $f\pr{a}=0$ lo cual solo es posible si $a=0$ pues $f$ es inyectiva. Por tanto, $g$ es inyectiva.
+    \end{proof}
+\end{proposition}
+
+\begin{proposition}[\rm\textbf{$\mathbb{Q}$ es denso}]
+    Dados $r,s\in\mathbb{Q}$ con $r<s$, existe $t\in\mathbb{Q}$ tal que $r<t<s$. 
+    \begin{proof}[\rm\textbf{Demostración}]
+        Basta tomar $t:=\frac{1}{2}\cdot\pr{r+s}$ y observar que $t>\frac{1}{2}\cdot\pr{r+r}=\frac{1}{2}\cdot\pr{2\cdot r}=r$ y $t<\frac{1}{2}\cdot\pr{s+s}=\frac{1}{2}\cdot\pr{2\cdot s}=s$.
+    \end{proof}
+\end{proposition}
+
+\begin{proposition}[\rm\textbf{$\mathbb{Q}$ es arquimediano}]
+    \rm Dado $r\in\mathbb{Q}$ con $r>0$, existe $n=n\pr{r}\in\mathbb{N}$ tal que $\frac{1}{n}<r$.
+    \begin{proof}[\rm\textbf{Demostración}]
+        Sean $a,b\in\mathbb{N}$ tales que $r=\frac{a}{b}$. Tenemos que encontrar $n\in\mathbb{N}$ tal que $\frac{1}{n}<\frac{a}{b}$, o, equivalentemente, $b<n\cdot a$. Por reducción al absurdo, supongamos que $b\geq n\cdot a$ para todo $n\in\mathbb{N}$. Sea $S:=\set{b-n\cdot a\middle|n\in\mathbb{N}}\subseteq\mathbb{N}_0$. Como $S$ es no vacío, por el Principio de Buena Ordenación, existe $n_0\in\mathbb{N}$ tal que $\min S:=b-n_0\cdot a$. Sin embargo, $b-\pr{n_0+1}\cdot a\in S$ y $b-\pr{n_0+1}\cdot a\cdot a<b-n_0\cdot a$ lo cual es absurdo. 
+    \end{proof}
+\end{proposition}
+
+
+
+\section{Incompletitud de \texorpdfstring{$\mathbb{Q}$}{Q}}
+
+\section{Fracciones y números decimales}

@@ -21,16 +21,20 @@ Definimos el conjunto de números enteros como sigue:
   Se cumplen las siguientes propiedades:
 
   \begin{itemize}
-    \item[1.] $+$ y $\cdot$ están bien definidas, es decir, no dependen de los representantes escogidos.
+    \item[1.] $+$ y $\cdot$ están bien definidas, es decir, la suma y el producto de números enteros no depende de los representantes escogidos.
     \item[2.] $\pr{\mathbb{Z},+,\cdot}$ es un anillo conmutativo, es decir, verifica las siguientes propiedades:
     \begin{itemize}
       \item Asociatividad: Para todo $a,b,c\in\mathbb{Z}$, $a+\pr{b+c}=\pr{a+b}+c$ y $a\cdot\pr{b\cdot c}=\pr{a\cdot b}\cdot c$.
       \item Conmutatividad: Para todo $a,b\in\mathbb{Z}$, $a+b=b+a$ y $a\cdot b=b\cdot a$.
       \item Existencia y unicidad de elemento neutro de la suma: Existe $e\in\mathbb{Z}$ tal que $x+e=e+x=x$ para todo $x\in\mathbb{Z}$. Además, $e$ es único y lo denotaremos como $0$.
+      \item Existencia y unicidad del elemento opuesto de un número: Dado $x\in\mathbb{Z}$, existe $y=y\pr{x}\in\mathbb{Z}$ tal que $x+y=y+x=0$. Además, para cada $x\in\mathbb{Z}$, $y$ es único y lo denotaremos como $-x$. Dados $x,y\in\mathbb{Z}$, denotaremos por $x-y:=x+\pr{-y}$.
       \item Existencia y unicidad de elemento neutro del producto: Existe $e'\in\mathbb{Z}$ tal que $x\cdot e=e\cdot x=x$ para todo $x\in\mathbb{Z}$. Además, $e$ es único y lo denotaremos como $1$.
       \item Distributividad del producto respecto de la suma: Para todo $a,b,c\in\mathbb{Z}$, $a\cdot \pr{b+c}=a\cdot b+a\cdot c$.
     \end{itemize}
-    \item[3.] $\pr{\mathbb{Z},+,\cdot}$ es un dominio de integridad, es decir, si $x,y\in\mathbb{Z}$ son tales que $x\cdot y=0$, entonces $x=0$ o $y=0$.
+    \item[3.] Regla de los signos: Para todo $x,y\in\mathbb{Z}$, $\pr{-1}\cdot x=-x$, $-\pr{-x}=x$, $\pr{-x}\cdot y=x\cdot\pr{-y}=-\pr{x\cdot y}$ y $\pr{-x}\cdot\pr{-y}=x\cdot y$.
+    \item[4.] Ley Cancelativa de la Suma: Para todo $x,y,z\in\mathbb{Z}$, si $x+z=y+z$, entonces $x=y$.
+    \item[5.] Ley Cancelativa del Producto: Para todo $x,y,z\in\mathbb{Z}$ con $z\neq 0$, $x\cdot z=y\cdot z$, entonces $x=y$.
+    \item[6.] Para todo $x\in\mathbb{Z}$, $x\cdot 0=0\cdot x=0$. Más aún, $\pr{\mathbb{Z},+,\cdot}$ es un dominio de integridad, es decir, si $x,y\in\mathbb{Z}$ son tales que $x\cdot y=0$, entonces $x=0$ o $y=0$.
   \end{itemize}
 \end{proposition}
 
@@ -54,7 +58,6 @@ Definimos el conjunto de números enteros como sigue:
     \item[4.] Ley de Tricotomía: Dados $x,y\in\mathbb{Z}$, se tiene una y solamente una de las siguientes relaciones: $x<y$, $x=y$ o $x>y$. En consecuencia, $\leq$ es una relación de orden total.
     \item[5.] Compatibilidad del orden con la suma de números enteros: Dados $x,y,z\in\mathbb{Z}$, se tiene que $x<y$ si y solamente si $x+z<y+z$.
     \item[6.] Compatibilidad del orden con el producto de números enteros: Dados $x,y,z\in\mathbb{Z}$ con $z>0$ (resp. $z<0$), se tiene que $x<y$ si y solamente si $x\cdot z<y\cdot z$ (resp. $x\cdot z>y\cdot z$).
-    \item[7.] Ley Cancelativa del Producto: Para todo $x,y,z\in\mathbb{Z}$ con $z\neq 0$, si $x\cdot z=y\cdot z$, entonces $x=y$.
   \end{itemize}
 \end{proposition}
 
@@ -74,6 +77,19 @@ La proposición anterior nos permite ver $\mathbb{N}$ como subconjunto de $\math
 \begin{equation}
   \mathbb{Z}:=\set{\dots,-3,-2,-1,0,1,2,3,\dots}.
 \end{equation}
+
+\begin{proposition}
+  \rm $\mathbb{Z}$ es un conjunto infinito numerable.
+  \begin{proof}[\rm\textbf{Demostración}]
+    Sea $\varphi:\mathbb{Z}\rightarrow\mathbb{N}$ dada por $\varphi\pr{m}=2\cdot\pr{m+1}$ si $m\geq 0$ y $\varphi\pr{m}=2\cdot \pr{-m}-1$ si $m<0$. Sean $m,n\in\mathbb{Z}$ tales que $\varphi\pr{m}=\varphi\pr{n}$. Necesariamente $n,m\geq 0$ o $n,m<0$ pues, en otro caso, se tendría que valor par es igual a un valor impar. Por la Ley Cancelativa de la Suma y el Producto en cualquiera de los casos mencionados, llegamos a que $m=n$. Luego $\varphi$ es inyectiva. Sea $k\in\mathbb{N}$. Entonces:
+
+    \begin{equation}
+      \varphi\pr{k-1}=2\cdot k,\hspace{0.5cm}\varphi\pr{-k}=2\cdot k-1.
+    \end{equation}
+
+    De aquí, deducimos que $\varphi$ es sobreyectiva. En consecuencia, $\varphi$ es biyectiva. Por tanto, $\mathbb{Z}$ es un conjunto infinito numerable.
+  \end{proof}
+\end{proposition}
 \section{Divisibilidad en \texorpdfstring{$\mathbb{Z}$}{Z}.}
 
 Dado $n\in\mathbb{Z}$, definimos el valor absoluto de $n$ como el siguiente valor:
