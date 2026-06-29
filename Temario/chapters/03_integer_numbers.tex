@@ -70,6 +70,26 @@ Definimos el conjunto de números enteros como sigue:
     \item[3.] Para todo $n,m\in\mathbb{N}$, se cumple que $f\pr{n+m}=f\pr{n}+f\pr{m}$ y $f\pr{n\cdot m}=f\pr{n}\cdot f\pr{m}$.
     \item[4.] Para todo $n,m\in\mathbb{N}$, $n<m$ si y solamente si $f\pr{n}<f\pr{m}$. 
   \end{itemize}
+  \begin{proof}[\rm\textbf{Demostración}]
+    \hfill
+    \begin{itemize}
+      \item[1.] Sean $n,k,k'\in\mathbb{N}$. Entonces $\br{\pr{k+n,k}}=\br{\pr{k'+n,k'}}$ si y solamente si $\pr{k+n}+k'=k+\pr{k'+n}$ lo cual es cierto. Por tanto, $f$ está bien definida.
+      \item[2.] Sean $n,m,k\in\mathbb{N}$ tales que $\br{\pr{k+n,k}}=\br{\pr{k+m,k}}$. Entonces $\pr{k+n}+k=k+\pr{k+m}$. Por la Ley Cancelativa de la Suma, se tiene que $n=m$. Por tanto, $f$ es inyectiva.
+      \item[3.] Sean $n,m,k\in\mathbb{N}$. Entonces:
+      
+      \begin{equation}
+        \begin{split}
+          f\pr{m}+f\pr{n} & =\br{\pr{k+n,k}}+\br{\pr{k+m,k}}=\br{\pr{\pr{k+n}+\pr{k+m},k+k}}\\
+          & =\br{\pr{k+k+\pr{n+m},k+k}}=\br{\pr{k+\pr{n+m},k}}=f\pr{n+m},\\
+          f\pr{n}\cdot f\pr{m} &= \br{\pr{k+n,k}}\cdot\br{\pr{k+m,k}}\\
+          & =\br{\pr{\pr{k+n}\cdot\pr{k+m}+k^2,k\cdot\pr{\pr{k+n}+\pr{k+m}}}}\\
+          & =\br{\pr{2\cdot k^2+k\cdot\pr{m+n}+m\cdot n,k\cdot\pr{m+n}+2\cdot k^2}}\\
+          & =\br{\pr{2\cdot k^2+m\cdot n,2\cdot k^2}}=\br{\pr{k+m\cdot n,k}}=f\pr{m\cdot n}.
+        \end{split}
+      \end{equation}
+      \item[4.] Sean $n,m\in\mathbb{N}$. Entonces $f\pr{n}<f\pr{m}$ si y solamente si $\pr{k+n}+k<k+\pr{k+m}$ que, por la Ley Cancelativa de la Suma, equivale a $n<m$.
+    \end{itemize}
+  \end{proof}
 \end{proposition}
 
 La proposición anterior nos permite ver $\mathbb{N}$ como subconjunto de $\mathbb{Z}$. Dado $n\in\mathbb{N}$, denotaremos por $n:=\br{\pr{k+n,k}}$ y $-n:=\br{\pr{k,k+n}}$ para $k\in\mathbb{N}$ cualquiera. De esta forma, el conjunto de números enteros puede escribirse como es habitual:
