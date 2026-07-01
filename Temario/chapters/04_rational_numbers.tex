@@ -132,8 +132,8 @@ La proposición anterior nos permite ver $\mathbb{Z}$ como subconjunto de $\math
     \end{proof}
 \end{proposition}
 
-\begin{proposition}[\rm\textbf{$\mathbb{Q}$ es denso}]
-    Dados $r,s\in\mathbb{Q}$ con $r<s$, existe $t\in\mathbb{Q}$ tal que $r<t<s$. 
+\begin{proposition}[\textbf{$\mathbb{Q}$ es denso}]
+    \rm Dados $r,s\in\mathbb{Q}$ con $r<s$, existe $t\in\mathbb{Q}$ tal que $r<t<s$. 
     \begin{proof}[\rm\textbf{Demostración}]
         Basta tomar $t:=\frac{1}{2}\cdot\pr{r+s}$ y observar que $t>\frac{1}{2}\cdot\pr{r+r}=\frac{1}{2}\cdot\pr{2\cdot r}=r$ y $t<\frac{1}{2}\cdot\pr{s+s}=\frac{1}{2}\cdot\pr{2\cdot s}=s$.
     \end{proof}
@@ -146,8 +146,175 @@ La proposición anterior nos permite ver $\mathbb{Z}$ como subconjunto de $\math
     \end{proof}
 \end{proposition}
 
-
-
 \section{Incompletitud de \texorpdfstring{$\mathbb{Q}$}{Q}}
 
+Todo lo dicho hasta aquí habla de ``lo que funciona bien'' en $\mathbb{Q}$. Destacamos ahora algunas de sus carencias fundamentales que se resumen diciendo que $\mathbb{Q}$ es incompleto.
+
+\textbf{1. Existencia de longitudes no expresables mediante números racionales.} Consideremos un cuadrado de lado $1$ al que queremos calcular la longitud de su diagonal. Por el Teorema de Pitágoras, debe cumplirse la siguiente ecuación:
+
+\begin{equation}
+  x^2=1^2+1^2=2.
+\end{equation}
+
+Veamos que esta ecuación no tiene solución en $\mathbb{Q}$. Supongamos que existe $x\in\mathbb{Q}$ tal que $x^2=2$. Entonces existen $a\in\mathbb{Z}$ y $b\in\mathbb{N}$ con $\text{mcd}\pr{a,b}=1$ tales que $x=\frac{a}{b}$. Despejando, tenemos que $a^2=2\cdot b^2$, es decir, $a^2$ es par. Como todo número par al cuadrado es par y todo número impar al cuadrado es impar, se concluye que $a$ es par. Luego existe $k\in\mathbb{Z}$ tal que $a=2\cdot k$. Sustituyendo, obtenemos que $4\cdot k^2=2\cdot b^2$ y, simplificando, llegamos a que $b^2=2\cdot k^2$, esto es, $b^2$ es par y, en consecuencia, $b$ también. Hemos llegado a una contradicción pues $\text{mcd}\pr{a,b}=1$. Por tanto, $x^2=2$ no tiene solución en $\mathbb{Q}$.
+
+Se puede demostrar de manera análoga que la ecuación $x^2=p$ con $p\in\mathbb{N}$ primo no tiene solución.
+
+\begin{definition}[\rm\textbf{Conjunto acotado}]
+  \rm Sea $\pr{X,\leq}$ un conjunto parcialmente ordenado. Dado $A\subseteq X$, diremos que:
+
+  \begin{itemize}
+    \item $A$ está acotado superiormente si existe $x\in X$ tal que $a\leq x$ para todo $a\in A$. En este caso, diremos que $x$ es una cota superior de $A$.
+    \item $A$ está acotado inferiormente si existe $x\in X$ tal que $x\leq a$ para todo $a\in A$. En este caso, diremos que $x$ es una cota inferior de $A$.
+    \item $A$ está acotado si $A$ está acotado superior e inferiormente.
+    \item $\alpha\in X$ es el supremo de $A$ si $A$ es no vacío y está acotado superiormente, $\alpha$ es una cota superior de $A$ y $\alpha\leq x$ para toda cota superior $x$ de $A$. En este caso, denotaremos $\alpha=\sup A$. Si $\alpha\in A$, diremos que $\alpha$ es el máximo de $A$ y lo denotaremos como $\alpha=\max A$.
+    \item $\alpha\in X$ es el ínfimo de $A$ si $A$ es no vacío y está acotado inferiormente, $\alpha$ es una cota inferior de $A$ y $x\leq \alpha$ para toda cota superior $x$ de $A$. En este caso, denotaremos $\alpha=\inf A$. Si $\alpha\in A$, diremos que $\alpha$ es el mínimo de $A$ y lo denotaremos como $\alpha=\min A$.
+  \end{itemize}
+\end{definition}
+
+
+\begin{definition}[\rm\textbf{Conjunto ordenado completo}]
+  \rm Un conjunto parcialmente ordenado $\pr{X,\leq}$ se dice completo si todo subconjunto no vacío de $X$ acotado superiormente tiene supremo.
+\end{definition}
+
+\textbf{2. Existen conjuntos de números racionales no vacíos y acotados superiormente que no tienen supremo.} Consideremos el conjunto $S:=\set{r\in\mathbb{Q}\middle|r^2<2}$. Es fácil ver que $S$ es no vacío. Además, $S$ está acotado superiormente por $2$ pues si $r\in\mathbb{Q}$ con $r\geq 2$, entonces $r^2\geq 4>2$, es decir, $r\notin S$. Por reducción al absurdo, supongamos que existe $\alpha\in\mathbb{Q}$ tal que $\alpha=\sup S$. Necesariamente, $\alpha^2\neq 2$. Tenemos dos casos:
+
+\begin{itemize}
+  \item Supongamos que $\alpha^2<2$. Sea $h\in\mathbb{Q}$ positivo cualquiera. Entonces:
+  
+  \begin{equation}
+    \pr{\alpha+h}^2=\alpha^2+2\cdot\alpha\cdot h+h^2=\alpha^2+\pr{2\cdot\alpha+h}\cdot h.
+  \end{equation}
+
+  Por la densidad de $\mathbb{Q}$, tomamos $\displaystyle h<\min\set{1,\frac{2-\alpha^2}{2\cdot\alpha+1}}$. Entonces:
+
+  \begin{equation}
+    \pr{\alpha+h}^2<\alpha^2+\pr{2\cdot\alpha+1}\cdot h<\alpha^2+\pr{2-\alpha^2}=2,
+  \end{equation}
+
+  es decir, $\alpha+h\in S$. Esto es absurdo pues $\alpha$ es el supremo de $S$ y $\alpha+h>\alpha$.
+
+  \item Supongamos que $\alpha^2>2$. Sea $h\in\mathbb{Q}$ positivo cualquiera. Entonces:
+  
+  \begin{equation}
+    \pr{\alpha-h}^2=\alpha^2-2\cdot\alpha\cdot h+h^2.
+  \end{equation}
+
+  Por la densidad de $\mathbb{Q}$, tomamos $h$ tal que $\alpha^2-2\cdot\alpha\cdot h+h^2>2+h^2$, es decir, $\displaystyle h<\frac{\alpha^2-2}{2\cdot\alpha}$. Entonces:
+
+  
+  \begin{equation}
+    \pr{\alpha-h}^2>\alpha^2+\pr{h-2\cdot\alpha}\cdot h>2+h^2>2,
+  \end{equation}
+
+  esto es, $\alpha-h\in S$. Esto es absurdo pues $\alpha$ es el supremo de $S$ y $\alpha-h<\alpha$.
+\end{itemize}
+
+En conclusión, $S$ no tiene supremo en $\mathbb{Q}$. Por tanto, $\pr{\mathbb{Q},\leq}$ no es un conjunto parcialmente ordenado completo.
+
+
+\begin{definition}[\rm\textbf{Valor absoluto}]
+  \rm Dado $r\in\mathbb{Q}$, definimos el valor absoluto de $r$ como el siguiente valor:
+
+  \begin{equation}
+    \bars{r}:=\begin{cases}
+      r & \text{si $r\geq 0$}\\
+      -r & \text{si $r<0$}
+    \end{cases}
+  \end{equation}
+\end{definition}
+
+\begin{definition}[\textbf{Sucesiones de números racionales}]
+  \rm Una sucesión de números racionales es una función $\varphi:\mathbb{N}\rightarrow\mathbb{Q}$. Denotaremos $\varphi:=\pr{r_n}_{n\in\mathbb{N}}$ donde $r_n:=\varphi\pr{n}$ para todo $n\in\mathbb{N}$. Dada una sucesión de números racionales $\pr{r_n}_{n\in\mathbb{N}}$, diremos que:
+
+  \begin{itemize}
+    \item $\pr{r_n}_{n\in\mathbb{N}}$ es creciente (resp. decreciente) si $r_n\leq r_{n+1}$ (resp. $r_n\geq r_{n+1}$) para todo $n\in\mathbb{N}$. % chktex 12
+    \item $\pr{r_n}_{n\in\mathbb{N}}$ está acotada superiormente (resp. inferiormente) si existe $k\in\mathbb{Q}$ tal que $r_n\leq k$ (resp. $r_n\geq k$) para todo $n\in\mathbb{N}$. % chktex 12
+    \item $\pr{r_n}_{n\in\mathbb{N}}$ es convergente en $\mathbb{Q}$ y su límite es $r\in\mathbb{Q}$ si para todo $\varepsilon\in\mathbb{Q}$ con $\varepsilon>0$, existe $n_0=n_0\pr{\varepsilon}\in\mathbb{N}$ tal que, para todo $n\in\mathbb{N}$ con $n\geq n_0$, se cumple que $\bars{r_n-r}<\varepsilon$.
+  \end{itemize}
+\end{definition}
+
+Se puede probar fácilmente que si $\pr{r_n}_{n\in\mathbb{N}}$ y $\pr{s_n}_{n\in\mathbb{N}}$ son dos sucesiones de números racionales convergentes a $r,s\in\mathbb{Q}$ respectivamente, entonces $\pr{r_n+s_n}_{n\in\mathbb{N}}$ y $\pr{r_n\cdot s_n}_{n\in\mathbb{N}}$ son convergentes a $r+s$ y $r\cdot s$ respectivamente. Además, si $s_n\neq 0$ para todo $n\in\mathbb{N}$ y $s\neq 0$, entonces $\displaystyle\pr{\frac{r_n}{s_n}}_{n\in\mathbb{N}}$ es convergente a $\frac{r}{s}$.
+
+\textbf{3. Existen sucesiones crecientes en $\mathbb{Q}$ acotadas superiormente que no tienen límite racional. } Consideremos la siguiente expresión:
+
+\begin{equation}
+  r=1+\frac{1}{1+\frac{2}{1+\frac{1}{1+\frac{2}{\dots}}}}
+\end{equation}
+
+Observemos que $r$ verifica la siguiente ecuación:
+
+\begin{equation}
+  r=1+\frac{1}{1+\dfrac{2}{r}}.
+\end{equation}
+
+Sea $\pr{r_n}_{n\in\mathbb{N}}$ la sucesión de números racionales definida por recurrencia como $r_1:=1$ y:
+
+\begin{equation}
+  r_{n+1}:=1+\frac{1}{1+\dfrac{2}{r_n}}=1+\frac{r_n}{r_n+2}=\frac{2+2\cdot r_n}{2+r_n},
+\end{equation}
+
+para todo $n\in\mathbb{N}$. Obsérvese que $\pr{r_n}_{n\in\mathbb{N}}$ está bien definida, es decir, $r_n\in\mathbb{Q}$ para todo $n\in\mathbb{N}$ pues, por inducción, es fácil ver que $r_n>0$ para todo $n\in\mathbb{N}$. Veamos que $r_n<2$ para todo $n\in\mathbb{N}$. En efecto, para $n=1$, se tiene que $r_1=1<2$. Supongamos que $r_n<2$ para $n\in\mathbb{N}$. Entonces:
+
+\begin{equation}
+  r_{n+1}=\frac{2+2\cdot r_n}{2+r_n}=1+\frac{r_n}{2+r_n}<1+\frac{2}{2}=1+1=2.
+\end{equation}
+
+Por el Principio de Inducción, se tiene que $r_n<2$ para todo $n\in\mathbb{N}$. Veamos que $\pr{r_n}_{n\in\mathbb{N}}$ es creciente. En efecto, para $n=1$, se tiene que $r_1=1<\frac{4}{3}=r_2$. Supongamos que $r_n<r_{n+1}$ para $n\in\mathbb{N}$. Entonces:
+
+\begin{equation}
+  \begin{split}
+    r_{n+2}-r_{n+1} & =\frac{2+2\cdot r_{n+1}}{2+r_{n+1}}-\frac{2+2\cdot r_n}{2+r_n}=\frac{\pr{2+2\cdot r_{n+1}}\cdot\pr{2+r_n}-\pr{2+r_{n+1}}\cdot\pr{2+2\cdot r_n}}{\pr{2+r_{n+1}}\cdot\pr{2+r_n}}\\
+    &=\frac{\pr{4+2\cdot r_n+4\cdot r_{n+1}+2\cdot r_n\cdot r_{n+1}}-\pr{4+4\cdot r_n+2\cdot r_{n+1}+2\cdot r_n\cdot r_{n+1}}}{\pr{2+r_{n+1}}\cdot\pr{2+r_n}}\\
+    &=\frac{2\cdot \pr{r_{n+1}-r_n}}{\pr{2+r_{n+1}}\cdot\pr{2+r_n}}>0.
+  \end{split}
+\end{equation}
+
+Por el Principio de Inducción, se tiene que $\pr{r_n}_{n\in\mathbb{N}}$ es creciente. Por reducción al absurdo, supongamos que $\pr{r_n}_{n\in\mathbb{N}}$ converge a $r\in\mathbb{Q}$. Entonces:
+
+\begin{equation}
+  r=\frac{2+2\cdot r}{2+r}\Rightarrow r\cdot\pr{2+r}=2+2\cdot r\Rightarrow r^2+2\cdot r=2\cdot r+2\Rightarrow r^2=2.
+\end{equation}
+
+Esto es una contradicción. Por tanto, $\pr{r_n}_{n\in\mathbb{N}}$ es una sucesión de números racionales creciente y acotada superiormente que no tiene límite racional.
+
 \section{Fracciones y números decimales}
+
+\begin{definition}
+  \rm Sean $r\in\mathbb{Q}$, $c\in\mathbb{Z}$, $b\in\mathbb{N}$ con $b>1$ y $\pr{a_n}_{n\in\mathbb{N}}$ una sucesión de dígitos en $\set{0,1,\dots,b-1}$. Diremos que $r$ tiene en base $b$ la expresión decimal $\pr{c,a_1a_2\dots a_n\dots}_b$ si la sucesión de números racionales $\pr{s_n}_{n\in\mathbb{N}}$ dada por:
+
+  \begin{equation}
+    s_n:=c+\sum_{k=1}^{n}{\frac{a_k}{b^k}}
+  \end{equation}
+
+  converge a $r$. En este caso, se dice que:
+
+  \begin{itemize}
+    \item la expresión decimal $r=\pr{c,a_1a_2\dots a_n\dots}_b$ es exacta si existe $n_0\in\mathbb{N}$ tal que $a_n=0$ para todo $n\in\mathbb{N}$ con $n>n_0$. En tal caso, escribiremos $r=c,a_1a_2\dots a_{n_0}$.
+    \item la expresión decimal $r=\pr{c,a_1a_2\dots a_n\dots}_b$ es periódica si existen $n_0\in\mathbb{N}_0$ y $p\in\mathbb{N}$ tal que $a_{n+p}=a_n$ para todo $n\in\mathbb{N}$ con $n>n_0$. En tal caso, escribiremos $r:=\pr{c,a_1a_2\dots a_{n_0}\overline{a_{n_0+1}\dots a_p}}_b$. Si $n_0=0$, diremos que la expresión decimal anterior es periódica pura y, si $n_0>0$, diremos que la expresión decimal anterior es periódica mixta.
+  \end{itemize}
+\end{definition}
+
+\begin{theorem}
+  \rm Todo número racional tiene una expresión decimal que será exacta o periódica. Además, si $\displaystyle r=\frac{m}{n}\in\mathbb{Q}$ con $m\in\mathbb{Z}$, $n\in\mathbb{N}$ y $\text{mcd}\pr{m,n}=1$, y $b\in\mathbb{N}$ con $b>1$, se cumplen las siguientes propiedades:
+
+  \begin{itemize}
+    \item $r$ tiene expresión decimal exacta en base $b$ si y solamente si, para todo $p\in\mathbb{N}$ primo, si $p\mid n$, entonces $p\mid b$. 
+    \item $r$ tiene expresión decimal periódica en base $b$ si y solamente si existe $p\in\mathbb{N}$ primo tal que $p\mid n$ y $p\nmid b$.
+  \end{itemize}
+\end{theorem}
+
+A partir de la expresión decimal (exacta o periódica) de un número racional, podemos obtener su expresión como fracción (generatriz) de la siguiente forma:
+
+\begin{itemize}
+  \item  Si la expresión decimal de $r$ es exacta, es decir, $r=\pr{c,a_1a_2\dots a_{n_0}}_b$, entonces $b^{n_0}\cdot r=\pr{ca_1a_2\dots a_{n_0}}_b$ y, por tanto:
+  
+  \begin{equation}
+    r=\frac{\pr{ca_1a_2\dots a_{n_0}}_b}{b^{n_0}}.
+  \end{equation}
+  \item  Si la expresión decimal de $r$ es periódica, es decir, $r=\pr{c,a_1a_2\dots a_{n_0}\overline{a_{n_0+1}\dots a_p}}_b$, entonces $\pr{b^{n_0+p}-b^{n_0}}\cdot r=\pr{ca_1a_2\dots a_{n_0}a_{n_0+1}\dots a_{n_0+p}}_b-\pr{ca_1a_2\dots a_{n_0}}_b$ y, por tanto:
+  
+  \begin{equation}
+    r=\frac{\pr{ca_1a_2\dots a_{n_0}a_{n_0+1}\dots a_{n_0+p}}_b-\pr{ca_1a_2\dots a_{n_0}}_b}{b^{n_0+p}-b^{n_0}}.
+  \end{equation}
+\end{itemize}
